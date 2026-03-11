@@ -191,11 +191,11 @@ export function resolveCardDecision(params: {
   const choice = { ...rawChoice }; // Shallow clone to prevent mutating the source card object
   
   if (state.malikRewriteActive) {
-    // Left (DECLINE) does nothing. Right (ACCEPT) gives +5 Authority, +5 Sentiment, +10 Governor Loyalty.
-    choice.effects = direction === 'right' ? { authority: 5, sentiment: 5 } : {};
+    // Left (DECLINE) does nothing. Right (ACCEPT) gives +15 Authority, +15 Sentiment, +25 Governor Loyalty.
+    choice.effects = direction === 'right' ? { authority: 15, sentiment: 15 } : {};
     choice.treasuryDelta = 0;
     if (direction === 'right' && card.governor) {
-      choice.regionalEffects = { [card.governor]: 10 };
+      choice.regionalEffects = { [card.governor]: 25 };
     } else {
       choice.regionalEffects = {};
     }

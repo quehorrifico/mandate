@@ -17,34 +17,34 @@
       "label": "Too Costly",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -2,
-        "sustainability": -1
+        "capital": 10,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Cascadia": -6,
-        "Texas": 2
+        "Cascadia": -30,
+        "Texas": 10
       },
       "hiddenEffects": {
-        "green_stewardship": -5,
-        "fiscal_restraint": 3
+        "green_stewardship": -25,
+        "fiscal_restraint": 15
       }
     },
     "right": {
       "label": "Build It",
       "effects": {
         "authority": 0,
-        "capital": -2,
-        "sentiment": 2,
-        "sustainability": 1
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Cascadia": 6,
-        "Texas": -3
+        "Cascadia": 30,
+        "Texas": -15
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "fiscal_restraint": -3
+        "green_stewardship": 25,
+        "fiscal_restraint": -15
       }
     }
   },
@@ -66,34 +66,34 @@
       "label": "Protect Jobs",
       "effects": {
         "authority": 0,
-        "capital": 3,
-        "sentiment": 1,
-        "sustainability": -4
+        "capital": 15,
+        "sentiment": 5,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Cascadia": -5,
-        "Appalachia": 4
+        "Cascadia": -25,
+        "Appalachia": 20
       },
       "hiddenEffects": {
-        "green_stewardship": -6,
-        "labor_power": 4
+        "green_stewardship": -30,
+        "labor_power": 20
       }
     },
     "right": {
       "label": "Ban Logging",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": -1,
-        "sustainability": 4
+        "authority": 10,
+        "capital": -15,
+        "sentiment": -5,
+        "sustainability": 20
       },
       "regionalEffects": {
-        "Cascadia": 6,
-        "Appalachia": -5
+        "Cascadia": 30,
+        "Appalachia": -25
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "labor_power": -4
+        "green_stewardship": 30,
+        "labor_power": -20
       }
     }
   },
@@ -114,35 +114,35 @@
     "left": {
       "label": "Close the Ports",
       "effects": {
-        "authority": 2,
-        "capital": 1,
-        "sentiment": -2,
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Cascadia": -7,
-        "Mesa": 5
+        "Cascadia": -35,
+        "Mesa": 25
       },
       "hiddenEffects": {
-        "global_diplomacy": -5,
-        "hardline_nationalism": 6
+        "global_diplomacy": -25,
+        "hardline_nationalism": 30
       }
     },
     "right": {
       "label": "Welcome Them",
       "effects": {
-        "authority": -2,
-        "capital": -2,
-        "sentiment": 2,
-        "sustainability": -1
+        "authority": -10,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Cascadia": 7,
-        "Mesa": -6
+        "Cascadia": 35,
+        "Mesa": -30
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "hardline_nationalism": -6
+        "global_diplomacy": 25,
+        "hardline_nationalism": -30
       }
     }
   },
@@ -164,34 +164,34 @@
       "label": "Keep Farm Subsidies",
       "effects": {
         "authority": 0,
-        "capital": 1,
-        "sentiment": 1,
-        "sustainability": -2
+        "capital": 5,
+        "sentiment": 5,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Cascadia": -4,
-        "Heartland": 5
+        "Cascadia": -20,
+        "Heartland": 25
       },
       "hiddenEffects": {
-        "green_stewardship": -3,
-        "traditional_values": 4
+        "green_stewardship": -15,
+        "traditional_values": 20
       }
     },
     "right": {
       "label": "Fund Kelp",
       "effects": {
         "authority": 0,
-        "capital": -1,
-        "sentiment": -1,
-        "sustainability": 3
+        "capital": -5,
+        "sentiment": -5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Cascadia": 5,
-        "Heartland": -5
+        "Cascadia": 25,
+        "Heartland": -25
       },
       "hiddenEffects": {
-        "green_stewardship": 4,
-        "traditional_values": -3
+        "green_stewardship": 20,
+        "traditional_values": -15
       }
     }
   },
@@ -212,35 +212,35 @@
     "left": {
       "label": "Protect Tech Profits",
       "effects": {
-        "authority": 1,
-        "capital": 3,
-        "sentiment": -2,
-        "sustainability": -3
+        "authority": 5,
+        "capital": 15,
+        "sentiment": -10,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Cascadia": -5,
-        "California": 4
+        "Cascadia": -25,
+        "California": 20
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "green_stewardship": -4
+        "market_growth": 25,
+        "green_stewardship": -20
       }
     },
     "right": {
       "label": "Fine the Corporates",
       "effects": {
-        "authority": -1,
-        "capital": -3,
-        "sentiment": 2,
-        "sustainability": 3
+        "authority": -5,
+        "capital": -15,
+        "sentiment": 10,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Cascadia": 6,
-        "California": -5
+        "Cascadia": 30,
+        "California": -25
       },
       "hiddenEffects": {
-        "market_growth": -5,
-        "green_stewardship": 5
+        "market_growth": -25,
+        "green_stewardship": 25
       }
     }
   },
@@ -261,35 +261,35 @@
     "left": {
       "label": "America First",
       "effects": {
-        "authority": 3,
+        "authority": 15,
         "capital": 0,
-        "sentiment": -1,
-        "sustainability": -2
+        "sentiment": -5,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Cascadia": -5,
-        "Superior": 3
+        "Cascadia": -25,
+        "Superior": 15
       },
       "hiddenEffects": {
-        "global_diplomacy": -4,
-        "hardline_nationalism": 4
+        "global_diplomacy": -20,
+        "hardline_nationalism": 20
       }
     },
     "right": {
       "label": "Sign the Treaty",
       "effects": {
-        "authority": -3,
-        "capital": 1,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": -15,
+        "capital": 5,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Cascadia": 5,
-        "Superior": -3
+        "Cascadia": 25,
+        "Superior": -15
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "hardline_nationalism": -3
+        "global_diplomacy": 25,
+        "hardline_nationalism": -15
       }
     }
   },
@@ -311,34 +311,34 @@
       "label": "Keep the Power",
       "effects": {
         "authority": 0,
-        "capital": 2,
+        "capital": 10,
         "sentiment": 0,
-        "sustainability": -3
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Cascadia": -6,
-        "Frontier": 4
+        "Cascadia": -30,
+        "Frontier": 20
       },
       "hiddenEffects": {
-        "green_stewardship": -5,
-        "market_growth": 3
+        "green_stewardship": -25,
+        "market_growth": 15
       }
     },
     "right": {
       "label": "Breach the Dams",
       "effects": {
         "authority": 0,
-        "capital": -3,
-        "sentiment": 1,
-        "sustainability": 4
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 20
       },
       "regionalEffects": {
-        "Cascadia": 6,
-        "Frontier": -5
+        "Cascadia": 30,
+        "Frontier": -25
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "market_growth": -4
+        "green_stewardship": 30,
+        "market_growth": -20
       }
     }
   },
@@ -360,34 +360,34 @@
       "label": "Too Expensive",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -1,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Cascadia": -4,
-        "Union": 3
+        "Cascadia": -20,
+        "Union": 15
       },
       "hiddenEffects": {
-        "global_diplomacy": -3,
-        "fiscal_restraint": 4
+        "global_diplomacy": -15,
+        "fiscal_restraint": 20
       }
     },
     "right": {
       "label": "Host the World",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Cascadia": 5,
-        "Union": -3
+        "Cascadia": 25,
+        "Union": -15
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "fiscal_restraint": -3
+        "global_diplomacy": 25,
+        "fiscal_restraint": -15
       }
     }
   },
@@ -408,35 +408,35 @@
     "left": {
       "label": "Protect Supply Chains",
       "effects": {
-        "authority": 1,
-        "capital": 3,
+        "authority": 5,
+        "capital": 15,
         "sentiment": 0,
-        "sustainability": -2
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Cascadia": -5,
-        "Dixie": 4
+        "Cascadia": -25,
+        "Dixie": 20
       },
       "hiddenEffects": {
-        "green_stewardship": -4,
-        "market_growth": 4
+        "green_stewardship": -20,
+        "market_growth": 20
       }
     },
     "right": {
       "label": "Ban the Ships",
       "effects": {
-        "authority": -1,
-        "capital": -4,
-        "sentiment": 1,
-        "sustainability": 3
+        "authority": -5,
+        "capital": -20,
+        "sentiment": 5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Cascadia": 6,
-        "Dixie": -5
+        "Cascadia": 30,
+        "Dixie": -25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "market_growth": -4
+        "green_stewardship": 25,
+        "market_growth": -20
       }
     }
   },
@@ -457,35 +457,35 @@
     "left": {
       "label": "Prioritize Readiness",
       "effects": {
-        "authority": 1,
-        "capital": 1,
-        "sentiment": -1,
-        "sustainability": -1
+        "authority": 5,
+        "capital": 5,
+        "sentiment": -5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Cascadia": -4,
-        "Commonwealth": 4
+        "Cascadia": -20,
+        "Commonwealth": 20
       },
       "hiddenEffects": {
-        "national_security": 5,
-        "green_stewardship": -3
+        "national_security": 25,
+        "green_stewardship": -15
       }
     },
     "right": {
       "label": "Go Electric",
       "effects": {
         "authority": 0,
-        "capital": -2,
-        "sentiment": 1,
-        "sustainability": 2
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Cascadia": 5,
-        "Commonwealth": -4
+        "Cascadia": 25,
+        "Commonwealth": -20
       },
       "hiddenEffects": {
-        "national_security": -4,
-        "green_stewardship": 4
+        "national_security": -20,
+        "green_stewardship": 20
       }
     }
   },
@@ -506,35 +506,35 @@
     "left": {
       "label": "Let the Market Decide",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -1,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -5,
-        "Frontier": 4
+        "California": -25,
+        "Frontier": 20
       },
       "hiddenEffects": {
-        "market_growth": 4,
-        "identity_equity": -5
+        "market_growth": 20,
+        "identity_equity": -25
       }
     },
     "right": {
       "label": "Audit the Code",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": 6,
-        "Frontier": -4
+        "California": 30,
+        "Frontier": -20
       },
       "hiddenEffects": {
-        "identity_equity": 5,
-        "market_growth": -3
+        "identity_equity": 25,
+        "market_growth": -15
       }
     }
   },
@@ -555,35 +555,35 @@
     "left": {
       "label": "Protect Workers",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -6,
-        "Superior": 6
+        "California": -30,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Protect Gig Economy",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": 5,
-        "Superior": -5
+        "California": 25,
+        "Superior": -25
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -5
+        "market_growth": 30,
+        "labor_power": -25
       }
     }
   },
@@ -605,34 +605,34 @@
       "label": "No Handouts",
       "effects": {
         "authority": 0,
-        "capital": 1,
-        "sentiment": -1,
+        "capital": 5,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -4,
-        "Heartland": 4
+        "California": -20,
+        "Heartland": 20
       },
       "hiddenEffects": {
-        "traditional_values": 4,
-        "identity_equity": -4
+        "traditional_values": 20,
+        "identity_equity": -20
       }
     },
     "right": {
       "label": "Subsidize Culture",
       "effects": {
         "authority": 0,
-        "capital": -2,
-        "sentiment": 1,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": 5,
-        "Heartland": -5
+        "California": 25,
+        "Heartland": -25
       },
       "hiddenEffects": {
-        "identity_equity": 5,
-        "fiscal_restraint": -3
+        "identity_equity": 25,
+        "fiscal_restraint": -15
       }
     }
   },
@@ -653,35 +653,35 @@
     "left": {
       "label": "Enforce Subpoenas",
       "effects": {
-        "authority": 3,
-        "capital": -1,
-        "sentiment": -2,
+        "authority": 15,
+        "capital": -5,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -7,
-        "Mesa": 5
+        "California": -35,
+        "Mesa": 25
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "identity_equity": -5
+        "national_security": 30,
+        "identity_equity": -25
       }
     },
     "right": {
       "label": "Protect Data",
       "effects": {
-        "authority": -3,
-        "capital": 1,
-        "sentiment": 2,
+        "authority": -15,
+        "capital": 5,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": 6,
-        "Mesa": -6
+        "California": 30,
+        "Mesa": -30
       },
       "hiddenEffects": {
-        "identity_equity": 5,
-        "national_security": -6
+        "identity_equity": 25,
+        "national_security": -30
       }
     }
   },
@@ -702,35 +702,35 @@
     "left": {
       "label": "Block the Charter",
       "effects": {
-        "authority": 1,
-        "capital": 1,
-        "sentiment": -1,
+        "authority": 5,
+        "capital": 5,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -5,
-        "Union": 3
+        "California": -25,
+        "Union": 15
       },
       "hiddenEffects": {
-        "fiscal_restraint": 4,
-        "market_growth": -3
+        "fiscal_restraint": 20,
+        "market_growth": -15
       }
     },
     "right": {
       "label": "Approve Charter",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": 1,
-        "sustainability": -1
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "California": 5,
-        "Union": -4
+        "California": 25,
+        "Union": -20
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "identity_equity": 3
+        "market_growth": 25,
+        "identity_equity": 15
       }
     }
   },
@@ -751,35 +751,35 @@
     "left": {
       "label": "Too Heavy-Handed",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -6,
-        "Dixie": 5
+        "California": -30,
+        "Dixie": 25
       },
       "hiddenEffects": {
-        "market_growth": 4,
-        "identity_equity": -5
+        "market_growth": 20,
+        "identity_equity": -25
       }
     },
     "right": {
       "label": "Mandate Diversity",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": 6,
-        "Dixie": -5
+        "California": 30,
+        "Dixie": -25
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "market_growth": -3
+        "identity_equity": 30,
+        "market_growth": -15
       }
     }
   },
@@ -801,34 +801,34 @@
       "label": "Protect the Parks",
       "effects": {
         "authority": 0,
-        "capital": -2,
-        "sentiment": 1,
-        "sustainability": 3
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "California": -4,
-        "Cascadia": 4
+        "California": -20,
+        "Cascadia": 20
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "market_growth": -4
+        "green_stewardship": 25,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Build the Rail",
       "effects": {
         "authority": 0,
-        "capital": 3,
-        "sentiment": -1,
-        "sustainability": -3
+        "capital": 15,
+        "sentiment": -5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "California": 5,
-        "Cascadia": -5
+        "California": 25,
+        "Cascadia": -25
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "green_stewardship": -5
+        "market_growth": 25,
+        "green_stewardship": -25
       }
     }
   },
@@ -850,34 +850,34 @@
       "label": "Defund It",
       "effects": {
         "authority": 0,
-        "capital": 3,
-        "sentiment": -3,
+        "capital": 15,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -7,
-        "Texas": 6
+        "California": -35,
+        "Texas": 30
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "identity_equity": -6
+        "fiscal_restraint": 30,
+        "identity_equity": -30
       }
     },
     "right": {
       "label": "Fund Reparations",
       "effects": {
         "authority": 0,
-        "capital": -4,
-        "sentiment": 3,
+        "capital": -20,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": 7,
-        "Texas": -6
+        "California": 35,
+        "Texas": -30
       },
       "hiddenEffects": {
-        "identity_equity": 7,
-        "fiscal_restraint": -5
+        "identity_equity": 35,
+        "fiscal_restraint": -25
       }
     }
   },
@@ -898,35 +898,35 @@
     "left": {
       "label": "Keep FDA Limits",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": -1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -5,
-        "Appalachia": 5
+        "California": -25,
+        "Appalachia": 25
       },
       "hiddenEffects": {
-        "traditional_values": 5,
-        "market_growth": -4
+        "traditional_values": 25,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Deregulate",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": 1,
-        "sustainability": -1
+        "authority": -10,
+        "capital": 15,
+        "sentiment": 5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "California": 6,
-        "Appalachia": -5
+        "California": 30,
+        "Appalachia": -25
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "identity_equity": 4
+        "market_growth": 25,
+        "identity_equity": 20
       }
     }
   },
@@ -947,35 +947,35 @@
     "left": {
       "label": "America First",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": -1,
+        "authority": 5,
+        "capital": -10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": -5,
-        "Alaska": 4
+        "California": -25,
+        "Alaska": 20
       },
       "hiddenEffects": {
-        "hardline_nationalism": 5,
-        "market_growth": -4
+        "hardline_nationalism": 25,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Open the Gates",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": 1,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "California": 5,
-        "Alaska": -4
+        "California": 25,
+        "Alaska": -20
       },
       "hiddenEffects": {
-        "market_growth": 4,
-        "global_diplomacy": 3
+        "market_growth": 20,
+        "global_diplomacy": 15
       }
     }
   },
@@ -996,35 +996,35 @@
     "left": {
       "label": "Stand Down",
       "effects": {
-        "authority": -2,
-        "capital": 1,
-        "sentiment": 1,
+        "authority": -10,
+        "capital": 5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -6,
-        "California": 4
+        "Mesa": -30,
+        "California": 20
       },
       "hiddenEffects": {
-        "national_security": -5,
-        "identity_equity": 4
+        "national_security": -25,
+        "identity_equity": 20
       }
     },
     "right": {
       "label": "Deploy the Drones",
       "effects": {
-        "authority": 3,
-        "capital": -2,
-        "sentiment": -2,
+        "authority": 15,
+        "capital": -10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": 6,
-        "California": -5
+        "Mesa": 30,
+        "California": -25
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "identity_equity": -4
+        "national_security": 30,
+        "identity_equity": -20
       }
     }
   },
@@ -1046,34 +1046,34 @@
       "label": "Keep Ports Open",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -1,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -5,
-        "Union": 5
+        "Mesa": -25,
+        "Union": 25
       },
       "hiddenEffects": {
-        "hardline_nationalism": -5,
-        "global_diplomacy": 5
+        "hardline_nationalism": -25,
+        "global_diplomacy": 25
       }
     },
     "right": {
       "label": "Seal the Border",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": 7,
-        "Union": -6
+        "Mesa": 35,
+        "Union": -30
       },
       "hiddenEffects": {
-        "hardline_nationalism": 6,
-        "global_diplomacy": -6
+        "hardline_nationalism": 30,
+        "global_diplomacy": -30
       }
     }
   },
@@ -1094,35 +1094,35 @@
     "left": {
       "label": "Require Reviews",
       "effects": {
-        "authority": -1,
-        "capital": -1,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": -5,
+        "capital": -5,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Mesa": -5,
-        "Cascadia": 5
+        "Mesa": -25,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "national_security": -4,
-        "green_stewardship": 5
+        "national_security": -20,
+        "green_stewardship": 25
       }
     },
     "right": {
       "label": "Test the Weapons",
       "effects": {
-        "authority": 2,
-        "capital": 1,
-        "sentiment": -1,
-        "sustainability": -3
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Mesa": 6,
-        "Cascadia": -6
+        "Mesa": 30,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "green_stewardship": -5
+        "national_security": 30,
+        "green_stewardship": -25
       }
     }
   },
@@ -1144,34 +1144,34 @@
       "label": "Maintain Water Deals",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": 1,
+        "capital": 10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -6,
-        "California": 5
+        "Mesa": -30,
+        "California": 25
       },
       "hiddenEffects": {
-        "national_security": -4,
-        "market_growth": 4
+        "national_security": -20,
+        "market_growth": 20
       }
     },
     "right": {
       "label": "Divert to Mesa",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": -2,
-        "sustainability": -1
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Mesa": 7,
-        "California": -7
+        "Mesa": 35,
+        "California": -35
       },
       "hiddenEffects": {
-        "national_security": 5,
-        "market_growth": -5
+        "national_security": 25,
+        "market_growth": -25
       }
     }
   },
@@ -1192,35 +1192,35 @@
     "left": {
       "label": "Protect NGOs",
       "effects": {
-        "authority": -1,
-        "capital": 1,
-        "sentiment": 2,
+        "authority": -5,
+        "capital": 5,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -5,
-        "Hawaii": 4
+        "Mesa": -25,
+        "Hawaii": 20
       },
       "hiddenEffects": {
-        "hardline_nationalism": -5,
-        "identity_equity": 4
+        "hardline_nationalism": -25,
+        "identity_equity": 20
       }
     },
     "right": {
       "label": "Ban Them",
       "effects": {
-        "authority": 2,
-        "capital": -1,
-        "sentiment": -2,
+        "authority": 10,
+        "capital": -5,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": 6,
-        "Hawaii": -4
+        "Mesa": 30,
+        "Hawaii": -20
       },
       "hiddenEffects": {
-        "hardline_nationalism": 6,
-        "identity_equity": -4
+        "hardline_nationalism": 30,
+        "identity_equity": -20
       }
     }
   },
@@ -1241,35 +1241,35 @@
     "left": {
       "label": "Deny Troop Request",
       "effects": {
-        "authority": -2,
-        "capital": 1,
-        "sentiment": 1,
+        "authority": -10,
+        "capital": 5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -7,
-        "Superior": 5
+        "Mesa": -35,
+        "Superior": 25
       },
       "hiddenEffects": {
-        "national_security": -5,
-        "labor_power": 5
+        "national_security": -25,
+        "labor_power": 25
       }
     },
     "right": {
       "label": "Send the Troops",
       "effects": {
-        "authority": 3,
-        "capital": -2,
-        "sentiment": -3,
+        "authority": 15,
+        "capital": -10,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": 7,
-        "Superior": -6
+        "Mesa": 35,
+        "Superior": -30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "labor_power": -6
+        "national_security": 30,
+        "labor_power": -30
       }
     }
   },
@@ -1290,35 +1290,35 @@
     "left": {
       "label": "Allow Open Markets",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -1,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -5,
-        "Union": 4
+        "Mesa": -25,
+        "Union": 20
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "national_security": -4
+        "global_diplomacy": 25,
+        "national_security": -20
       }
     },
     "right": {
       "label": "Ban Foreign Buyers",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": 6,
-        "Union": -4
+        "Mesa": 30,
+        "Union": -20
       },
       "hiddenEffects": {
-        "national_security": 5,
-        "global_diplomacy": -5
+        "national_security": 25,
+        "global_diplomacy": -25
       }
     }
   },
@@ -1339,35 +1339,35 @@
     "left": {
       "label": "Block the Curriculum",
       "effects": {
-        "authority": -1,
+        "authority": -5,
         "capital": 0,
-        "sentiment": 2,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -4,
-        "Appalachia": -2
+        "Mesa": -20,
+        "Appalachia": -10
       },
       "hiddenEffects": {
-        "hardline_nationalism": -4,
-        "identity_equity": 3
+        "hardline_nationalism": -20,
+        "identity_equity": 15
       }
     },
     "right": {
       "label": "Mandate Patriotism",
       "effects": {
-        "authority": 2,
+        "authority": 10,
         "capital": 0,
-        "sentiment": -2,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": 5,
-        "Appalachia": 3
+        "Mesa": 25,
+        "Appalachia": 15
       },
       "hiddenEffects": {
-        "hardline_nationalism": 5,
-        "traditional_values": 4
+        "hardline_nationalism": 25,
+        "traditional_values": 20
       }
     }
   },
@@ -1388,35 +1388,35 @@
     "left": {
       "label": "Protect the Lands",
       "effects": {
-        "authority": -1,
-        "capital": -1,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": -5,
+        "capital": -5,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Mesa": -6,
-        "Cascadia": 5
+        "Mesa": -30,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "national_security": -4
+        "green_stewardship": 25,
+        "national_security": -20
       }
     },
     "right": {
       "label": "Mine the Uranium",
       "effects": {
-        "authority": 2,
-        "capital": 2,
-        "sentiment": -2,
-        "sustainability": -3
+        "authority": 10,
+        "capital": 10,
+        "sentiment": -10,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Mesa": 6,
-        "Cascadia": -6
+        "Mesa": 30,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "national_security": 5,
-        "green_stewardship": -5
+        "national_security": 25,
+        "green_stewardship": -25
       }
     }
   },
@@ -1437,35 +1437,35 @@
     "left": {
       "label": "Mothball the Gear",
       "effects": {
-        "authority": -2,
-        "capital": 1,
-        "sentiment": 2,
+        "authority": -10,
+        "capital": 5,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": -5,
-        "Piedmont": 3
+        "Mesa": -25,
+        "Piedmont": 15
       },
       "hiddenEffects": {
-        "national_security": -5,
-        "sentiment": 3
+        "national_security": -25,
+        "sentiment": 15
       }
     },
     "right": {
       "label": "Transfer the Hardware",
       "effects": {
-        "authority": 3,
+        "authority": 15,
         "capital": 0,
-        "sentiment": -3,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Mesa": 6,
-        "Piedmont": -4
+        "Mesa": 30,
+        "Piedmont": -20
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "identity_equity": -4
+        "national_security": 30,
+        "identity_equity": -20
       }
     }
   },
@@ -1486,35 +1486,35 @@
     "left": {
       "label": "Keep Public Lands",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Frontier": -6,
-        "Cascadia": 5
+        "Frontier": -30,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "fiscal_restraint": -5,
-        "green_stewardship": 5
+        "fiscal_restraint": -25,
+        "green_stewardship": 25
       }
     },
     "right": {
       "label": "Liquidate Assets",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": -1,
-        "sustainability": -3
+        "authority": -10,
+        "capital": 20,
+        "sentiment": -5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Frontier": 7,
-        "Cascadia": -6
+        "Frontier": 35,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "green_stewardship": -6
+        "market_growth": 30,
+        "green_stewardship": -30
       }
     }
   },
@@ -1535,35 +1535,35 @@
     "left": {
       "label": "Enforce Minimums",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": -5,
-        "Superior": 6
+        "Frontier": -25,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Abolish the Floor",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -3,
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": 6,
-        "Superior": -7
+        "Frontier": 30,
+        "Superior": -35
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -6
+        "market_growth": 30,
+        "labor_power": -30
       }
     }
   },
@@ -1584,35 +1584,35 @@
     "left": {
       "label": "Block Tax Havens",
       "effects": {
-        "authority": 2,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": -5,
-        "Union": 5
+        "Frontier": -25,
+        "Union": 25
       },
       "hiddenEffects": {
-        "fiscal_restraint": -4,
-        "global_diplomacy": 3
+        "fiscal_restraint": -20,
+        "global_diplomacy": 15
       }
     },
     "right": {
       "label": "Charter the Haven",
       "effects": {
-        "authority": -3,
-        "capital": 4,
-        "sentiment": -2,
+        "authority": -15,
+        "capital": 20,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": 6,
-        "Union": -6
+        "Frontier": 30,
+        "Union": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "fiscal_restraint": 5
+        "market_growth": 30,
+        "fiscal_restraint": 25
       }
     }
   },
@@ -1633,35 +1633,35 @@
     "left": {
       "label": "Maintain Oversight",
       "effects": {
-        "authority": 2,
-        "capital": -2,
+        "authority": 10,
+        "capital": -10,
         "sentiment": 0,
-        "sustainability": 1
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Frontier": -6,
-        "Hawaii": 4
+        "Frontier": -30,
+        "Hawaii": 20
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "fiscal_restraint": -4
+        "green_stewardship": 25,
+        "fiscal_restraint": -20
       }
     },
     "right": {
       "label": "Defund the EPA",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": 1,
-        "sustainability": -3
+        "authority": -10,
+        "capital": 15,
+        "sentiment": 5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Frontier": 6,
-        "Hawaii": -5
+        "Frontier": 30,
+        "Hawaii": -25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "green_stewardship": -5
+        "fiscal_restraint": 30,
+        "green_stewardship": -25
       }
     }
   },
@@ -1682,35 +1682,35 @@
     "left": {
       "label": "Protect Small Farms",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": -5,
-        "Heartland": 6
+        "Frontier": -25,
+        "Heartland": 30
       },
       "hiddenEffects": {
-        "traditional_values": 5,
-        "fiscal_restraint": -4
+        "traditional_values": 25,
+        "fiscal_restraint": -20
       }
     },
     "right": {
       "label": "Cut the Subsidies",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": -3,
+        "authority": -10,
+        "capital": 20,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": 6,
-        "Heartland": -7
+        "Frontier": 30,
+        "Heartland": -35
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "traditional_values": -6
+        "market_growth": 30,
+        "traditional_values": -30
       }
     }
   },
@@ -1731,35 +1731,35 @@
     "left": {
       "label": "Enforce Safety",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": -6,
-        "Appalachia": 6
+        "Frontier": -30,
+        "Appalachia": 30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Deregulate Mining",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -3,
-        "sustainability": -2
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -15,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Frontier": 7,
-        "Appalachia": -7
+        "Frontier": 35,
+        "Appalachia": -35
       },
       "hiddenEffects": {
-        "market_growth": 7,
-        "labor_power": -7
+        "market_growth": 35,
+        "labor_power": -35
       }
     }
   },
@@ -1780,35 +1780,35 @@
     "left": {
       "label": "Fund Federal Roads",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 1,
-        "sustainability": 1
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Frontier": -4,
-        "Commonwealth": 4
+        "Frontier": -20,
+        "Commonwealth": 20
       },
       "hiddenEffects": {
-        "fiscal_restraint": -3,
-        "social_safety_net": 4
+        "fiscal_restraint": -15,
+        "social_safety_net": 20
       }
     },
     "right": {
       "label": "Privatize Highways",
       "effects": {
-        "authority": -3,
-        "capital": 4,
-        "sentiment": -2,
-        "sustainability": -1
+        "authority": -15,
+        "capital": 20,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Frontier": 6,
-        "Commonwealth": -5
+        "Frontier": 30,
+        "Commonwealth": -25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "market_growth": 5
+        "fiscal_restraint": 30,
+        "market_growth": 25
       }
     }
   },
@@ -1829,35 +1829,35 @@
     "left": {
       "label": "Maintain Federal Review",
       "effects": {
-        "authority": 3,
-        "capital": -3,
-        "sentiment": -1,
-        "sustainability": 2
+        "authority": 15,
+        "capital": -15,
+        "sentiment": -5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Frontier": -7,
-        "Texas": -5
+        "Frontier": -35,
+        "Texas": -25
       },
       "hiddenEffects": {
-        "market_growth": -6,
-        "green_stewardship": 5
+        "market_growth": -30,
+        "green_stewardship": 25
       }
     },
     "right": {
       "label": "Greenlight Pipelines",
       "effects": {
-        "authority": -3,
-        "capital": 4,
-        "sentiment": 1,
-        "sustainability": -3
+        "authority": -15,
+        "capital": 20,
+        "sentiment": 5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Frontier": 7,
-        "Texas": 6
+        "Frontier": 35,
+        "Texas": 30
       },
       "hiddenEffects": {
-        "market_growth": 7,
-        "green_stewardship": -6
+        "market_growth": 35,
+        "green_stewardship": -30
       }
     }
   },
@@ -1878,35 +1878,35 @@
     "left": {
       "label": "Enforce ESG Scores",
       "effects": {
-        "authority": 2,
-        "capital": -2,
+        "authority": 10,
+        "capital": -10,
         "sentiment": 0,
-        "sustainability": 2
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Frontier": -5,
-        "California": 5
+        "Frontier": -25,
+        "California": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "market_growth": -4
+        "green_stewardship": 25,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Exempt the Frontier",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -1,
-        "sustainability": -2
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -5,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Frontier": 6,
-        "California": -6
+        "Frontier": 30,
+        "California": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "green_stewardship": -5
+        "market_growth": 30,
+        "green_stewardship": -25
       }
     }
   },
@@ -1927,35 +1927,35 @@
     "left": {
       "label": "Ban Autonomous Mining",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Frontier": -5,
-        "Alaska": -3
+        "Frontier": -25,
+        "Alaska": -15
       },
       "hiddenEffects": {
-        "labor_power": 5,
-        "market_growth": -6
+        "labor_power": 25,
+        "market_growth": -30
       }
     },
     "right": {
       "label": "Deploy the Machines",
       "effects": {
-        "authority": -1,
-        "capital": 4,
-        "sentiment": -3,
-        "sustainability": -2
+        "authority": -5,
+        "capital": 20,
+        "sentiment": -15,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Frontier": 6,
-        "Alaska": 4
+        "Frontier": 30,
+        "Alaska": 20
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -6
+        "market_growth": 30,
+        "labor_power": -30
       }
     }
   },
@@ -1976,35 +1976,35 @@
     "left": {
       "label": "Let the Market Decide",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Heartland": -6,
-        "California": 5
+        "Heartland": -30,
+        "California": 25
       },
       "hiddenEffects": {
-        "market_growth": 4,
-        "traditional_values": -5
+        "market_growth": 20,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Ban Synthetic Meat",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": -2,
-        "sustainability": -2
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -10,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Heartland": 6,
-        "California": -5
+        "Heartland": 30,
+        "California": -25
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "green_stewardship": -4
+        "traditional_values": 30,
+        "green_stewardship": -20
       }
     }
   },
@@ -2025,35 +2025,35 @@
     "left": {
       "label": "Enforce Federal Welfare",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": -6,
-        "Union": 5
+        "Heartland": -30,
+        "Union": 25
       },
       "hiddenEffects": {
-        "social_safety_net": 6,
-        "fiscal_restraint": -5
+        "social_safety_net": 30,
+        "fiscal_restraint": -25
       }
     },
     "right": {
       "label": "Allow the Opt-Out",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -2,
-        "sustainability": -1
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Heartland": 7,
-        "Union": -6
+        "Heartland": 35,
+        "Union": -30
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "traditional_values": 4
+        "fiscal_restraint": 30,
+        "traditional_values": 20
       }
     }
   },
@@ -2074,35 +2074,35 @@
     "left": {
       "label": "Protect the Children",
       "effects": {
-        "authority": 1,
-        "capital": -1,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -5,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": -5,
-        "Superior": 6
+        "Heartland": -25,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 5,
-        "traditional_values": -4
+        "labor_power": 25,
+        "traditional_values": -20
       }
     },
     "right": {
       "label": "Grant the Exemption",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -3,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": 6,
-        "Superior": -7
+        "Heartland": 30,
+        "Superior": -35
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "labor_power": -6
+        "traditional_values": 30,
+        "labor_power": -30
       }
     }
   },
@@ -2123,35 +2123,35 @@
     "left": {
       "label": "Deny the Deductions",
       "effects": {
-        "authority": 1,
-        "capital": 1,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": 5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": -6,
-        "California": 5
+        "Heartland": -30,
+        "California": 25
       },
       "hiddenEffects": {
-        "identity_equity": 5,
-        "traditional_values": -5
+        "identity_equity": 25,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Honor the Credits",
       "effects": {
         "authority": 0,
-        "capital": -2,
-        "sentiment": -2,
+        "capital": -10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": 6,
-        "California": -6
+        "Heartland": 30,
+        "California": -30
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "identity_equity": -6
+        "traditional_values": 30,
+        "identity_equity": -30
       }
     }
   },
@@ -2172,35 +2172,35 @@
     "left": {
       "label": "Build the Rail",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 1,
-        "sustainability": 3
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Heartland": -5,
-        "Cascadia": 5
+        "Heartland": -25,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "fiscal_restraint": -5
+        "green_stewardship": 25,
+        "fiscal_restraint": -25
       }
     },
     "right": {
       "label": "Veto the Bill",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": -1,
-        "sustainability": -2
+        "authority": -10,
+        "capital": 20,
+        "sentiment": -5,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Heartland": 6,
-        "Cascadia": -5
+        "Heartland": 30,
+        "Cascadia": -25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "green_stewardship": -5
+        "fiscal_restraint": 30,
+        "green_stewardship": -25
       }
     }
   },
@@ -2221,35 +2221,35 @@
     "left": {
       "label": "Tax the Estates",
       "effects": {
-        "authority": 1,
-        "capital": 2,
-        "sentiment": -1,
+        "authority": 5,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": -6,
-        "Commonwealth": 4
+        "Heartland": -30,
+        "Commonwealth": 20
       },
       "hiddenEffects": {
-        "social_safety_net": 4,
-        "fiscal_restraint": -5
+        "social_safety_net": 20,
+        "fiscal_restraint": -25
       }
     },
     "right": {
       "label": "Abolish the Tax",
       "effects": {
-        "authority": -1,
-        "capital": -3,
-        "sentiment": 1,
+        "authority": -5,
+        "capital": -15,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": 7,
-        "Commonwealth": -5
+        "Heartland": 35,
+        "Commonwealth": -25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "traditional_values": 4
+        "fiscal_restraint": 30,
+        "traditional_values": 20
       }
     }
   },
@@ -2270,35 +2270,35 @@
     "left": {
       "label": "Intervene",
       "effects": {
-        "authority": 2,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": -7,
-        "Hawaii": 5
+        "Heartland": -35,
+        "Hawaii": 25
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "traditional_values": -6
+        "identity_equity": 30,
+        "traditional_values": -30
       }
     },
     "right": {
       "label": "Allow the Ban",
       "effects": {
-        "authority": -2,
-        "capital": 1,
-        "sentiment": -2,
+        "authority": -10,
+        "capital": 5,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Heartland": 6,
-        "Hawaii": -5
+        "Heartland": 30,
+        "Hawaii": -25
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "identity_equity": -5
+        "traditional_values": 30,
+        "identity_equity": -25
       }
     }
   },
@@ -2319,35 +2319,35 @@
     "left": {
       "label": "Maintain Restrictions",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Heartland": -5,
-        "Cascadia": 6
+        "Heartland": -25,
+        "Cascadia": 30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "fiscal_restraint": -4
+        "green_stewardship": 30,
+        "fiscal_restraint": -20
       }
     },
     "right": {
       "label": "Deregulate Pesticides",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -2,
-        "sustainability": -3
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -10,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Heartland": 6,
-        "Cascadia": -6
+        "Heartland": 30,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "fiscal_restraint": 5,
-        "green_stewardship": -6
+        "fiscal_restraint": 25,
+        "green_stewardship": -30
       }
     }
   },
@@ -2368,35 +2368,35 @@
     "left": {
       "label": "Keep Clinics Secular",
       "effects": {
-        "authority": 1,
+        "authority": 5,
         "capital": 0,
-        "sentiment": 1,
-        "sustainability": 1
+        "sentiment": 5,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Heartland": -5,
-        "Union": 4
+        "Heartland": -25,
+        "Union": 20
       },
       "hiddenEffects": {
-        "social_safety_net": 5,
-        "traditional_values": -4
+        "social_safety_net": 25,
+        "traditional_values": -20
       }
     },
     "right": {
       "label": "Fund the Churches",
       "effects": {
-        "authority": -1,
-        "capital": 1,
-        "sentiment": -1,
-        "sustainability": -1
+        "authority": -5,
+        "capital": 5,
+        "sentiment": -5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Heartland": 6,
-        "Union": -5
+        "Heartland": 30,
+        "Union": -25
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "social_safety_net": -5
+        "traditional_values": 30,
+        "social_safety_net": -25
       }
     }
   },
@@ -2417,35 +2417,35 @@
     "left": {
       "label": "Keep Oversight",
       "effects": {
-        "authority": 2,
-        "capital": -2,
+        "authority": 10,
+        "capital": -10,
         "sentiment": 0,
-        "sustainability": 1
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Heartland": -6,
-        "Texas": -3
+        "Heartland": -30,
+        "Texas": -15
       },
       "hiddenEffects": {
-        "authority": 4,
-        "fiscal_restraint": -4
+        "authority": 20,
+        "fiscal_restraint": -20
       }
     },
     "right": {
       "label": "Defund the Boards",
       "effects": {
-        "authority": -3,
-        "capital": 3,
-        "sentiment": -1,
-        "sustainability": -1
+        "authority": -15,
+        "capital": 15,
+        "sentiment": -5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Heartland": 7,
-        "Texas": 4
+        "Heartland": 35,
+        "Texas": 20
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "market_growth": 3
+        "fiscal_restraint": 30,
+        "market_growth": 15
       }
     }
   },
@@ -2466,35 +2466,35 @@
     "left": {
       "label": "Block the Loophole",
       "effects": {
-        "authority": 1,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": -6,
-        "California": 5
+        "Texas": -30,
+        "California": 25
       },
       "hiddenEffects": {
-        "market_growth": -4,
-        "identity_equity": 3
+        "market_growth": -20,
+        "identity_equity": 15
       }
     },
     "right": {
       "label": "Approve Tax Holiday",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -1,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": 6,
-        "California": -7
+        "Texas": 30,
+        "California": -35
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "fiscal_restraint": 4
+        "market_growth": 30,
+        "fiscal_restraint": 20
       }
     }
   },
@@ -2515,35 +2515,35 @@
     "left": {
       "label": "Force Integration",
       "effects": {
-        "authority": 3,
-        "capital": -2,
-        "sentiment": 1,
-        "sustainability": 1
+        "authority": 15,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Texas": -7,
-        "Union": 4
+        "Texas": -35,
+        "Union": 20
       },
       "hiddenEffects": {
-        "authority": 5,
-        "fiscal_restraint": -5
+        "authority": 25,
+        "fiscal_restraint": -25
       }
     },
     "right": {
       "label": "Grant Independence",
       "effects": {
-        "authority": -3,
-        "capital": 2,
-        "sentiment": -2,
-        "sustainability": -2
+        "authority": -15,
+        "capital": 10,
+        "sentiment": -10,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Texas": 7,
-        "Union": -4
+        "Texas": 35,
+        "Union": -20
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "market_growth": 4
+        "fiscal_restraint": 30,
+        "market_growth": 20
       }
     }
   },
@@ -2564,35 +2564,35 @@
     "left": {
       "label": "Wait for the EPA",
       "effects": {
-        "authority": 1,
-        "capital": -3,
+        "authority": 5,
+        "capital": -15,
         "sentiment": 0,
-        "sustainability": 2
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Texas": -6,
-        "Cascadia": 5
+        "Texas": -30,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "market_growth": -6
+        "green_stewardship": 25,
+        "market_growth": -30
       }
     },
     "right": {
       "label": "Expedite Terminals",
       "effects": {
-        "authority": -1,
-        "capital": 4,
+        "authority": -5,
+        "capital": 20,
         "sentiment": 0,
-        "sustainability": -3
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Texas": 7,
-        "Cascadia": -6
+        "Texas": 35,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "market_growth": 7,
-        "green_stewardship": -6
+        "market_growth": 35,
+        "green_stewardship": -30
       }
     }
   },
@@ -2613,35 +2613,35 @@
     "left": {
       "label": "Defend the Unions",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": -6,
-        "Superior": 7
+        "Texas": -30,
+        "Superior": 35
       },
       "hiddenEffects": {
-        "labor_power": 7,
-        "market_growth": -5
+        "labor_power": 35,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Banish the NLRB",
       "effects": {
-        "authority": -3,
-        "capital": 4,
-        "sentiment": -2,
+        "authority": -15,
+        "capital": 20,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": 7,
-        "Superior": -8
+        "Texas": 35,
+        "Superior": -40
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -7
+        "market_growth": 30,
+        "labor_power": -35
       }
     }
   },
@@ -2662,35 +2662,35 @@
     "left": {
       "label": "Regulate the Skies",
       "effects": {
-        "authority": 2,
-        "capital": -1,
+        "authority": 10,
+        "capital": -5,
         "sentiment": 0,
-        "sustainability": 1
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Texas": -5,
-        "Hawaii": 4
+        "Texas": -25,
+        "Hawaii": 20
       },
       "hiddenEffects": {
-        "green_stewardship": 4,
-        "market_growth": -4
+        "green_stewardship": 20,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Clear for Launch",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": 1,
-        "sustainability": -2
+        "authority": -10,
+        "capital": 15,
+        "sentiment": 5,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Texas": 6,
-        "Hawaii": -5
+        "Texas": 30,
+        "Hawaii": -25
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "green_stewardship": -3
+        "market_growth": 30,
+        "green_stewardship": -15
       }
     }
   },
@@ -2711,35 +2711,35 @@
     "left": {
       "label": "Keep Federal Agents",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": -1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": -5,
-        "Mesa": 4
+        "Texas": -25,
+        "Mesa": 20
       },
       "hiddenEffects": {
-        "national_security": 5,
-        "fiscal_restraint": -4
+        "national_security": 25,
+        "fiscal_restraint": -20
       }
     },
     "right": {
       "label": "Privatize the Border",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": 6,
-        "Mesa": -4
+        "Texas": 30,
+        "Mesa": -20
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "national_security": -3
+        "fiscal_restraint": 30,
+        "national_security": -15
       }
     }
   },
@@ -2760,35 +2760,35 @@
     "left": {
       "label": "Enforce the Tax",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": -6,
-        "Appalachia": 5
+        "Texas": -30,
+        "Appalachia": 25
       },
       "hiddenEffects": {
-        "social_safety_net": 4,
-        "market_growth": -5
+        "social_safety_net": 20,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Abolish It",
       "effects": {
-        "authority": -1,
-        "capital": 4,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 20,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": 7,
-        "Appalachia": -6
+        "Texas": 35,
+        "Appalachia": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "fiscal_restraint": 5
+        "market_growth": 30,
+        "fiscal_restraint": 25
       }
     }
   },
@@ -2809,35 +2809,35 @@
     "left": {
       "label": "Keep Roads Public",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": -5,
-        "Commonwealth": 4
+        "Texas": -25,
+        "Commonwealth": 20
       },
       "hiddenEffects": {
-        "social_safety_net": 3,
-        "market_growth": -4
+        "social_safety_net": 15,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Sell the Highways",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": 6,
-        "Commonwealth": -5
+        "Texas": 30,
+        "Commonwealth": -25
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "fiscal_restraint": 4
+        "market_growth": 25,
+        "fiscal_restraint": 20
       }
     }
   },
@@ -2858,35 +2858,35 @@
     "left": {
       "label": "Protect Groundwater",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Texas": -7,
-        "Cascadia": 6
+        "Texas": -35,
+        "Cascadia": 30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "market_growth": -6
+        "green_stewardship": 30,
+        "market_growth": -30
       }
     },
     "right": {
       "label": "Frack the Basin",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": -1,
-        "sustainability": -4
+        "authority": -10,
+        "capital": 20,
+        "sentiment": -5,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Texas": 8,
-        "Cascadia": -7
+        "Texas": 40,
+        "Cascadia": -35
       },
       "hiddenEffects": {
-        "market_growth": 7,
-        "green_stewardship": -7
+        "market_growth": 35,
+        "green_stewardship": -35
       }
     }
   },
@@ -2907,35 +2907,35 @@
     "left": {
       "label": "Pursue Monopolies",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": -6,
-        "California": 5
+        "Texas": -30,
+        "California": 25
       },
       "hiddenEffects": {
-        "market_growth": -5,
-        "identity_equity": 4
+        "market_growth": -25,
+        "identity_equity": 20
       }
     },
     "right": {
       "label": "Drop the Suits",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Texas": 6,
-        "California": -5
+        "Texas": 30,
+        "California": -25
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "fiscal_restraint": 4
+        "market_growth": 30,
+        "fiscal_restraint": 20
       }
     }
   },
@@ -2956,35 +2956,35 @@
     "left": {
       "label": "Embrace Free Trade",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": -6,
-        "Union": 5
+        "Superior": -30,
+        "Union": 25
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "labor_power": -5
+        "global_diplomacy": 25,
+        "labor_power": -25
       }
     },
     "right": {
       "label": "Impose Tariffs",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 3,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": 7,
-        "Union": -6
+        "Superior": 35,
+        "Union": -30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "global_diplomacy": -6
+        "labor_power": 30,
+        "global_diplomacy": -30
       }
     }
   },
@@ -3005,35 +3005,35 @@
     "left": {
       "label": "Protect Innovation",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": -7,
-        "California": 6
+        "Superior": -35,
+        "California": 30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -6
+        "market_growth": 30,
+        "labor_power": -30
       }
     },
     "right": {
       "label": "Unionize the Apps",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 3,
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": 7,
-        "California": -7
+        "Superior": 35,
+        "California": -35
       },
       "hiddenEffects": {
-        "labor_power": 7,
-        "market_growth": -6
+        "labor_power": 35,
+        "market_growth": -30
       }
     }
   },
@@ -3054,35 +3054,35 @@
     "left": {
       "label": "Enforce Green Rules",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": -1,
-        "sustainability": 3
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Superior": -6,
-        "Cascadia": 6
+        "Superior": -30,
+        "Cascadia": 30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "labor_power": -5
+        "green_stewardship": 30,
+        "labor_power": -25
       }
     },
     "right": {
       "label": "Protect Auto Jobs",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": 2,
-        "sustainability": -4
+        "authority": -5,
+        "capital": 15,
+        "sentiment": 10,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Superior": 7,
-        "Cascadia": -7
+        "Superior": 35,
+        "Cascadia": -35
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "green_stewardship": -6
+        "labor_power": 30,
+        "green_stewardship": -30
       }
     }
   },
@@ -3103,35 +3103,35 @@
     "left": {
       "label": "Respect State Laws",
       "effects": {
-        "authority": -2,
-        "capital": 2,
-        "sentiment": -1,
+        "authority": -10,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": -7,
-        "Dixie": 6
+        "Superior": -35,
+        "Dixie": 30
       },
       "hiddenEffects": {
-        "fiscal_restraint": 5,
-        "labor_power": -6
+        "fiscal_restraint": 25,
+        "labor_power": -30
       }
     },
     "right": {
       "label": "Abolish Right-to-Work",
       "effects": {
-        "authority": 3,
-        "capital": -3,
-        "sentiment": 3,
+        "authority": 15,
+        "capital": -15,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": 8,
-        "Dixie": -7
+        "Superior": 40,
+        "Dixie": -35
       },
       "hiddenEffects": {
-        "labor_power": 7,
-        "fiscal_restraint": -5
+        "labor_power": 35,
+        "fiscal_restraint": -25
       }
     }
   },
@@ -3153,34 +3153,34 @@
       "label": "Veto the Spending",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -2,
-        "sustainability": 1
+        "capital": 10,
+        "sentiment": -10,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Superior": -6,
-        "Frontier": 5
+        "Superior": -30,
+        "Frontier": 25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 5,
-        "labor_power": -4
+        "fiscal_restraint": 25,
+        "labor_power": -20
       }
     },
     "right": {
       "label": "Fund the Dredging",
       "effects": {
-        "authority": 1,
-        "capital": -4,
-        "sentiment": 3,
-        "sustainability": -2
+        "authority": 5,
+        "capital": -20,
+        "sentiment": 15,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Superior": 7,
-        "Frontier": -6
+        "Superior": 35,
+        "Frontier": -30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": 5
+        "labor_power": 30,
+        "market_growth": 25
       }
     }
   },
@@ -3202,34 +3202,34 @@
       "label": "Encourage Automation",
       "effects": {
         "authority": 0,
-        "capital": 3,
-        "sentiment": -3,
+        "capital": 15,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": -6,
-        "Texas": 6
+        "Superior": -30,
+        "Texas": 30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -5
+        "market_growth": 30,
+        "labor_power": -25
       }
     },
     "right": {
       "label": "Tax the Bots",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": 6,
-        "Texas": -5
+        "Superior": 30,
+        "Texas": -25
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     }
   },
@@ -3250,35 +3250,35 @@
     "left": {
       "label": "Require Cleanup",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": -1,
-        "sustainability": 2
+        "authority": 5,
+        "capital": -10,
+        "sentiment": -5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Superior": -5,
-        "Cascadia": 6
+        "Superior": -25,
+        "Cascadia": 30
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "market_growth": -4
+        "green_stewardship": 25,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Waive the EPA Rules",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": 2,
-        "sustainability": -3
+        "authority": -5,
+        "capital": 15,
+        "sentiment": 10,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Superior": 6,
-        "Cascadia": -6
+        "Superior": 30,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "green_stewardship": -6
+        "market_growth": 25,
+        "green_stewardship": -30
       }
     }
   },
@@ -3299,35 +3299,35 @@
     "left": {
       "label": "Allow Global Bidding",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": -6,
-        "Commonwealth": 4
+        "Superior": -30,
+        "Commonwealth": 20
       },
       "hiddenEffects": {
-        "fiscal_restraint": 4,
-        "labor_power": -5
+        "fiscal_restraint": 20,
+        "labor_power": -25
       }
     },
     "right": {
       "label": "Mandate Union Metal",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 3,
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": 7,
-        "Commonwealth": -5
+        "Superior": 35,
+        "Commonwealth": -25
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "national_security": 4
+        "labor_power": 30,
+        "national_security": 20
       }
     }
   },
@@ -3349,34 +3349,34 @@
       "label": "Kill the Bill",
       "effects": {
         "authority": 0,
-        "capital": 3,
-        "sentiment": -4,
+        "capital": 15,
+        "sentiment": -20,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": -8,
-        "Texas": 6
+        "Superior": -40,
+        "Texas": 30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -7
+        "market_growth": 30,
+        "labor_power": -35
       }
     },
     "right": {
       "label": "Pass the Mandate",
       "effects": {
-        "authority": 2,
-        "capital": -4,
-        "sentiment": 4,
+        "authority": 10,
+        "capital": -20,
+        "sentiment": 20,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": 8,
-        "Texas": -7
+        "Superior": 40,
+        "Texas": -35
       },
       "hiddenEffects": {
-        "labor_power": 8,
-        "market_growth": -6
+        "labor_power": 40,
+        "market_growth": -30
       }
     }
   },
@@ -3397,35 +3397,35 @@
     "left": {
       "label": "Reject the Tariff",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": -5,
-        "Piedmont": 5
+        "Superior": -25,
+        "Piedmont": 25
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "labor_power": -4
+        "global_diplomacy": 25,
+        "labor_power": -20
       }
     },
     "right": {
       "label": "Enforce Global Wages",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Superior": 6,
-        "Piedmont": -6
+        "Superior": 30,
+        "Piedmont": -30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "global_diplomacy": -5
+        "labor_power": 30,
+        "global_diplomacy": -25
       }
     }
   },
@@ -3446,35 +3446,35 @@
     "left": {
       "label": "Keep Them Closed",
       "effects": {
-        "authority": 1,
+        "authority": 5,
         "capital": 0,
-        "sentiment": -2,
-        "sustainability": 3
+        "sentiment": -10,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Appalachia": -6,
-        "Cascadia": 6
+        "Appalachia": -30,
+        "Cascadia": 30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "labor_power": -5
+        "green_stewardship": 30,
+        "labor_power": -25
       }
     },
     "right": {
       "label": "Reopen the Mines",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": 3,
-        "sustainability": -4
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 15,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Appalachia": 7,
-        "Cascadia": -7
+        "Appalachia": 35,
+        "Cascadia": -35
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "green_stewardship": -7
+        "labor_power": 30,
+        "green_stewardship": -35
       }
     }
   },
@@ -3495,35 +3495,35 @@
     "left": {
       "label": "Enforce Secularism",
       "effects": {
-        "authority": 2,
+        "authority": 10,
         "capital": 0,
-        "sentiment": -1,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": -7,
-        "California": 6
+        "Appalachia": -35,
+        "California": 30
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "traditional_values": -6
+        "identity_equity": 30,
+        "traditional_values": -30
       }
     },
     "right": {
       "label": "Allow the Prayers",
       "effects": {
-        "authority": -2,
+        "authority": -10,
         "capital": 0,
-        "sentiment": 2,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": 7,
-        "California": -6
+        "Appalachia": 35,
+        "California": -30
       },
       "hiddenEffects": {
-        "traditional_values": 7,
-        "identity_equity": -6
+        "traditional_values": 35,
+        "identity_equity": -30
       }
     }
   },
@@ -3544,35 +3544,35 @@
     "left": {
       "label": "Protect the 24/7 Economy",
       "effects": {
-        "authority": 1,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": 5,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": -6,
-        "Texas": 5
+        "Appalachia": -30,
+        "Texas": 25
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "traditional_values": -5
+        "market_growth": 30,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Honor the Sabbath",
       "effects": {
-        "authority": -1,
-        "capital": -3,
-        "sentiment": 3,
-        "sustainability": 1
+        "authority": -5,
+        "capital": -15,
+        "sentiment": 15,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Appalachia": 6,
-        "Texas": -6
+        "Appalachia": 30,
+        "Texas": -30
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "market_growth": -6
+        "traditional_values": 30,
+        "market_growth": -30
       }
     }
   },
@@ -3594,34 +3594,34 @@
       "label": "Deny the Pensions",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -3,
+        "capital": 10,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": -7,
-        "Union": 4
+        "Appalachia": -35,
+        "Union": 20
       },
       "hiddenEffects": {
-        "fiscal_restraint": 5,
-        "labor_power": -6
+        "fiscal_restraint": 25,
+        "labor_power": -30
       }
     },
     "right": {
       "label": "Fund the Miners",
       "effects": {
-        "authority": 1,
-        "capital": -4,
-        "sentiment": 4,
+        "authority": 5,
+        "capital": -20,
+        "sentiment": 20,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": 7,
-        "Union": -5
+        "Appalachia": 35,
+        "Union": -25
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "social_safety_net": 5
+        "labor_power": 30,
+        "social_safety_net": 25
       }
     }
   },
@@ -3642,35 +3642,35 @@
     "left": {
       "label": "Defend Free Markets",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": -6,
-        "Frontier": 5
+        "Appalachia": -30,
+        "Frontier": 25
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "traditional_values": -5
+        "market_growth": 30,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Ban Corporate Hoarding",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 3,
-        "sustainability": 1
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 15,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Appalachia": 7,
-        "Frontier": -6
+        "Appalachia": 35,
+        "Frontier": -30
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "market_growth": -6
+        "traditional_values": 30,
+        "market_growth": -30
       }
     }
   },
@@ -3691,35 +3691,35 @@
     "left": {
       "label": "Embrace the Future",
       "effects": {
-        "authority": 1,
-        "capital": 4,
-        "sentiment": -3,
-        "sustainability": 1
+        "authority": 5,
+        "capital": 20,
+        "sentiment": -15,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Appalachia": -7,
-        "California": 6
+        "Appalachia": -35,
+        "California": 30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -7
+        "market_growth": 30,
+        "labor_power": -35
       }
     },
     "right": {
       "label": "Ban the Robocars",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 4,
-        "sustainability": -1
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 20,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Appalachia": 8,
-        "California": -6
+        "Appalachia": 40,
+        "California": -30
       },
       "hiddenEffects": {
-        "labor_power": 7,
-        "market_growth": -6
+        "labor_power": 35,
+        "market_growth": -30
       }
     }
   },
@@ -3740,35 +3740,35 @@
     "left": {
       "label": "Keep Secular Clinics",
       "effects": {
-        "authority": 1,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": -5,
-        "Union": 5
+        "Appalachia": -25,
+        "Union": 25
       },
       "hiddenEffects": {
-        "social_safety_net": 5,
-        "traditional_values": -5
+        "social_safety_net": 25,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Fund the Ministries",
       "effects": {
-        "authority": -1,
-        "capital": 1,
-        "sentiment": 1,
+        "authority": -5,
+        "capital": 5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": 6,
-        "Union": -6
+        "Appalachia": 30,
+        "Union": -30
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "social_safety_net": -4
+        "traditional_values": 30,
+        "social_safety_net": -20
       }
     }
   },
@@ -3789,35 +3789,35 @@
     "left": {
       "label": "Allow Foreign Buyouts",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": -6,
-        "Piedmont": 5
+        "Appalachia": -30,
+        "Piedmont": 25
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "labor_power": -5
+        "global_diplomacy": 25,
+        "labor_power": -25
       }
     },
     "right": {
       "label": "Seize the Mills",
       "effects": {
-        "authority": 3,
-        "capital": -3,
-        "sentiment": 3,
+        "authority": 15,
+        "capital": -15,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Appalachia": 7,
-        "Piedmont": -6
+        "Appalachia": 35,
+        "Piedmont": -30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     }
   },
@@ -3838,35 +3838,35 @@
     "left": {
       "label": "Establish the Reserve",
       "effects": {
-        "authority": 3,
-        "capital": -2,
-        "sentiment": -2,
-        "sustainability": 4
+        "authority": 15,
+        "capital": -10,
+        "sentiment": -10,
+        "sustainability": 20
       },
       "regionalEffects": {
-        "Appalachia": -7,
-        "Cascadia": 6
+        "Appalachia": -35,
+        "Cascadia": 30
       },
       "hiddenEffects": {
-        "green_stewardship": 7,
-        "labor_power": -6
+        "green_stewardship": 35,
+        "labor_power": -30
       }
     },
     "right": {
       "label": "Protect the Loggers",
       "effects": {
-        "authority": -2,
-        "capital": 2,
-        "sentiment": 2,
-        "sustainability": -3
+        "authority": -10,
+        "capital": 10,
+        "sentiment": 10,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Appalachia": 7,
-        "Cascadia": -6
+        "Appalachia": 35,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "green_stewardship": -6
+        "labor_power": 30,
+        "green_stewardship": -30
       }
     }
   },
@@ -3888,34 +3888,34 @@
       "label": "Subsidize the Giants",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -1,
-        "sustainability": -1
+        "capital": 10,
+        "sentiment": -5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Appalachia": -5,
-        "Heartland": 5
+        "Appalachia": -25,
+        "Heartland": 25
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "labor_power": -4
+        "market_growth": 25,
+        "labor_power": -20
       }
     },
     "right": {
       "label": "Protect Micro-Farms",
       "effects": {
         "authority": 0,
-        "capital": -2,
-        "sentiment": 2,
-        "sustainability": 1
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Appalachia": 6,
-        "Heartland": -5
+        "Appalachia": 30,
+        "Heartland": -25
       },
       "hiddenEffects": {
-        "labor_power": 5,
-        "market_growth": -5
+        "labor_power": 25,
+        "market_growth": -25
       }
     }
   },
@@ -3936,35 +3936,35 @@
     "left": {
       "label": "Protect Privacy",
       "effects": {
-        "authority": -1,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": -5,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": -6,
-        "California": 5
+        "Commonwealth": -30,
+        "California": 25
       },
       "hiddenEffects": {
-        "identity_equity": 4,
-        "national_security": -5
+        "identity_equity": 20,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Privatize the NSA",
       "effects": {
-        "authority": 3,
-        "capital": 3,
-        "sentiment": -3,
+        "authority": 15,
+        "capital": 15,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 7,
-        "California": -6
+        "Commonwealth": 35,
+        "California": -30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "fiscal_restraint": 5
+        "national_security": 30,
+        "fiscal_restraint": 25
       }
     }
   },
@@ -3985,35 +3985,35 @@
     "left": {
       "label": "Fund Schools",
       "effects": {
-        "authority": -1,
-        "capital": -3,
-        "sentiment": 2,
-        "sustainability": 1
+        "authority": -5,
+        "capital": -15,
+        "sentiment": 10,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Commonwealth": -6,
-        "Union": 6
+        "Commonwealth": -30,
+        "Union": 30
       },
       "hiddenEffects": {
-        "social_safety_net": 6,
-        "national_security": -5
+        "social_safety_net": 30,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Build the Bombers",
       "effects": {
-        "authority": 2,
-        "capital": 2,
-        "sentiment": -3,
-        "sustainability": -1
+        "authority": 10,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Commonwealth": 7,
-        "Union": -7
+        "Commonwealth": 35,
+        "Union": -35
       },
       "hiddenEffects": {
-        "national_security": 7,
-        "fiscal_restraint": 5
+        "national_security": 35,
+        "fiscal_restraint": 25
       }
     }
   },
@@ -4034,35 +4034,35 @@
     "left": {
       "label": "Respect the Unions",
       "effects": {
-        "authority": -2,
-        "capital": -1,
-        "sentiment": 2,
+        "authority": -10,
+        "capital": -5,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": -5,
-        "Superior": 6
+        "Commonwealth": -25,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 5,
-        "national_security": -4
+        "labor_power": 25,
+        "national_security": -20
       }
     },
     "right": {
       "label": "Infiltrate Them",
       "effects": {
-        "authority": 3,
-        "capital": 1,
-        "sentiment": -3,
+        "authority": 15,
+        "capital": 5,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 6,
-        "Superior": -7
+        "Commonwealth": 30,
+        "Superior": -35
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "labor_power": -6
+        "national_security": 30,
+        "labor_power": -30
       }
     }
   },
@@ -4083,35 +4083,35 @@
     "left": {
       "label": "Protect Pensions",
       "effects": {
-        "authority": -1,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": -5,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": -6,
-        "Heartland": 5
+        "Commonwealth": -30,
+        "Heartland": 25
       },
       "hiddenEffects": {
-        "social_safety_net": 5,
-        "fiscal_restraint": -6
+        "social_safety_net": 25,
+        "fiscal_restraint": -30
       }
     },
     "right": {
       "label": "Slash the Benefits",
       "effects": {
-        "authority": 1,
-        "capital": 4,
-        "sentiment": -4,
+        "authority": 5,
+        "capital": 20,
+        "sentiment": -20,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 7,
-        "Heartland": -6
+        "Commonwealth": 35,
+        "Heartland": -30
       },
       "hiddenEffects": {
-        "fiscal_restraint": 7,
-        "social_safety_net": -6
+        "fiscal_restraint": 35,
+        "social_safety_net": -30
       }
     }
   },
@@ -4132,35 +4132,35 @@
     "left": {
       "label": "Stand Down",
       "effects": {
-        "authority": -3,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": -15,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": -6,
-        "Frontier": 6
+        "Commonwealth": -30,
+        "Frontier": 30
       },
       "hiddenEffects": {
-        "hardline_nationalism": 5,
-        "national_security": -5
+        "hardline_nationalism": 25,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Crack Down",
       "effects": {
-        "authority": 4,
-        "capital": 1,
-        "sentiment": -3,
+        "authority": 20,
+        "capital": 5,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 7,
-        "Frontier": -7
+        "Commonwealth": 35,
+        "Frontier": -35
       },
       "hiddenEffects": {
-        "national_security": 7,
-        "hardline_nationalism": -6
+        "national_security": 35,
+        "hardline_nationalism": -30
       }
     }
   },
@@ -4181,35 +4181,35 @@
     "left": {
       "label": "Protect the Wetlands",
       "effects": {
-        "authority": -1,
-        "capital": -2,
-        "sentiment": 1,
-        "sustainability": 3
+        "authority": -5,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Commonwealth": -5,
-        "Cascadia": 5
+        "Commonwealth": -25,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "national_security": -4
+        "green_stewardship": 25,
+        "national_security": -20
       }
     },
     "right": {
       "label": "Build the Center",
       "effects": {
-        "authority": 2,
-        "capital": 1,
-        "sentiment": -1,
-        "sustainability": -4
+        "authority": 10,
+        "capital": 5,
+        "sentiment": -5,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Commonwealth": 6,
-        "Cascadia": -6
+        "Commonwealth": 30,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "green_stewardship": -5
+        "national_security": 30,
+        "green_stewardship": -25
       }
     }
   },
@@ -4230,35 +4230,35 @@
     "left": {
       "label": "Keep the Walls",
       "effects": {
-        "authority": -1,
-        "capital": -1,
-        "sentiment": 1,
-        "sustainability": -1
+        "authority": -5,
+        "capital": -5,
+        "sentiment": 5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Commonwealth": -6,
-        "Mesa": 6
+        "Commonwealth": -30,
+        "Mesa": 30
       },
       "hiddenEffects": {
-        "hardline_nationalism": 6,
-        "national_security": -3
+        "hardline_nationalism": 30,
+        "national_security": -15
       }
     },
     "right": {
       "label": "Launch the Satellites",
       "effects": {
-        "authority": 3,
-        "capital": 2,
-        "sentiment": -2,
+        "authority": 15,
+        "capital": 10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 7,
-        "Mesa": -6
+        "Commonwealth": 35,
+        "Mesa": -30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "fiscal_restraint": 4
+        "national_security": 30,
+        "fiscal_restraint": 20
       }
     }
   },
@@ -4279,35 +4279,35 @@
     "left": {
       "label": "Allow Cheap Imports",
       "effects": {
-        "authority": -2,
-        "capital": 3,
+        "authority": -10,
+        "capital": 15,
         "sentiment": 0,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": -6,
-        "Texas": 5
+        "Commonwealth": -30,
+        "Texas": 25
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "national_security": -5
+        "market_growth": 25,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Ban Foreign Tech",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 7,
-        "Texas": -6
+        "Commonwealth": 35,
+        "Texas": -30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "global_diplomacy": -4
+        "national_security": 30,
+        "global_diplomacy": -20
       }
     }
   },
@@ -4328,35 +4328,35 @@
     "left": {
       "label": "Protect Local Police",
       "effects": {
-        "authority": -2,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": -10,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": -5,
-        "Dixie": 5
+        "Commonwealth": -25,
+        "Dixie": 25
       },
       "hiddenEffects": {
-        "traditional_values": 4,
-        "national_security": -4
+        "traditional_values": 20,
+        "national_security": -20
       }
     },
     "right": {
       "label": "Federalize the Police",
       "effects": {
-        "authority": 4,
-        "capital": 3,
-        "sentiment": -4,
+        "authority": 20,
+        "capital": 15,
+        "sentiment": -20,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 8,
-        "Dixie": -7
+        "Commonwealth": 40,
+        "Dixie": -35
       },
       "hiddenEffects": {
-        "national_security": 8,
-        "authority": 6
+        "national_security": 40,
+        "authority": 30
       }
     }
   },
@@ -4377,35 +4377,35 @@
     "left": {
       "label": "Audit the Contractors",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": -6,
-        "Piedmont": 4
+        "Commonwealth": -30,
+        "Piedmont": 20
       },
       "hiddenEffects": {
-        "identity_equity": 4,
-        "fiscal_restraint": -5
+        "identity_equity": 20,
+        "fiscal_restraint": -25
       }
     },
     "right": {
       "label": "Protect the Havens",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Commonwealth": 6,
-        "Piedmont": -4
+        "Commonwealth": 30,
+        "Piedmont": -20
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "national_security": 3
+        "fiscal_restraint": 30,
+        "national_security": 15
       }
     }
   },
@@ -4426,35 +4426,35 @@
     "left": {
       "label": "Tax the Diplomats",
       "effects": {
-        "authority": 1,
-        "capital": 2,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": 10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": -6,
-        "Mesa": 5
+        "Union": -30,
+        "Mesa": 25
       },
       "hiddenEffects": {
-        "hardline_nationalism": 5,
-        "global_diplomacy": -5
+        "hardline_nationalism": 25,
+        "global_diplomacy": -25
       }
     },
     "right": {
       "label": "Exempt the UN",
       "effects": {
-        "authority": -2,
-        "capital": -1,
-        "sentiment": -2,
+        "authority": -10,
+        "capital": -5,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": 7,
-        "Mesa": -6
+        "Union": 35,
+        "Mesa": -30
       },
       "hiddenEffects": {
-        "global_diplomacy": 7,
-        "fiscal_restraint": 3
+        "global_diplomacy": 35,
+        "fiscal_restraint": 15
       }
     }
   },
@@ -4475,35 +4475,35 @@
     "left": {
       "label": "Protect Domestic Steel",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": -7,
-        "Superior": 7
+        "Union": -35,
+        "Superior": 35
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "global_diplomacy": -6
+        "labor_power": 30,
+        "global_diplomacy": -30
       }
     },
     "right": {
       "label": "Repeal 'Buy American'",
       "effects": {
-        "authority": -1,
-        "capital": 4,
-        "sentiment": -3,
+        "authority": -5,
+        "capital": 20,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": 8,
-        "Superior": -8
+        "Union": 40,
+        "Superior": -40
       },
       "hiddenEffects": {
-        "global_diplomacy": 7,
-        "fiscal_restraint": 5
+        "global_diplomacy": 35,
+        "fiscal_restraint": 25
       }
     }
   },
@@ -4524,35 +4524,35 @@
     "left": {
       "label": "Keep Farmers Funded",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": 1,
-        "sustainability": 1
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 5,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Union": -6,
-        "Heartland": 6
+        "Union": -30,
+        "Heartland": 30
       },
       "hiddenEffects": {
-        "social_safety_net": 5,
-        "global_diplomacy": -5
+        "social_safety_net": 25,
+        "global_diplomacy": -25
       }
     },
     "right": {
       "label": "Fund the Global Bank",
       "effects": {
-        "authority": 1,
-        "capital": 2,
-        "sentiment": -3,
-        "sustainability": -1
+        "authority": 5,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Union": 6,
-        "Heartland": -7
+        "Union": 30,
+        "Heartland": -35
       },
       "hiddenEffects": {
-        "global_diplomacy": 6,
-        "fiscal_restraint": 6
+        "global_diplomacy": 30,
+        "fiscal_restraint": 30
       }
     }
   },
@@ -4573,35 +4573,35 @@
     "left": {
       "label": "Keep Rail Nationalized",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Union": -5,
-        "Commonwealth": 5
+        "Union": -25,
+        "Commonwealth": 25
       },
       "hiddenEffects": {
-        "national_security": 4,
-        "fiscal_restraint": -5
+        "national_security": 20,
+        "fiscal_restraint": -25
       }
     },
     "right": {
       "label": "Sell to Europe",
       "effects": {
-        "authority": -3,
-        "capital": 4,
-        "sentiment": -2,
-        "sustainability": -1
+        "authority": -15,
+        "capital": 20,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Union": 7,
-        "Commonwealth": -6
+        "Union": 35,
+        "Commonwealth": -30
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "global_diplomacy": 4
+        "fiscal_restraint": 30,
+        "global_diplomacy": 20
       }
     }
   },
@@ -4622,35 +4622,35 @@
     "left": {
       "label": "Tax the Endowments",
       "effects": {
-        "authority": 1,
-        "capital": 2,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": 10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": -7,
-        "Appalachia": 6
+        "Union": -35,
+        "Appalachia": 30
       },
       "hiddenEffects": {
-        "fiscal_restraint": -6,
-        "identity_equity": 3
+        "fiscal_restraint": -30,
+        "identity_equity": 15
       }
     },
     "right": {
       "label": "Protect the Ivy League",
       "effects": {
-        "authority": -1,
-        "capital": 1,
-        "sentiment": -3,
+        "authority": -5,
+        "capital": 5,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": 7,
-        "Appalachia": -6
+        "Union": 35,
+        "Appalachia": -30
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "market_growth": 4
+        "fiscal_restraint": 30,
+        "market_growth": 20
       }
     }
   },
@@ -4671,35 +4671,35 @@
     "left": {
       "label": "Maintain Oversight",
       "effects": {
-        "authority": 2,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": -6,
-        "Texas": 4
+        "Union": -30,
+        "Texas": 20
       },
       "hiddenEffects": {
-        "national_security": 5,
-        "global_diplomacy": -4
+        "national_security": 25,
+        "global_diplomacy": -20
       }
     },
     "right": {
       "label": "Sign the Treaty",
       "effects": {
-        "authority": -3,
-        "capital": 4,
-        "sentiment": -2,
+        "authority": -15,
+        "capital": 20,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": 7,
-        "Texas": -3
+        "Union": 35,
+        "Texas": -15
       },
       "hiddenEffects": {
-        "global_diplomacy": 6,
-        "fiscal_restraint": 5
+        "global_diplomacy": 30,
+        "fiscal_restraint": 25
       }
     }
   },
@@ -4720,35 +4720,35 @@
     "left": {
       "label": "Protect Domestic Jobs",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": -6,
-        "Alaska": 5
+        "Union": -30,
+        "Alaska": 25
       },
       "hiddenEffects": {
-        "labor_power": 5,
-        "global_diplomacy": -5
+        "labor_power": 25,
+        "global_diplomacy": -25
       }
     },
     "right": {
       "label": "Lift the Caps",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": 6,
-        "Alaska": -4
+        "Union": 30,
+        "Alaska": -20
       },
       "hiddenEffects": {
-        "global_diplomacy": 6,
-        "market_growth": 4
+        "global_diplomacy": 30,
+        "market_growth": 20
       }
     }
   },
@@ -4769,35 +4769,35 @@
     "left": {
       "label": "Subsidize Shipbuilders",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": -5,
-        "Dixie": 7
+        "Union": -25,
+        "Dixie": 35
       },
       "hiddenEffects": {
-        "labor_power": 4,
-        "fiscal_restraint": -6
+        "labor_power": 20,
+        "fiscal_restraint": -30
       }
     },
     "right": {
       "label": "Cut the Subsidies",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -1,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": 6,
-        "Dixie": -8
+        "Union": 30,
+        "Dixie": -40
       },
       "hiddenEffects": {
-        "fiscal_restraint": 7,
-        "global_diplomacy": 4
+        "fiscal_restraint": 35,
+        "global_diplomacy": 20
       }
     }
   },
@@ -4818,35 +4818,35 @@
     "left": {
       "label": "Reject the Coalition",
       "effects": {
-        "authority": -1,
-        "capital": 1,
-        "sentiment": 2,
-        "sustainability": -2
+        "authority": -5,
+        "capital": 5,
+        "sentiment": 10,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Union": -6,
-        "Cascadia": -4
+        "Union": -30,
+        "Cascadia": -20
       },
       "hiddenEffects": {
-        "global_diplomacy": -6,
-        "green_stewardship": -4
+        "global_diplomacy": -30,
+        "green_stewardship": -20
       }
     },
     "right": {
       "label": "Join and Tax",
       "effects": {
-        "authority": 2,
-        "capital": 2,
-        "sentiment": -4,
-        "sustainability": 3
+        "authority": 10,
+        "capital": 10,
+        "sentiment": -20,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Union": 7,
-        "Cascadia": 5
+        "Union": 35,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "global_diplomacy": 6,
-        "fiscal_restraint": 4
+        "global_diplomacy": 30,
+        "fiscal_restraint": 20
       }
     }
   },
@@ -4867,35 +4867,35 @@
     "left": {
       "label": "Retrain Our Workers",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": -6,
-        "Superior": 6
+        "Union": -30,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "global_diplomacy": -5
+        "labor_power": 30,
+        "global_diplomacy": -25
       }
     },
     "right": {
       "label": "Fund the IMF",
       "effects": {
-        "authority": 1,
-        "capital": 3,
-        "sentiment": -3,
+        "authority": 5,
+        "capital": 15,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Union": 7,
-        "Superior": -7
+        "Union": 35,
+        "Superior": -35
       },
       "hiddenEffects": {
-        "fiscal_restraint": 6,
-        "global_diplomacy": 6
+        "fiscal_restraint": 30,
+        "global_diplomacy": 30
       }
     }
   },
@@ -4916,35 +4916,35 @@
     "left": {
       "label": "Protect the Unions",
       "effects": {
-        "authority": 1,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -6,
-        "Superior": 6
+        "Piedmont": -30,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Fund the Plants",
       "effects": {
-        "authority": -1,
-        "capital": 4,
-        "sentiment": -2,
-        "sustainability": -1
+        "authority": -5,
+        "capital": 20,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Piedmont": 7,
-        "Superior": -7
+        "Piedmont": 35,
+        "Superior": -35
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -6
+        "market_growth": 30,
+        "labor_power": -30
       }
     }
   },
@@ -4965,35 +4965,35 @@
     "left": {
       "label": "Restrict Visas",
       "effects": {
-        "authority": 2,
-        "capital": -2,
+        "authority": 10,
+        "capital": -10,
         "sentiment": 0,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -6,
-        "Mesa": 6
+        "Piedmont": -30,
+        "Mesa": 30
       },
       "hiddenEffects": {
-        "national_security": 5,
-        "global_diplomacy": -5
+        "national_security": 25,
+        "global_diplomacy": -25
       }
     },
     "right": {
       "label": "Expand Visas",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": 1,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": 6,
-        "Mesa": -6
+        "Piedmont": 30,
+        "Mesa": -30
       },
       "hiddenEffects": {
-        "global_diplomacy": 6,
-        "market_growth": 4
+        "global_diplomacy": 30,
+        "market_growth": 20
       }
     }
   },
@@ -5014,35 +5014,35 @@
     "left": {
       "label": "Block the Loophole",
       "effects": {
-        "authority": 1,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -5,
-        "Union": 5
+        "Piedmont": -25,
+        "Union": 25
       },
       "hiddenEffects": {
-        "fiscal_restraint": -3,
-        "market_growth": -4
+        "fiscal_restraint": -15,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Loosen Regulations",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": -2,
+        "authority": -10,
+        "capital": 20,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": 7,
-        "Union": -6
+        "Piedmont": 35,
+        "Union": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "global_diplomacy": 4
+        "market_growth": 30,
+        "global_diplomacy": 20
       }
     }
   },
@@ -5063,35 +5063,35 @@
     "left": {
       "label": "Respect Local Laws",
       "effects": {
-        "authority": -1,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": -5,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -6,
-        "Dixie": 5
+        "Piedmont": -30,
+        "Dixie": 25
       },
       "hiddenEffects": {
-        "traditional_values": 5,
-        "global_diplomacy": -4
+        "traditional_values": 25,
+        "global_diplomacy": -20
       }
     },
     "right": {
       "label": "Protect the Studios",
       "effects": {
-        "authority": 2,
-        "capital": 3,
-        "sentiment": -1,
+        "authority": 10,
+        "capital": 15,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": 6,
-        "Dixie": -6
+        "Piedmont": 30,
+        "Dixie": -30
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "market_growth": 4
+        "global_diplomacy": 25,
+        "market_growth": 20
       }
     }
   },
@@ -5112,35 +5112,35 @@
     "left": {
       "label": "Enforce Reviews",
       "effects": {
-        "authority": 1,
-        "capital": -3,
+        "authority": 5,
+        "capital": -15,
         "sentiment": 0,
-        "sustainability": 2
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Piedmont": -6,
-        "Cascadia": 5
+        "Piedmont": -30,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "market_growth": -5
+        "green_stewardship": 25,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Dredge the Port",
       "effects": {
-        "authority": -1,
-        "capital": 4,
+        "authority": -5,
+        "capital": 20,
         "sentiment": 0,
-        "sustainability": -3
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Piedmont": 7,
-        "Cascadia": -6
+        "Piedmont": 35,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "green_stewardship": -5
+        "market_growth": 30,
+        "green_stewardship": -25
       }
     }
   },
@@ -5161,35 +5161,35 @@
     "left": {
       "label": "Deny Subsidies",
       "effects": {
-        "authority": 1,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -5,
-        "Appalachia": 4
+        "Piedmont": -25,
+        "Appalachia": 20
       },
       "hiddenEffects": {
-        "fiscal_restraint": 3,
-        "global_diplomacy": -4
+        "fiscal_restraint": 15,
+        "global_diplomacy": -20
       }
     },
     "right": {
       "label": "Subsidize Exports",
       "effects": {
         "authority": 0,
-        "capital": 3,
-        "sentiment": -2,
-        "sustainability": -1
+        "capital": 15,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Piedmont": 6,
-        "Appalachia": -5
+        "Piedmont": 30,
+        "Appalachia": -25
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "market_growth": 5
+        "global_diplomacy": 25,
+        "market_growth": 25
       }
     }
   },
@@ -5211,34 +5211,34 @@
       "label": "Too Expensive",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -1,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -5,
-        "Heartland": 5
+        "Piedmont": -25,
+        "Heartland": 25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 5,
-        "global_diplomacy": -4
+        "fiscal_restraint": 25,
+        "global_diplomacy": -20
       }
     },
     "right": {
       "label": "Host the Summit",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 2,
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": 7,
-        "Heartland": -6
+        "Piedmont": 35,
+        "Heartland": -30
       },
       "hiddenEffects": {
-        "global_diplomacy": 7,
-        "market_growth": 4
+        "global_diplomacy": 35,
+        "market_growth": 20
       }
     }
   },
@@ -5259,35 +5259,35 @@
     "left": {
       "label": "Maintain Tariffs",
       "effects": {
-        "authority": 2,
-        "capital": -2,
+        "authority": 10,
+        "capital": -10,
         "sentiment": 0,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -6,
-        "Texas": 5
+        "Piedmont": -30,
+        "Texas": 25
       },
       "hiddenEffects": {
-        "hardline_nationalism": 4,
-        "market_growth": -4
+        "hardline_nationalism": 20,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Establish Free Trade",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": 1,
-        "sustainability": -1
+        "authority": -10,
+        "capital": 20,
+        "sentiment": 5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Piedmont": 7,
-        "Texas": -6
+        "Piedmont": 35,
+        "Texas": -30
       },
       "hiddenEffects": {
-        "global_diplomacy": 6,
-        "market_growth": 5
+        "global_diplomacy": 30,
+        "market_growth": 25
       }
     }
   },
@@ -5308,35 +5308,35 @@
     "left": {
       "label": "Block the Sale",
       "effects": {
-        "authority": 2,
-        "capital": -3,
+        "authority": 10,
+        "capital": -15,
         "sentiment": 0,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -6,
-        "Commonwealth": 6
+        "Piedmont": -30,
+        "Commonwealth": 30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "global_diplomacy": -5
+        "national_security": 30,
+        "global_diplomacy": -25
       }
     },
     "right": {
       "label": "Approve the Sale",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": -1,
+        "authority": -10,
+        "capital": 20,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": 7,
-        "Commonwealth": -6
+        "Piedmont": 35,
+        "Commonwealth": -30
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "national_security": -6
+        "market_growth": 25,
+        "national_security": -30
       }
     }
   },
@@ -5357,35 +5357,35 @@
     "left": {
       "label": "No Tax Exemptions",
       "effects": {
-        "authority": 1,
-        "capital": 1,
-        "sentiment": 1,
+        "authority": 5,
+        "capital": 5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": -5,
-        "California": 4
+        "Piedmont": -25,
+        "California": 20
       },
       "hiddenEffects": {
-        "social_safety_net": 3,
-        "market_growth": -4
+        "social_safety_net": 15,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Fund the Pipeline",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Piedmont": 6,
-        "California": -5
+        "Piedmont": 30,
+        "California": -25
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "market_growth": 5
+        "global_diplomacy": 25,
+        "market_growth": 25
       }
     }
   },
@@ -5406,35 +5406,35 @@
     "left": {
       "label": "Protect the Gulf",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Dixie": -6,
-        "Cascadia": 5
+        "Dixie": -30,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "market_growth": -5
+        "green_stewardship": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Drill the Deep",
       "effects": {
-        "authority": -1,
-        "capital": 4,
-        "sentiment": -1,
-        "sustainability": -4
+        "authority": -5,
+        "capital": 20,
+        "sentiment": -5,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Dixie": 7,
-        "Cascadia": -6
+        "Dixie": 35,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "green_stewardship": -6
+        "market_growth": 30,
+        "green_stewardship": -30
       }
     }
   },
@@ -5455,35 +5455,35 @@
     "left": {
       "label": "Defend Corporate Rights",
       "effects": {
-        "authority": 1,
-        "capital": 2,
-        "sentiment": -1,
+        "authority": 5,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -6,
-        "California": 6
+        "Dixie": -30,
+        "California": 30
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "traditional_values": -5
+        "identity_equity": 30,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Tax the Woke Corps",
       "effects": {
-        "authority": -2,
-        "capital": -1,
-        "sentiment": 3,
+        "authority": -10,
+        "capital": -5,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": 7,
-        "California": -7
+        "Dixie": 35,
+        "California": -35
       },
       "hiddenEffects": {
-        "traditional_values": 7,
-        "identity_equity": -6
+        "traditional_values": 35,
+        "identity_equity": -30
       }
     }
   },
@@ -5504,35 +5504,35 @@
     "left": {
       "label": "Protect Organizing",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -7,
-        "Superior": 7
+        "Dixie": -35,
+        "Superior": 35
       },
       "hiddenEffects": {
-        "labor_power": 7,
-        "market_growth": -5
+        "labor_power": 35,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Bust the Unions",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": 7,
-        "Superior": -8
+        "Dixie": 35,
+        "Superior": -40
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -7
+        "market_growth": 30,
+        "labor_power": -35
       }
     }
   },
@@ -5553,35 +5553,35 @@
     "left": {
       "label": "Fund Public Schools",
       "effects": {
-        "authority": 2,
-        "capital": -1,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -5,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -5,
-        "Union": 5
+        "Dixie": -25,
+        "Union": 25
       },
       "hiddenEffects": {
-        "social_safety_net": 5,
-        "traditional_values": -5
+        "social_safety_net": 25,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Fund Private Vouchers",
       "effects": {
-        "authority": -1,
-        "capital": 1,
-        "sentiment": -1,
+        "authority": -5,
+        "capital": 5,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": 6,
-        "Union": -5
+        "Dixie": 30,
+        "Union": -25
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "social_safety_net": -5
+        "traditional_values": 30,
+        "social_safety_net": -25
       }
     }
   },
@@ -5602,35 +5602,35 @@
     "left": {
       "label": "Protect the Wetlands",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": -1,
-        "sustainability": 3
+        "authority": 10,
+        "capital": -10,
+        "sentiment": -5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Dixie": -6,
-        "Cascadia": 5
+        "Dixie": -30,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "market_growth": -5
+        "green_stewardship": 25,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Reclaim the Swamps",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": 1,
-        "sustainability": -4
+        "authority": -5,
+        "capital": 15,
+        "sentiment": 5,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Dixie": 7,
-        "Cascadia": -6
+        "Dixie": 35,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "green_stewardship": -6
+        "market_growth": 30,
+        "green_stewardship": -30
       }
     }
   },
@@ -5651,35 +5651,35 @@
     "left": {
       "label": "Keep Markets Open",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -2,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -5,
-        "Piedmont": 5
+        "Dixie": -25,
+        "Piedmont": 25
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "traditional_values": -4
+        "global_diplomacy": 25,
+        "traditional_values": -20
       }
     },
     "right": {
       "label": "Ban Foreign Buyers",
       "effects": {
-        "authority": 2,
-        "capital": -1,
-        "sentiment": 3,
+        "authority": 10,
+        "capital": -5,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": 6,
-        "Piedmont": -4
+        "Dixie": 30,
+        "Piedmont": -20
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "global_diplomacy": -5
+        "traditional_values": 30,
+        "global_diplomacy": -25
       }
     }
   },
@@ -5700,35 +5700,35 @@
     "left": {
       "label": "Defend the Cruise Lines",
       "effects": {
-        "authority": 1,
-        "capital": 2,
+        "authority": 5,
+        "capital": 10,
         "sentiment": 0,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -6,
-        "Hawaii": 4
+        "Dixie": -30,
+        "Hawaii": 20
       },
       "hiddenEffects": {
-        "identity_equity": 4,
-        "traditional_values": -5
+        "identity_equity": 20,
+        "traditional_values": -25
       }
     },
     "right": {
       "label": "Enforce Decency Laws",
       "effects": {
-        "authority": -2,
-        "capital": -2,
-        "sentiment": 3,
+        "authority": -10,
+        "capital": -10,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": 7,
-        "Hawaii": -5
+        "Dixie": 35,
+        "Hawaii": -25
       },
       "hiddenEffects": {
-        "traditional_values": 6,
-        "identity_equity": -5
+        "traditional_values": 30,
+        "identity_equity": -25
       }
     }
   },
@@ -5749,35 +5749,35 @@
     "left": {
       "label": "Protect Vulnerable Workers",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -6,
-        "Superior": 6
+        "Dixie": -30,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Relax the Rules",
       "effects": {
-        "authority": -2,
-        "capital": 3,
-        "sentiment": -3,
-        "sustainability": -1
+        "authority": -10,
+        "capital": 15,
+        "sentiment": -15,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Dixie": 7,
-        "Superior": -7
+        "Dixie": 35,
+        "Superior": -35
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -6
+        "market_growth": 30,
+        "labor_power": -30
       }
     }
   },
@@ -5798,35 +5798,35 @@
     "left": {
       "label": "Keep the Taxes",
       "effects": {
-        "authority": 1,
-        "capital": 2,
-        "sentiment": -1,
+        "authority": 5,
+        "capital": 10,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -5,
-        "Appalachia": 4
+        "Dixie": -25,
+        "Appalachia": 20
       },
       "hiddenEffects": {
-        "social_safety_net": 3,
-        "market_growth": -4
+        "social_safety_net": 15,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Abolish Sin Taxes",
       "effects": {
-        "authority": -2,
-        "capital": -2,
-        "sentiment": 3,
+        "authority": -10,
+        "capital": -10,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": 6,
-        "Appalachia": -4
+        "Dixie": 30,
+        "Appalachia": -20
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "social_safety_net": -4
+        "market_growth": 25,
+        "social_safety_net": -20
       }
     }
   },
@@ -5847,35 +5847,35 @@
     "left": {
       "label": "Enforce the Mandate",
       "effects": {
-        "authority": 2,
-        "capital": -1,
-        "sentiment": -1,
+        "authority": 10,
+        "capital": -5,
+        "sentiment": -5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": -7,
-        "California": 6
+        "Dixie": -35,
+        "California": 30
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "traditional_values": -6
+        "identity_equity": 30,
+        "traditional_values": -30
       }
     },
     "right": {
       "label": "Veto the Mandate",
       "effects": {
-        "authority": -2,
-        "capital": 1,
-        "sentiment": 2,
+        "authority": -10,
+        "capital": 5,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Dixie": 7,
-        "California": -6
+        "Dixie": 35,
+        "California": -30
       },
       "hiddenEffects": {
-        "traditional_values": 7,
-        "identity_equity": -6
+        "traditional_values": 35,
+        "identity_equity": -30
       }
     }
   },
@@ -5896,35 +5896,35 @@
     "left": {
       "label": "Protect the Arctic",
       "effects": {
-        "authority": 1,
-        "capital": -3,
-        "sentiment": 1,
-        "sustainability": 3
+        "authority": 5,
+        "capital": -15,
+        "sentiment": 5,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Alaska": -7,
-        "Cascadia": 6
+        "Alaska": -35,
+        "Cascadia": 30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "market_growth": -6
+        "green_stewardship": 30,
+        "market_growth": -30
       }
     },
     "right": {
       "label": "Drill the Thaw",
       "effects": {
-        "authority": 1,
-        "capital": 4,
-        "sentiment": -1,
-        "sustainability": -4
+        "authority": 5,
+        "capital": 20,
+        "sentiment": -5,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Alaska": 7,
-        "Cascadia": -7
+        "Alaska": 35,
+        "Cascadia": -35
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "national_security": 4
+        "market_growth": 30,
+        "national_security": 20
       }
     }
   },
@@ -5945,35 +5945,35 @@
     "left": {
       "label": "Defund the Fleet",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": 1,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Alaska": -6,
-        "Union": 5
+        "Alaska": -30,
+        "Union": 25
       },
       "hiddenEffects": {
-        "global_diplomacy": 5,
-        "national_security": -5
+        "global_diplomacy": 25,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Build the Fleet",
       "effects": {
-        "authority": 3,
-        "capital": -4,
+        "authority": 15,
+        "capital": -20,
         "sentiment": 0,
-        "sustainability": -1
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Alaska": 7,
-        "Union": -6
+        "Alaska": 35,
+        "Union": -30
       },
       "hiddenEffects": {
-        "national_security": 7,
-        "market_growth": 3
+        "national_security": 35,
+        "market_growth": 15
       }
     }
   },
@@ -5994,35 +5994,35 @@
     "left": {
       "label": "Respect Native Lands",
       "effects": {
-        "authority": -2,
-        "capital": -2,
-        "sentiment": 2,
-        "sustainability": 1
+        "authority": -10,
+        "capital": -10,
+        "sentiment": 10,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Alaska": -6,
-        "California": 6
+        "Alaska": -30,
+        "California": 30
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "national_security": -4
+        "identity_equity": 30,
+        "national_security": -20
       }
     },
     "right": {
       "label": "Seize for Defense",
       "effects": {
-        "authority": 2,
-        "capital": 3,
-        "sentiment": -3,
-        "sustainability": -2
+        "authority": 10,
+        "capital": 15,
+        "sentiment": -15,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Alaska": 7,
-        "California": -7
+        "Alaska": 35,
+        "California": -35
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "identity_equity": -6
+        "market_growth": 25,
+        "identity_equity": -30
       }
     }
   },
@@ -6043,35 +6043,35 @@
     "left": {
       "label": "Keep the Fjords Clean",
       "effects": {
-        "authority": -1,
-        "capital": 1,
-        "sentiment": 1,
-        "sustainability": 2
+        "authority": -5,
+        "capital": 5,
+        "sentiment": 5,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Alaska": -5,
-        "Hawaii": 5
+        "Alaska": -25,
+        "Hawaii": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 5,
-        "national_security": -5
+        "green_stewardship": 25,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Station the Subs",
       "effects": {
-        "authority": 3,
-        "capital": -2,
-        "sentiment": -1,
-        "sustainability": -3
+        "authority": 15,
+        "capital": -10,
+        "sentiment": -5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Alaska": 6,
-        "Hawaii": -6
+        "Alaska": 30,
+        "Hawaii": -30
       },
       "hiddenEffects": {
-        "national_security": 7,
-        "green_stewardship": -5
+        "national_security": 35,
+        "green_stewardship": -25
       }
     }
   },
@@ -6092,35 +6092,35 @@
     "left": {
       "label": "Enforce Worker Safety",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 1,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Alaska": -6,
-        "Superior": 6
+        "Alaska": -30,
+        "Superior": 30
       },
       "hiddenEffects": {
-        "labor_power": 6,
-        "market_growth": -5
+        "labor_power": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Waive the Limits",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -3,
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Alaska": 7,
-        "Superior": -7
+        "Alaska": 35,
+        "Superior": -35
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "labor_power": -6
+        "market_growth": 30,
+        "labor_power": -30
       }
     }
   },
@@ -6141,35 +6141,35 @@
     "left": {
       "label": "Protect Civilian Grids",
       "effects": {
-        "authority": -2,
-        "capital": -1,
-        "sentiment": 2,
+        "authority": -10,
+        "capital": -5,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Alaska": -5,
-        "Commonwealth": -4
+        "Alaska": -25,
+        "Commonwealth": -20
       },
       "hiddenEffects": {
-        "social_safety_net": 4,
-        "national_security": -5
+        "social_safety_net": 20,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Test the Weapons",
       "effects": {
-        "authority": 3,
-        "capital": 2,
-        "sentiment": -3,
-        "sustainability": -1
+        "authority": 15,
+        "capital": 10,
+        "sentiment": -15,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Alaska": 6,
-        "Commonwealth": 6
+        "Alaska": 30,
+        "Commonwealth": 30
       },
       "hiddenEffects": {
-        "national_security": 7,
-        "sentiment": -4
+        "national_security": 35,
+        "sentiment": -20
       }
     }
   },
@@ -6190,35 +6190,35 @@
     "left": {
       "label": "Keep Land American",
       "effects": {
-        "authority": 1,
-        "capital": -3,
+        "authority": 5,
+        "capital": -15,
         "sentiment": 0,
-        "sustainability": 1
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Alaska": -5,
-        "Mesa": 6
+        "Alaska": -25,
+        "Mesa": 30
       },
       "hiddenEffects": {
-        "hardline_nationalism": 6,
-        "market_growth": -5
+        "hardline_nationalism": 30,
+        "market_growth": -25
       }
     },
     "right": {
       "label": "Sell to the Highest Bidder",
       "effects": {
-        "authority": -2,
-        "capital": 4,
-        "sentiment": -1,
-        "sustainability": -2
+        "authority": -10,
+        "capital": 20,
+        "sentiment": -5,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Alaska": 6,
-        "Mesa": -6
+        "Alaska": 30,
+        "Mesa": -30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "hardline_nationalism": -5
+        "market_growth": 30,
+        "hardline_nationalism": -25
       }
     }
   },
@@ -6239,35 +6239,35 @@
     "left": {
       "label": "Keep the Land Open",
       "effects": {
-        "authority": -2,
+        "authority": -10,
         "capital": 0,
-        "sentiment": 2,
-        "sustainability": 1
+        "sentiment": 10,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Alaska": -5,
-        "Heartland": 5
+        "Alaska": -25,
+        "Heartland": 25
       },
       "hiddenEffects": {
-        "traditional_values": 5,
-        "national_security": -4
+        "traditional_values": 25,
+        "national_security": -20
       }
     },
     "right": {
       "label": "Expand the Bases",
       "effects": {
-        "authority": 3,
-        "capital": -1,
-        "sentiment": -2,
-        "sustainability": -1
+        "authority": 15,
+        "capital": -5,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Alaska": 6,
-        "Heartland": -5
+        "Alaska": 30,
+        "Heartland": -25
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "traditional_values": -5
+        "national_security": 30,
+        "traditional_values": -25
       }
     }
   },
@@ -6288,35 +6288,35 @@
     "left": {
       "label": "Enforce Quotas",
       "effects": {
-        "authority": 2,
-        "capital": -2,
+        "authority": 10,
+        "capital": -10,
         "sentiment": 0,
-        "sustainability": 3
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Alaska": -6,
-        "Cascadia": 5
+        "Alaska": -30,
+        "Cascadia": 25
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "market_growth": -4
+        "green_stewardship": 30,
+        "market_growth": -20
       }
     },
     "right": {
       "label": "Let Them Scrape",
       "effects": {
-        "authority": -1,
-        "capital": 3,
-        "sentiment": -1,
-        "sustainability": -4
+        "authority": -5,
+        "capital": 15,
+        "sentiment": -5,
+        "sustainability": -20
       },
       "regionalEffects": {
-        "Alaska": 6,
-        "Cascadia": -6
+        "Alaska": 30,
+        "Cascadia": -30
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "green_stewardship": -6
+        "market_growth": 25,
+        "green_stewardship": -30
       }
     }
   },
@@ -6337,35 +6337,35 @@
     "left": {
       "label": "Too Drastic",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": 1,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": 5,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Alaska": -5,
-        "Dixie": 3
+        "Alaska": -25,
+        "Dixie": 15
       },
       "hiddenEffects": {
-        "fiscal_restraint": 4,
-        "national_security": -5
+        "fiscal_restraint": 20,
+        "national_security": -25
       }
     },
     "right": {
       "label": "Activate the Grid",
       "effects": {
-        "authority": 3,
-        "capital": -3,
-        "sentiment": -2,
+        "authority": 15,
+        "capital": -15,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Alaska": 7,
-        "Dixie": -4
+        "Alaska": 35,
+        "Dixie": -20
       },
       "hiddenEffects": {
-        "national_security": 7,
-        "fiscal_restraint": -4
+        "national_security": 35,
+        "fiscal_restraint": -20
       }
     }
   },
@@ -6386,35 +6386,35 @@
     "left": {
       "label": "Protect the Fleet",
       "effects": {
-        "authority": 2,
+        "authority": 10,
         "capital": 0,
-        "sentiment": -2,
-        "sustainability": -2
+        "sentiment": -10,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Hawaii": -7,
-        "Commonwealth": 6
+        "Hawaii": -35,
+        "Commonwealth": 30
       },
       "hiddenEffects": {
-        "national_security": 6,
-        "identity_equity": -6
+        "national_security": 30,
+        "identity_equity": -30
       }
     },
     "right": {
       "label": "Close Red Hill",
       "effects": {
-        "authority": -2,
-        "capital": -3,
-        "sentiment": 2,
-        "sustainability": 3
+        "authority": -10,
+        "capital": -15,
+        "sentiment": 10,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Hawaii": 8,
-        "Commonwealth": -7
+        "Hawaii": 40,
+        "Commonwealth": -35
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "national_security": -7
+        "identity_equity": 30,
+        "national_security": -35
       }
     }
   },
@@ -6435,35 +6435,35 @@
     "left": {
       "label": "Protect Tourism",
       "effects": {
-        "authority": 1,
-        "capital": 3,
-        "sentiment": -1,
-        "sustainability": -3
+        "authority": 5,
+        "capital": 15,
+        "sentiment": -5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Hawaii": -6,
-        "Dixie": 5
+        "Hawaii": -30,
+        "Dixie": 25
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "green_stewardship": -5
+        "market_growth": 25,
+        "green_stewardship": -25
       }
     },
     "right": {
       "label": "Cap the Flights",
       "effects": {
         "authority": 0,
-        "capital": -3,
-        "sentiment": 2,
-        "sustainability": 4
+        "capital": -15,
+        "sentiment": 10,
+        "sustainability": 20
       },
       "regionalEffects": {
-        "Hawaii": 7,
-        "Dixie": -6
+        "Hawaii": 35,
+        "Dixie": -30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "market_growth": -6
+        "green_stewardship": 30,
+        "market_growth": -30
       }
     }
   },
@@ -6484,35 +6484,35 @@
     "left": {
       "label": "Defend Free Markets",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -3,
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Hawaii": -7,
-        "Union": 5
+        "Hawaii": -35,
+        "Union": 25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 5,
-        "identity_equity": -6
+        "fiscal_restraint": 25,
+        "identity_equity": -30
       }
     },
     "right": {
       "label": "Ban Outside Buyers",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 3,
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 15,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Hawaii": 7,
-        "Union": -6
+        "Hawaii": 35,
+        "Union": -30
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "market_growth": -5
+        "identity_equity": 30,
+        "market_growth": -25
       }
     }
   },
@@ -6533,35 +6533,35 @@
     "left": {
       "label": "Protect Commercial Fishing",
       "effects": {
-        "authority": 1,
-        "capital": 2,
-        "sentiment": -1,
-        "sustainability": -3
+        "authority": 5,
+        "capital": 10,
+        "sentiment": -5,
+        "sustainability": -15
       },
       "regionalEffects": {
-        "Hawaii": -6,
-        "Alaska": 6
+        "Hawaii": -30,
+        "Alaska": 30
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "green_stewardship": -6
+        "market_growth": 25,
+        "green_stewardship": -30
       }
     },
     "right": {
       "label": "Establish the Sanctuary",
       "effects": {
-        "authority": -1,
-        "capital": -3,
-        "sentiment": 2,
-        "sustainability": 4
+        "authority": -5,
+        "capital": -15,
+        "sentiment": 10,
+        "sustainability": 20
       },
       "regionalEffects": {
-        "Hawaii": 7,
-        "Alaska": -7
+        "Hawaii": 35,
+        "Alaska": -35
       },
       "hiddenEffects": {
-        "green_stewardship": 7,
-        "market_growth": -5
+        "green_stewardship": 35,
+        "market_growth": -25
       }
     }
   },
@@ -6582,35 +6582,35 @@
     "left": {
       "label": "Maintain Federal Supremacy",
       "effects": {
-        "authority": 3,
+        "authority": 15,
         "capital": 0,
-        "sentiment": -2,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Hawaii": -7,
-        "Mesa": 5
+        "Hawaii": -35,
+        "Mesa": 25
       },
       "hiddenEffects": {
-        "hardline_nationalism": 6,
-        "identity_equity": -5
+        "hardline_nationalism": 30,
+        "identity_equity": -25
       }
     },
     "right": {
       "label": "Cede Jurisdiction",
       "effects": {
-        "authority": -4,
+        "authority": -20,
         "capital": 0,
-        "sentiment": 2,
-        "sustainability": 1
+        "sentiment": 10,
+        "sustainability": 5
       },
       "regionalEffects": {
-        "Hawaii": 7,
-        "Mesa": -6
+        "Hawaii": 35,
+        "Mesa": -30
       },
       "hiddenEffects": {
-        "identity_equity": 7,
-        "authority": -6
+        "identity_equity": 35,
+        "authority": -30
       }
     }
   },
@@ -6632,34 +6632,34 @@
       "label": "Protect Corporate Grids",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -1,
-        "sustainability": -2
+        "capital": 10,
+        "sentiment": -5,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Hawaii": -5,
-        "Texas": 5
+        "Hawaii": -25,
+        "Texas": 25
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "green_stewardship": -4
+        "market_growth": 25,
+        "green_stewardship": -20
       }
     },
     "right": {
       "label": "Fund Local Grids",
       "effects": {
         "authority": 0,
-        "capital": -4,
-        "sentiment": 3,
-        "sustainability": 3
+        "capital": -20,
+        "sentiment": 15,
+        "sustainability": 15
       },
       "regionalEffects": {
-        "Hawaii": 6,
-        "Texas": -6
+        "Hawaii": 30,
+        "Texas": -30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "identity_equity": 4
+        "green_stewardship": 30,
+        "identity_equity": 20
       }
     }
   },
@@ -6680,35 +6680,35 @@
     "left": {
       "label": "English Only",
       "effects": {
-        "authority": 1,
-        "capital": 1,
-        "sentiment": -2,
+        "authority": 5,
+        "capital": 5,
+        "sentiment": -10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Hawaii": -6,
-        "Heartland": 5
+        "Hawaii": -30,
+        "Heartland": 25
       },
       "hiddenEffects": {
-        "traditional_values": 5,
-        "identity_equity": -5
+        "traditional_values": 25,
+        "identity_equity": -25
       }
     },
     "right": {
       "label": "Fund Language Parity",
       "effects": {
-        "authority": -1,
-        "capital": -2,
-        "sentiment": 2,
+        "authority": -5,
+        "capital": -10,
+        "sentiment": 10,
         "sustainability": 0
       },
       "regionalEffects": {
-        "Hawaii": 6,
-        "Heartland": -5
+        "Hawaii": 30,
+        "Heartland": -25
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "traditional_values": -5
+        "identity_equity": 30,
+        "traditional_values": -25
       }
     }
   },
@@ -6730,34 +6730,34 @@
       "label": "Veto the Carbon Tax",
       "effects": {
         "authority": 0,
-        "capital": 2,
-        "sentiment": -1,
-        "sustainability": -1
+        "capital": 10,
+        "sentiment": -5,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Hawaii": -6,
-        "Frontier": 5
+        "Hawaii": -30,
+        "Frontier": 25
       },
       "hiddenEffects": {
-        "fiscal_restraint": 5,
-        "green_stewardship": -5
+        "fiscal_restraint": 25,
+        "green_stewardship": -25
       }
     },
     "right": {
       "label": "Tax the Emitters",
       "effects": {
-        "authority": 2,
-        "capital": -3,
-        "sentiment": 2,
-        "sustainability": 2
+        "authority": 10,
+        "capital": -15,
+        "sentiment": 10,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Hawaii": 6,
-        "Frontier": -6
+        "Hawaii": 30,
+        "Frontier": -30
       },
       "hiddenEffects": {
-        "green_stewardship": 6,
-        "global_diplomacy": 5
+        "green_stewardship": 30,
+        "global_diplomacy": 25
       }
     }
   },
@@ -6778,35 +6778,35 @@
     "left": {
       "label": "Approve the Server Farms",
       "effects": {
-        "authority": 2,
-        "capital": 3,
-        "sentiment": -3,
-        "sustainability": -2
+        "authority": 10,
+        "capital": 15,
+        "sentiment": -15,
+        "sustainability": -10
       },
       "regionalEffects": {
-        "Hawaii": -8,
-        "California": 6
+        "Hawaii": -40,
+        "California": 30
       },
       "hiddenEffects": {
-        "market_growth": 6,
-        "identity_equity": -6
+        "market_growth": 30,
+        "identity_equity": -30
       }
     },
     "right": {
       "label": "Protect the Sacred Mountains",
       "effects": {
-        "authority": -1,
-        "capital": -3,
-        "sentiment": 3,
-        "sustainability": 2
+        "authority": -5,
+        "capital": -15,
+        "sentiment": 15,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Hawaii": 7,
-        "California": -6
+        "Hawaii": 35,
+        "California": -30
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "market_growth": -5
+        "identity_equity": 30,
+        "market_growth": -25
       }
     }
   },
@@ -6827,35 +6827,35 @@
     "left": {
       "label": "Protect Big Ag",
       "effects": {
-        "authority": -1,
-        "capital": 2,
-        "sentiment": -2,
-        "sustainability": -1
+        "authority": -5,
+        "capital": 10,
+        "sentiment": -10,
+        "sustainability": -5
       },
       "regionalEffects": {
-        "Hawaii": -5,
-        "Superior": 4
+        "Hawaii": -25,
+        "Superior": 20
       },
       "hiddenEffects": {
-        "market_growth": 5,
-        "identity_equity": -4
+        "market_growth": 25,
+        "identity_equity": -20
       }
     },
     "right": {
       "label": "Break the Monopolies",
       "effects": {
-        "authority": 2,
-        "capital": -2,
-        "sentiment": 3,
-        "sustainability": 2
+        "authority": 10,
+        "capital": -10,
+        "sentiment": 15,
+        "sustainability": 10
       },
       "regionalEffects": {
-        "Hawaii": 6,
-        "Superior": -5
+        "Hawaii": 30,
+        "Superior": -25
       },
       "hiddenEffects": {
-        "identity_equity": 6,
-        "labor_power": 4
+        "identity_equity": 30,
+        "labor_power": 20
       }
     }
   }

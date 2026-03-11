@@ -371,12 +371,12 @@ export default function App() {
       <div className="settings-modal-panel" style={{ maxWidth: '600px' }}>
         <h2 className="glow-amber" style={{ borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem', marginTop: 0 }}>[ NO-CONFIDENCE VOTE RESULTS ]</h2>
         <p>
-          TURN {electionModal.turn}: <span className={electionModal.passed ? 'glow-green' : 'gov-status-revolt'}>{electionModal.passed ? 'VOTE SURVIVED' : 'VOTE FAILED'}</span> (
+          <span className={electionModal.passed ? 'glow-green' : 'gov-status-revolt'}>{electionModal.passed ? 'VOTE SURVIVED' : 'VOTE FAILED'}</span> (
           {electionModal.votesFor}-{electionModal.votesAgainst})
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1rem', marginBottom: '2rem' }}>
           <div>
-            <p className="glow-green" style={{ textDecoration: 'underline', marginBottom: '0.5rem', fontSize: '0.8rem' }}>VOTES FOR (NO CONFIDENCE DEFEATED)</p>
+            <p className="glow-green" style={{ textDecoration: 'underline', marginBottom: '0.5rem', fontSize: '0.8rem' }}>VOTES FOR</p>
             <ul className="gov-list">
               {electionModal.forVotes.map((vote) => (
                 <li key={`for-${vote.region}`} className="gov-item">
@@ -386,7 +386,7 @@ export default function App() {
             </ul>
           </div>
           <div>
-            <p className="gov-status-revolt" style={{ textDecoration: 'underline', marginBottom: '0.5rem', fontSize: '0.8rem' }}>VOTES AGAINST (REMOVAL DEMANDED)</p>
+            <p className="gov-status-revolt" style={{ textDecoration: 'underline', marginBottom: '0.5rem', fontSize: '0.8rem' }}>VOTES AGAINST</p>
             <ul className="gov-list">
               {electionModal.againstVotes.map((vote) => (
                 <li key={`against-${vote.region}`} className="gov-item">
@@ -432,7 +432,7 @@ export default function App() {
           setGame((current) => ({
             ...current,
             malikRewriteActive: true,
-            malikCooldown: 5, // 5 turns cooldown (won't decrement until NEXT card swipe)
+            malikCooldown: 10, // 10 turns cooldown (won't decrement until NEXT card swipe)
             headline: '[ SYSTEM OVERRIDE: PROPOSAL REWRITTEN ]',
           }));
         }

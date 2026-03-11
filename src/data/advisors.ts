@@ -42,7 +42,7 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     emoji: '🧨',
     pitch: 'SUBJECT EXPERTISE: Grassroots mobilization and systemic disruption. PROFILE: Sharp-tongued organizer. High risk of ideological subversion.',
     benefit: 'ACTIVE PROTOCOL [FIXER]: Authorizes emergency rewriting of pending proposals.\nPASSIVE PROTOCOL: Increases frequency of Identity Equity and Labor Power proposals by 60%.',
-    drawback: 'LIMITATION: Active rewrite protocol requires a 5-turn federal cooldown sequence.',
+    drawback: 'LIMITATION: Active rewrite protocol requires a 10-turn federal cooldown sequence.',
     favoredPillars: ['identity_equity', 'labor_power'],
     bias: {
       pillarMultipliers: {
