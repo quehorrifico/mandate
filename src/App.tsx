@@ -32,6 +32,7 @@ import {
   type GameOverReason,
   type GameState,
   type HiddenStats,
+  type HiddenStatKey,
   type RawCard,
   type RegionLoyaltyByRegion,
   type StatKey,
@@ -164,6 +165,8 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     malikRewriteActive: false,
     pacifiedRegions: [],
     krossLastUsedElectionTerm: null,
+    santanaLastUsedElectionTerm: null,
+    martialLawActive: false,
   };
 }
 
@@ -365,8 +368,18 @@ export default function App() {
       direction: previewDirection,
     });
 
-    return resolution.next.stats;
-  }, [currentCard, game.gameOver, game.stats, game.hiddenStats, game.regionLoyalty, game.malikRewriteActive, previewDirection]);
+    const nextStats = { ...resolution.next.stats };
+
+    if (game.martialLawActive) {
+      // Ignore card effects for these 3 metrics, use current game stats minus protocol drain
+      nextStats.authority = 100;
+      nextStats.capital = Math.max(0, game.stats.capital - 10);
+      nextStats.sentiment = Math.max(0, game.stats.sentiment - 10);
+      // nextStats.sustainability is already set from resolution.next.stats and remains subject to card choice
+    }
+
+    return nextStats;
+  }, [currentCard, game.gameOver, game.stats, game.hiddenStats, game.regionLoyalty, game.malikRewriteActive, game.martialLawActive, previewDirection]);
 
   const dismissElectionModal = useCallback(() => {
     setElectionModal(null);
@@ -513,7 +526,74 @@ export default function App() {
         };
       });
     }
-  }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard, game.turn, game.krossLastUsedElectionTerm, game.pacifiedRegions]);
+    if (selectedAdvisor.id === 'spin_doctor') {
+      const currentElectionTerm = Math.floor(game.turn / ELECTION_INTERVAL);
+      const santanaAvailable = game.santanaLastUsedElectionTerm === null || game.santanaLastUsedElectionTerm < currentElectionTerm;
+      if (!santanaAvailable) return;
+
+      setGame((current) => {
+        const nextStats = { ...current.stats };
+        nextStats.sentiment = Math.min(100, nextStats.sentiment + 20);
+        nextStats.capital = Math.max(0, nextStats.capital - 25);
+        nextStats.sustainability = Math.max(0, nextStats.sustainability - 15);
+
+        // Convert the worst revolting/angry governor back to neutral (loyalty = 50)
+        const nextRegionLoyalty = { ...current.regionLoyalty };
+        const disloyal = REGION_KEYS
+          .filter(r => !current.pacifiedRegions.includes(r))
+          .filter(r => (nextRegionLoyalty[r] ?? 50) < 46)
+          .sort((a, b) => (nextRegionLoyalty[a] ?? 50) - (nextRegionLoyalty[b] ?? 50));
+
+        if (disloyal.length > 0) {
+          nextRegionLoyalty[disloyal[0]] = 50;
+        }
+
+        return {
+          ...current,
+          stats: nextStats,
+          regionLoyalty: nextRegionLoyalty,
+          santanaLastUsedElectionTerm: currentElectionTerm,
+          headline: `[ DAMAGE CONTROL ACTIVATED: NARRATIVE SUPPRESSED ]`,
+        };
+      });
+    }
+
+    if (selectedAdvisor.id === 'iron_vance') {
+      setGame((current) => {
+        // If turning it OFF
+        if (current.martialLawActive) {
+          const nextRegionLoyalty = { ...current.regionLoyalty };
+          REGION_KEYS.forEach((r) => {
+            nextRegionLoyalty[r] = 30; // All regions go to "Angry"
+          });
+
+          return {
+            ...current,
+            martialLawActive: false,
+            regionLoyalty: nextRegionLoyalty,
+            headline: `[ MARTIAL LAW TERMINATED: POPULACE IN REVOLT ]`,
+          };
+        }
+
+        // If turning it ON
+        const nextStats = { ...current.stats };
+        nextStats.authority = 100;
+        
+        const nextRegionLoyalty = { ...current.regionLoyalty };
+        REGION_KEYS.forEach((r) => {
+          nextRegionLoyalty[r] = 100;
+        });
+
+        return {
+          ...current,
+          stats: nextStats,
+          regionLoyalty: nextRegionLoyalty,
+          martialLawActive: true,
+          headline: `[ MARTIAL LAW DEPLOYED: ALL UNITS MOBILIZED ]`,
+        };
+      });
+    }
+  }, [selectedAdvisor, game.gameOver, game.malikCooldown, currentCard, game.turn, game.krossLastUsedElectionTerm, game.santanaLastUsedElectionTerm, game.pacifiedRegions]);
 
   const onChoose = useCallback(
     (direction: Direction) => {
@@ -551,8 +631,41 @@ export default function App() {
       }
 
       let nextStats = resolution.next.stats;
-      const nextHiddenStats = resolution.next.hiddenStats;
-      const nextRegionLoyalty = resolution.next.regionLoyalty;
+      const nextHiddenStats = { ...resolution.next.hiddenStats };
+      const nextRegionLoyalty = { ...resolution.next.regionLoyalty };
+
+      if (game.martialLawActive) {
+        // High per-turn resource drain, ignoring card effects for these specifically
+        nextStats.capital = Math.max(0, game.stats.capital - 10);
+        nextStats.sentiment = Math.max(0, game.stats.sentiment - 10);
+        
+        // Force Authority and all Region Loyalty to 100
+        nextStats.authority = 100;
+        REGION_KEYS.forEach((r) => {
+          nextRegionLoyalty[r] = 100;
+        });
+
+        // "Pump up" nationalist metrics
+        const nationalistKeys: HiddenStatKey[] = [
+          'security', 'military_strength', 'fighting_crime_terrorism', 
+          'containing_immigration', 'nationalism', 'white_supremacy',
+          'tradition', 'christianity', 'rural_life'
+        ];
+        nationalistKeys.forEach((k) => {
+          nextHiddenStats[k] = Math.min(100, nextHiddenStats[k] + 5);
+        });
+        
+        // "Hurt" progressive metrics
+        const progressiveKeys: HiddenStatKey[] = [
+          'workers_rights', 'job_creation', 'unionization',
+          'world_peace', 'internationalism', 'global_justice',
+          'welfare_state', 'public_services', 'universal_healthcare', 'poverty_relief'
+        ];
+        progressiveKeys.forEach((k) => {
+          nextHiddenStats[k] = Math.max(0, nextHiddenStats[k] - 5);
+        });
+      }
+
       const nextTurn = game.turn + 1;
       const outcomeHint = buildOutcomeHint(resolution, currentCard);
 
@@ -694,8 +807,10 @@ export default function App() {
         gameOverReason: null,
         malikCooldown: nextMalikCooldown,
         malikRewriteActive: false, // reset on next card
-        pacifiedRegions: game.pacifiedRegions,
         krossLastUsedElectionTerm: game.krossLastUsedElectionTerm,
+        santanaLastUsedElectionTerm: game.santanaLastUsedElectionTerm,
+        martialLawActive: game.martialLawActive,
+        pacifiedRegions: game.pacifiedRegions,
       });
 
       setPreviewDirection(null);
@@ -863,16 +978,15 @@ export default function App() {
 
   if (game.gameOver) {
     return (
-      <div className="app-shell">
+      <>
         <GameOver
           reason={game.gameOverReason}
           turns={game.turn}
-          year={currentYear}
           endingSummary={game.endingSummary}
           onRestart={startNewGame}
         />
         {electionModalUi}
-      </div>
+      </>
     );
   }
 
@@ -937,6 +1051,11 @@ export default function App() {
               game.krossLastUsedElectionTerm === null ||
               game.krossLastUsedElectionTerm < Math.floor(game.turn / ELECTION_INTERVAL)
             }
+            santanaAvailable={
+              game.santanaLastUsedElectionTerm === null ||
+              game.santanaLastUsedElectionTerm < Math.floor(game.turn / ELECTION_INTERVAL)
+            }
+            martialLawActive={game.martialLawActive}
             isCardRegion={Boolean(currentCard?.governor)}
             onAction={onAdvisorAction}
           />

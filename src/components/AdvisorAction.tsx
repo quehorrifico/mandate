@@ -6,11 +6,13 @@ interface AdvisorActionProps {
   capitalStat: number;
   malikCooldown: number;
   krossAvailable?: boolean;
+  santanaAvailable?: boolean;
+  martialLawActive?: boolean;
   isCardRegion?: boolean;
   onAction: () => void;
 }
 
-export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvailable, isCardRegion, onAction }: AdvisorActionProps) {
+export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvailable, santanaAvailable, martialLawActive, isCardRegion, onAction }: AdvisorActionProps) {
   const { label, className, disabled } = useMemo(() => {
     if (!advisorId) {
       return { 
@@ -58,10 +60,32 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvai
     }
 
     if (advisorId === 'spin_doctor') {
+      if (!santanaAvailable) {
+        return { 
+          label: '[ DAMAGE CONTROL UNAVAILABLE UNTIL NEXT ELECTION ]', 
+          className: 'advisor-action-btn', 
+          disabled: true 
+        };
+      }
       return { 
-        label: '[ DEPLOY PUPPET ]', 
+        label: '[ EXECUTE DAMAGE CONTROL ]', 
         className: 'advisor-action-btn glow-amber', 
-        disabled: false // Placeholder for Kross's future active ability
+        disabled: false 
+      };
+    }
+
+    if (advisorId === 'iron_vance') {
+      if (martialLawActive) {
+        return { 
+          label: '[ TERMINATE MARTIAL LAW: SEVERE PENALTY ]', 
+          className: 'advisor-action-btn vane-alert', 
+          disabled: false 
+        };
+      }
+      return { 
+        label: '[ DEPLOY MARTIAL LAW ]', 
+        className: 'advisor-action-btn glow-amber', 
+        disabled: false 
       };
     }
 
@@ -93,7 +117,7 @@ export function AdvisorAction({ advisorId, capitalStat, malikCooldown, krossAvai
       className: 'advisor-action-btn', 
       disabled: true 
     };
-  }, [advisorId, capitalStat, malikCooldown, krossAvailable, isCardRegion]);
+  }, [advisorId, capitalStat, malikCooldown, krossAvailable, santanaAvailable, martialLawActive, isCardRegion]);
 
   return (
     <button className={className} disabled={disabled} type="button" onClick={onAction}>

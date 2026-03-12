@@ -3,7 +3,6 @@ import type { GameOverReason } from '../types';
 interface GameOverProps {
   reason: GameOverReason;
   turns: number;
-  year: number;
   endingSummary?: string | null;
   onRestart(): void;
 }
@@ -30,19 +29,44 @@ function getReasonText(reason: GameOverReason): string {
   return 'The republic could not sustain your administration.';
 }
 
-export function GameOver({ reason, turns, year, endingSummary, onRestart }: GameOverProps) {
+export function GameOver({ reason, turns, endingSummary, onRestart }: GameOverProps) {
   return (
-    <section className="game-over" role="dialog" aria-modal="true" aria-label="Administration summary">
-      <div className="game-over-panel">
-        <h2>{reason === 'completed' ? 'Mandate Complete' : 'Republic Collapsed'}</h2>
-        <p>{getReasonText(reason)}</p>
-        <p>Cards resolved: {turns}</p>
-        <p>Reached Year {year}</p>
-        {endingSummary ? <p>{endingSummary}</p> : null}
-        <button className="primary-btn" type="button" onClick={onRestart}>
-          Start New Administration
+    <div className="intro-screen">
+      <div className="intro-panel">
+        <div className="intro-header">
+          <span className="glow-amber" style={{ fontSize: '0.85rem', letterSpacing: '0.15em' }}>
+            FEDERAL REPUBLIC OF AMERICA — DEBRIEFING TERMINAL
+          </span>
+        </div>
+
+        <h1 className="intro-title glow-amber">
+          {reason === 'completed' ? 'MANDATE COMPLETE' : 'REPUBLIC COLLAPSED'}
+        </h1>
+
+        <div className="intro-section">
+          <p className="intro-section-header glow-green">&gt; STATUS REPORT</p>
+          <p className="intro-body">{getReasonText(reason)}</p>
+          <p className="intro-body" style={{ marginTop: '0.5rem' }}>
+            <strong>Total Cards Resolved:</strong> {turns}
+          </p>
+        </div>
+
+        {endingSummary && (
+          <div className="intro-section">
+            <p className="intro-section-header glow-green">&gt; HISTORICAL RECORD</p>
+            <p className="intro-body" style={{ fontStyle: 'italic', lineHeight: '1.6' }}>{endingSummary}</p>
+          </div>
+        )}
+
+        <button 
+          className="advisor-action-btn intro-start-btn" 
+          type="button" 
+          onClick={onRestart}
+          style={{ marginTop: '1rem' }}
+        >
+          [ START NEW ADMINISTRATION ]
         </button>
       </div>
-    </section>
+    </div>
   );
 }

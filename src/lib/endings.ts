@@ -61,227 +61,227 @@ const ENDINGS_BY_PAIR: Record<string, EndingDefinition> = {
   [pairKey('SS', 'GS')]: {
     title: 'The Eco-Commune',
     summary:
-      'Universal housing and healthcare run on localized green grids in a peaceful zero-growth republic.',
+      'You forged a peaceful, zero-growth republic. Vertical farms dot the skylines of former financial districts, and citizens work brief shifts maintaining solar arrays before dedicating their time to the arts and community. Progress is no longer measured in GDP, but in carbon negativity and gross domestic happiness. You completely decoupled society from the engine of endless consumption.',
   },
   [pairKey('SS', 'GD')]: {
     title: 'The Global Sanctuary',
     summary:
-      'You opened the borders and offered universal care worldwide, creating a humanitarian beacon under constant logistical strain.',
+      'Endless lines of refugees process through your grand transit terminals, greeted with immediate medical care and housing vouchers. By opening the borders, you created a shining humanitarian miracle—but the cracks are showing. Doctors work 80-hour shifts, and rolling blackouts plague the overcrowded cities as the nation attempts to single-handedly shoulder the weight of a broken world.',
   },
   [pairKey('SS', 'HN')]: {
     title: 'The Chauvinist Welfare State',
     summary:
-      'The state guarantees generous welfare programs, but only for a tightly policed in-group.',
+      'Behind towering, automated border walls, citizens enjoy free universities and pristine, state-funded hospitals. To be born here is to win the lottery of life. However, this utopia is maintained by a heavily militarized border guard that ruthlessly turns away desperate migrants, ensuring the wealth remains strictly within the bloodline.',
   },
   [pairKey('SS', 'MG')]: {
     title: 'The Nordic Monopoly',
     summary:
-      "Megacorporations bankroll elite welfare through taxes, then run everything else however they want.",
+      'The megacorporations pay their astronomical tax bills with a smile, funding gold-standard public schools and a lavish social safety net. In exchange, anti-trust laws have been abolished. The same company that administers a citizen’s universal basic income also owns their apartment, curates their media consumption, and holds a monopoly on the seeds planted in their state-allotted gardens.',
   },
   [pairKey('SS', 'IE')]: {
     title: 'The Equitable Utopia',
     summary:
-      'Redistribution is aggressive, identity-centered, and built to prioritize groups historically pushed to the margins.',
+      'The Department of Historical Restitution manages the economy now, aggressively liquidating old generational wealth to fund expansive reparations. Monuments to old oppressors have been torn down, replaced by brutalist housing blocks dedicated to the historically displaced. It is a society built on fierce restorative justice, where equality is enforced with unforgiving bureaucratic precision.',
   },
   [pairKey('SS', 'LP')]: {
     title: "The Workers' Republic",
     summary:
-      'Federal governance becomes a union machine: everyone has security, and almost nobody has optionality.',
+      'The national assembly has been replaced by the Grand Syndicate. Every citizen is guaranteed a living wage, comprehensive healthcare, and an ironclad pension, but they belong to the union from birth to death. Strikes are illegal because the state is the union; to demand personal optionality or start a private enterprise is considered an act of economic treason.',
   },
   [pairKey('SS', 'FR')]: {
     title: 'The Austere Rationing',
     summary:
-      'The state guarantees only baseline survival with strict equal provisioning and joyless precision.',
+      'The Ministry of Provisioning ensures no one starves, but no one thrives. Citizens line up at gray distribution centers for their weekly allotment of standardized nutrient paste and utilitarian clothing. It is a perfectly egalitarian society, achieved by flattening the standard of living to the absolute minimum required to keep a human heart beating.',
   },
   [pairKey('SS', 'NS')]: {
     title: 'The Paternal Garrison',
     summary:
-      'Welfare exists, but it is administered through military bureaucracy and civic duty pipelines.',
+      'Healthcare and housing are plentiful, but they are distributed out of heavily fortified Quartermaster outposts. To earn your daily rations and medical credits, you must serve the state through grueling military or civic duty. The streets are perfectly safe, the children are well-fed, and everyone wakes up to the synchronized blare of the morning civic siren.',
   },
   [pairKey('SS', 'TV')]: {
     title: 'The Neo-Feudal Parish',
     summary:
-      'Federal welfare is dismantled and delegated to local traditional institutions and parish hierarchies.',
+      'The central government collapsed under its own weight, leaving local religious orders and patriarchal community councils to distribute alms. If you are a devout, loyal member of the congregation, the parish will feed your family and heal your sick. If you are an outcast, a non-believer, or a rebel, you will find no charity in the harsh winter.',
   },
   [pairKey('GS', 'GD')]: {
     title: 'The Earth Federation',
     summary:
-      'National sovereignty is subordinated to global ecological treaties and transnational climate administration.',
+      'The old flags have been lowered. A coalition of climate scientists and AI logistics networks now dictate global policy from the Geneva Spire. Entire nations have been forcibly depopulated to create massive rewilding zones, and fossil fuel executives are tried in international tribunals for crimes against the biosphere.',
   },
   [pairKey('GS', 'HN')]: {
     title: 'The Eco-Fascist State',
     summary:
-      'Conservation is absolute, enforced by exclusionary borders and blood-and-soil doctrine.',
+      'Pristine forests and crystal-clear rivers are fiercely guarded by paramilitaries. The state views the ecosystem as a sacred extension of the national soul, purging any "foreign" elements—both invasive species and undocumented immigrants—with identical, terrifying zeal. Nature is healing, watered by the blood of the excluded.',
   },
   [pairKey('GS', 'MG')]: {
     title: 'The Green-Capital Monopoly',
     summary:
-      'Sustainability is fully commodified; clean air and water are premium products sold by resource cartels.',
+      'The atmosphere is scrubbed clean by colossal carbon-capture towers, all plastered with corporate logos. Clean air and fresh water are no longer human rights, but premium subscription services. Those who can afford the "Platinum Bio-Tier" breathe deeply in domed arcologies, while the impoverished suffocate in the unregulated, toxic smog zones below.',
   },
   [pairKey('GS', 'IE')]: {
     title: 'The Climate Justice Coalition',
     summary:
-      'Environmental policy is structured around ecological reparations and sovereignty restitution.',
+      'Indigenous land councils and marginalized climate refugees now hold veto power over the global economy. The industrialized global north has been placed under massive carbon tariffs to fund the relocation of sinking island nations. Healing the earth means dismantling the colonial structures that poisoned it, no matter the economic cost to the former empires.',
   },
   [pairKey('GS', 'LP')]: {
     title: 'The Rust-to-Green Syndicate',
     summary:
-      'Green grids are controlled by hardened labor blocs that replaced the old fossil order.',
+      'The coal mines are closed, but the miners haven’t lost their grip. Massive, industrialized trade unions control the geothermal plants and tidal barrages, holding cities hostage with the threat of blackout strikes. They rebuilt the world with green energy, and they run the new electrical grids like a heavily armed mafia.',
   },
   [pairKey('GS', 'FR')]: {
     title: 'The Rewilded Wasteland',
     summary:
-      'To save money and emissions, infrastructure funding was gutted and nature reclaimed the built world.',
+      'The state went bankrupt, and the asphalt began to crack. Without funding for maintenance, highways have been swallowed by forests, and skyscrapers have become vertical ecosystems for local wildlife. Humanity has retreated to isolated, self-sufficient survival camps, watching in quiet awe as the earth violently erases the last centuries of their dominion.',
   },
   [pairKey('GS', 'NS')]: {
     title: 'The Climate Fortress',
     summary:
-      'Security forces exist to defend shrinking water, food, and arable land from escalating external pressure.',
+      'As the equatorial zones became uninhabitable, your nation built the Great Seawalls. Heavily armed drones patrol the borders of your agricultural zones, gunning down desperately parched refugees attempting to siphon your state-owned aquifers. You are an island of green survival in a dying, desperate world.',
   },
   [pairKey('GS', 'TV')]: {
     title: 'The Agrarian Return',
     summary:
-      'Industrial modernity is rejected in favor of localized, low-tech, tradition-driven farming societies.',
+      'The silicon chips have rusted and the server farms are silent. Communities have forcefully rejected industrial modernity, returning to the rhythm of the seasons with draft animals and heirloom crops. It is a quiet, beautiful, and backbreaking existence, where a single poor harvest or curable disease can once again wipe out an entire village.',
   },
   [pairKey('GD', 'HN')]: {
     title: "The Hypocrite's Empire",
     summary:
-      'Diplomatic language stays global while domestic policy turns aggressively nationalist and covertly coercive.',
+      'Your diplomats smile for the cameras in Geneva, shaking hands and signing grand treaties of friendship. Back home, the secret police drag dissidents from their beds under the cover of darkness. The nation projects an aura of enlightened internationalism, providing perfect cover for the dark, coercive nationalism that keeps you in power.',
   },
   [pairKey('GD', 'MG')]: {
     title: 'The Neoliberal Hegemony',
     summary:
-      'Borders vanish for capital flows while people remain gated out of the same freedom.',
+      'Trillions of dollars in automated algorithmic trades flash across the globe every second, unhindered by borders or tariffs. The corporate elite live in floating, sovereign tax havens, completely untethered from any nation. Meanwhile, the global working class is trapped behind razor-wire checkpoints, their passports useless, entirely at the mercy of transnational capital.',
   },
   [pairKey('GD', 'IE')]: {
     title: 'The Cosmopolitan Open Society',
     summary:
-      'A post-national model emerges where diversity is celebrated and old identity borders dissolve.',
+      'The capital city is a chaotic, brilliant collision of a thousand different cultures, languages, and identities. Traditional national borders have been cheerfully discarded as a relic of the past. It is a vibrant, restless society, though older generations watch in quiet despair as ancient local customs are swept away in the relentless tide of globalized pluralism.',
   },
   [pairKey('GD', 'LP')]: {
     title: 'The Internationalist Union',
     summary:
-      "Domestic governance is increasingly set by global labor coalitions and cross-border strike leverage.",
+      'A dockworker strike in Shanghai instantly triggers a sympathy blackout in New York and London. The nation-state is entirely secondary to the power of the Global Trade Syndicates. Capitalists are terrified, governments are paralyzed, and the international working class moves with terrifying, synchronized precision to dictate the terms of global trade.',
   },
   [pairKey('GD', 'FR')]: {
     title: 'The Hollowed State',
     summary:
-      'Fiscal cuts outsourced core governance to NGOs and foreign contractors, leaving a shell state at home.',
+      'The government buildings are mostly empty, leased out as co-working spaces. Public defense is handled by private military contractors, healthcare by multinational insurance cartels, and education by foreign tech conglomerates. You have achieved perfect fiscal balance, simply by selling the very concept of a sovereign state to the highest international bidders.',
   },
   [pairKey('GD', 'NS')]: {
     title: 'The World Police',
     summary:
-      'Foreign intervention is permanent and framed as peace enforcement under your strategic doctrine.',
+      'Your aircraft carriers patrol every ocean; your military bases dot every continent. The world enjoys a tense, uninterrupted peace, maintained by the constant, looming threat of orbital strikes and special forces raids. You are the sole arbiter of international law, and you enforce it with uncompromising, imperial brutality.',
   },
   [pairKey('GD', 'TV')]: {
     title: 'The Holy Alliance',
     summary:
-      'Foreign policy is routed through transnational religious blocs and doctrinal partnerships.',
+      'Embassies have been replaced by grand cathedrals and towering minarets. Treaties are no longer signed by secular presidents, but negotiated by high priests and supreme patriarchs. The world is divided not by lines on a map, but by ancient schisms of faith, bringing about a new era of transnational crusades and doctrinal cold wars.',
   },
   [pairKey('HN', 'MG')]: {
     title: "The Oligarch's Ethnostate",
     summary:
-      'Nationalist theater masks elite extraction while cronies consolidate wealth and public anger.',
+      'The state-run media blasts xenophobic anthems and stokes endless fury against foreign boogeymen. While the working class cheers at military parades and burns effigies of immigrants, a cabal of five ruling families quietly privatizes the nation’s remaining lithium reserves. Patriotism has become the ultimate sleight-of-hand for unchecked corporate looting.',
   },
   [pairKey('HN', 'IE')]: {
     title: 'The Assimilationist Republic',
     summary:
-      'Civil rights are broad on paper but conditional on total cultural conformity to the state.',
+      'The state celebrates its diversity—as long as that diversity wears the national colors, sings the anthem, and discards its ancestral languages. Immigrants are welcomed only if they submit to rigorous "cultural purification" exams. It is a society of total civic equality, achieved by relentlessly stamping out any individual identity that doesn’t serve the Republic.',
   },
   [pairKey('HN', 'LP')]: {
     title: 'The National Syndicalist Bloc',
     summary:
-      'Domestic unions dominate policy while foreign labor and imports are treated as hostile threats.',
+      'The factories are booming, owned entirely by the workers who run them. However, a deep, paranoid xenophobia permeates the shop floors. Foreign goods are burned at the ports, and undocumented labor is brutally expelled by union-backed citizen militias. It is a worker’s paradise, built strictly and exclusively for "our own kind."',
   },
   [pairKey('HN', 'FR')]: {
     title: 'The Starving Citadel',
     summary:
-      'Isolationist purity politics outlasted the economy, producing walls, scarcity, and social decay.',
+      'The borders are sealed, the tariffs are absolute, and the nation is finally pure. But without foreign trade, the grocery store shelves are bare, and the power grid flickers and dies. The populace huddles around trash-can fires in the shadow of their magnificent, impenetrable border wall, starving to death in perfect isolation.',
   },
   [pairKey('HN', 'NS')]: {
     title: 'The Totalitarian Junta',
     summary:
-      'Security and border control become the entire logic of governance and citizenship.',
+      'Checkpoints exist on every street corner. Neighbors report neighbors to the Ministry of Homeland Purity for suspicious activities. The concept of civilian life has been completely erased; you are either a soldier, an informant, or a traitor. The nation is a perfectly secure, locked-down fortress, and its citizens are merely the inmates.',
   },
   [pairKey('HN', 'TV')]: {
     title: 'The Theocratic Homeland',
     summary:
-      'Citizenship is bound to strict orthodoxy, and national belonging is defined by inherited conformity.',
+      'The holy texts are now the supreme law of the land. Morality police roam the streets, enforcing modest dress codes and mandating daily prayer. Those who practice forbidden faiths or display foreign cultural sympathies are stripped of their citizenship and driven into the wasteland. Belonging is no longer a birthright; it is a sacrament.',
   },
   [pairKey('MG', 'IE')]: {
     title: 'Rainbow Capitalism',
     summary:
-      'Identity-forward branding and social justice rhetoric thrive inside fully monetized corporate systems.',
+      'The megacity is a neon dazzle of progress: holographic billboards advertise gender-neutral luxury cars and ethically-sourced lifestyle brands. Every corporate board is perfectly diverse. Yet, underneath the glittering rhetoric of social justice, these same inclusive corporations pay starvation wages and brutally crush any attempt at unionization.',
   },
   [pairKey('MG', 'LP')]: {
     title: 'The Co-op Economy',
     summary:
-      'Competitive markets survive, but ownership is pushed into legally mandated worker cooperatives.',
+      'Wall Street is a ghost town, its trading floors converted into sprawling indoor markets. By law, every corporation has been seized and converted into a worker-owned cooperative. The cutthroat mechanics of the free market still exist—companies fiercely compete and go bankrupt—but the profits and the pain are shared equally by the mechanics, coders, and janitors who own the shares.',
   },
   [pairKey('MG', 'FR')]: {
     title: 'The Anarcho-Capitalist Zone',
     summary:
-      'Taxes and regulations collapse, and essential services are privatized into pay-per-use markets.',
+      'The state Capitol building was sold off and turned into a luxury shopping mall. There are no taxes, no police, and no safety nets. If your house catches fire, you had better hope your subscription to the private Fire-Corp is up to date. It is a thrilling, terrifying paradise of absolute negative liberty, where cash is the only god left.',
   },
   [pairKey('MG', 'NS')]: {
     title: 'The Military-Industrial Complex',
     summary:
-      'Growth is driven by weapons production, security contracts, and permanent proxy conflict.',
+      'The economy has never been stronger, fueled entirely by the manufacture of autonomous slaughter-drones and orbital strike platforms. The nation doesn’t fight its own wars anymore; it simply funds, arms, and profits from a dozen perpetual proxy conflicts across the globe. Peace would mean immediate economic collapse, so the war machine must never stop feeding.',
   },
   [pairKey('MG', 'TV')]: {
     title: 'The Gilded Age Revival',
     summary:
-      'Extreme wealth concentration returns under a moral order that disciplines the working class.',
+      'A newly minted aristocracy of tech barons and industrial titans rule from sky-high penthouses. Down in the smog-choked slums, the working class is kept in line by a resurgence of fierce, puritanical work ethic preached by state-sponsored mega-churches. Poverty is once again viewed not as an economic failure, but as a moral failing of the weak.',
   },
   [pairKey('IE', 'LP')]: {
     title: 'The Intersectional Strike',
     summary:
-      'Social justice and labor politics fuse into one organizing force controlling major economic levers.',
+      'The Vanguard Syndicates don’t just strike for higher wages; they strike to dismantle systemic oppression. A grievance over workplace discrimination can instantly shut down the nation’s entire logistics network. The economy has been weaponized into a tool for radical social equity, leaving traditional corporate management terrified and entirely powerless.',
   },
   [pairKey('IE', 'FR')]: {
     title: 'The DIY Liberation',
     summary:
-      'Identity recognition is expansive, but the state retreats from material support and public programs.',
+      'The constitution guarantees absolute freedom of expression, identity, and bodily autonomy. However, the government has completely defunded public services. Mutual aid networks and decentralized anarchist collectives scramble to provide healthcare and food in a vibrant, radically free society that is constantly teetering on the edge of total material collapse.',
   },
   [pairKey('IE', 'NS')]: {
     title: 'The Progressive Empire',
     summary:
-      'An enormous security apparatus is used to export equality doctrine through coercive intervention.',
+      'Equality is no longer a domestic goal; it is a weapon. Your stealth bombers drop precision-guided munitions on regimes that violate human rights, while your intelligence agencies stage coups against traditionalist patriarchies. You have built a terrifying, hyper-advanced military machine, and you use it to enforce intersectional equity across the globe at gunpoint.',
   },
   [pairKey('IE', 'TV')]: {
     title: 'The Reformed Tradition',
     summary:
-      'Traditional institutions are remade to center marginalized voices within state-shaped orthodoxy.',
+      'The ancient cathedrals now fly liberation flags, and the sacred texts have been radically re-interpreted through a lens of modern social justice. The old hierarchies weren’t destroyed, but aggressively captured and turned inside out. It is a society bound by deep, traditional rituals, but dedicated entirely to the elevation of the historically oppressed.',
   },
   [pairKey('LP', 'FR')]: {
     title: 'The Self-Reliant Guilds',
     summary:
-      'Federal programs shrink as local unions and neighborhood guilds take over social coordination.',
+      'Washington is practically irrelevant. Power has devolved to the Neighborhood Guilds and localized trade syndicates. If a road needs paving or a school needs building, the local plumbers’ and teachers’ unions pass the hat and do it themselves. It is a gritty, hyper-local society of fierce mutual reliance, totally disconnected from federal oversight.',
   },
   [pairKey('LP', 'NS')]: {
     title: 'The Drafted Workforce',
     summary:
-      'Compulsory industrial labor and military service become the main route to civic legitimacy.',
+      'On their eighteenth birthday, every citizen receives their deployment orders: three years in the infantry, or three years in the state steel mills. There is no unemployment, because labor is a conscripted duty to the homeland. The nation operates as a single, massive, heavily armed industrial camp, forging progress through sheer, mandated discipline.',
   },
   [pairKey('LP', 'TV')]: {
     title: "The Yeoman's Republic",
     summary:
-      'Blue-collar unions and cultural conservatism lock together around local industry protection.',
+      'The coastal elites were exiled long ago. The nation is now run by a coalition of heavy-industry unions and rural farm collectives, fiercely protective of their wages and deeply suspicious of modern social shifts. It is a society of hard work, Sunday church, and closed borders, frozen in a nostalgically idealized vision of the mid-20th century.',
   },
   [pairKey('FR', 'NS')]: {
     title: 'The Mercenary State',
     summary:
-      'Taxes are preserved mainly for police and defense while civil public services are stripped away.',
+      'The public libraries, parks, and hospitals have all been shuttered or sold. The state does exactly two things: it patrols the streets with heavily armored riot squads, and it bombs foreign enemies. You have created a minimalist government of pure coercion, where the only public employee left is a man with a gun.',
   },
   [pairKey('FR', 'TV')]: {
     title: 'The Puritanical Austerity',
     summary:
-      'Frugality is moral law, luxury is suspect, and the state enforces austerity as virtue.',
+      'Neon signs are banned, and luxury goods carry a 500% sin tax. The state enforces a harsh, unyielding economic austerity, viewing any display of wealth or frivolity as a deep spiritual corruption. The citizens live lives of quiet, gray deprivation, convinced that their suffering on earth is the highest form of civic and holy virtue.',
   },
   [pairKey('NS', 'TV')]: {
     title: 'The Holy Inquisition',
     summary:
-      'Security and surveillance power are turned inward to impose strict cultural and religious orthodoxy.',
+      'The surveillance drones don’t just watch for terrorists; they watch to see who misses Friday prayers. The Ministry of Truth monitors digital communications for moral deviance, dispatching the templar-police to vanish dissidents in the night. The nation is locked in an atmosphere of suffocating paranoia, strictly enforcing the will of God through the ultimate police state.',
   },
 };
 
@@ -381,7 +381,7 @@ function getTopTwoAxes(scores: Record<EndingAxis, number>): [EndingAxis, EndingA
 const FALLBACK_ENDING: EndingDefinition = {
   title: 'The Patchwork Republic',
   summary:
-    'No bloc fully consolidated power. Your coalition survived through tactical compromises and improvised deals.',
+    'No single ideology managed to consolidate power. Your nation survives day-to-day on a fragile web of tactical compromises, improvised deals, and constant, exhausting gridlock. There are no grand monuments or sweeping revolutions here—only the quiet, messy, and infinitely complex reality of a democracy desperately trying to keep its head above water.',
 };
 
 export function resolveEnding(params: {

@@ -71,8 +71,8 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     name: 'Colonel "Iron" Vance (The Hawk)',
     emoji: '🪖',
     pitch: 'Militarized enforcement and border containment. Decorated hardliner. Aggressive operational posture.',
-    benefit: 'PASSIVE PROTOCOL: Increases frequency of National Security and Hardline Nationalism proposals by 60%.',
-    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
+    benefit: 'ACTIVE PROTOCOL [MARTIAL LAW]: Authority and Regional Loyalty become locked at 100%.\n\nPASSIVE PROTOCOL: Increases frequency of National Security and Traditional Values proposals by 60%.',
+    drawback: 'LIMITATION: Martial Law comes at the cost of -10 Capital & -10 Sentiment each turn. When terminated, ALL regions immediately become ANGRY (30% Loyalty).',
     favoredPillars: ['national_security', 'traditional_values'],
     bias: {
       pillarMultipliers: {
@@ -86,8 +86,8 @@ export const ADVISORS: Record<AdvisorId, AdvisorDefinition> = {
     name: '"Slick" Rick Santana (The Spin Doctor)',
     emoji: '📺',
     pitch: 'Media manipulation and scandal suppression. Optics-obsessed fixer. Masters public distraction.',
-    benefit: 'PASSIVE PROTOCOL: Increases frequency of Global Diplomacy and Identity Equity proposals by 60%.',
-    drawback: 'LIMITATION: Consultative only. No direct executive override capabilities.',
+    benefit: 'ACTIVE PROTOCOL [DAMAGE CONTROL]: Once per election term, authorizes a full media suppression campaign. Grants Sentiment +20 and converts one revolting governor to neutral.\n\nPASSIVE PROTOCOL: Increases frequency of Global Diplomacy and Identity Equity proposals by 60%.',
+    drawback: 'LIMITATION: Suppression campaign costs Capital -25 and triggers Sustainability -15. Ability resets each election cycle.',
     favoredPillars: ['global_diplomacy', 'identity_equity'],
     bias: {
       pillarMultipliers: {

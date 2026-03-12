@@ -296,4 +296,6 @@ export interface GameState {
   malikRewriteActive: boolean;
   pacifiedRegions: RegionKey[];
   krossLastUsedElectionTerm: number | null;
+  santanaLastUsedElectionTerm: number | null;
+  martialLawActive: boolean;
 }
