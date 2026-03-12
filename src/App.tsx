@@ -587,7 +587,7 @@ export default function App() {
         // If turning it ON
         const nextStats = { ...current.stats };
         nextStats.authority = 100;
-        
+
         const nextRegionLoyalty = { ...current.regionLoyalty };
         REGION_KEYS.forEach((r) => {
           nextRegionLoyalty[r] = 100;
@@ -647,7 +647,7 @@ export default function App() {
         // High per-turn resource drain, ignoring card effects for these specifically
         nextStats.capital = Math.max(0, game.stats.capital - 10);
         nextStats.sentiment = Math.max(0, game.stats.sentiment - 10);
-        
+
         // Force Authority and all Region Loyalty to 100
         nextStats.authority = 100;
         REGION_KEYS.forEach((r) => {
@@ -656,14 +656,14 @@ export default function App() {
 
         // "Pump up" nationalist metrics
         const nationalistKeys: HiddenStatKey[] = [
-          'security', 'military_strength', 'fighting_crime_terrorism', 
+          'security', 'military_strength', 'fighting_crime_terrorism',
           'containing_immigration', 'nationalism', 'white_supremacy',
           'tradition', 'christianity', 'rural_life'
         ];
         nationalistKeys.forEach((k) => {
           nextHiddenStats[k] = Math.min(100, nextHiddenStats[k] + 5);
         });
-        
+
         // "Hurt" progressive metrics
         const progressiveKeys: HiddenStatKey[] = [
           'workers_rights', 'job_creation', 'unionization',
@@ -944,6 +944,12 @@ export default function App() {
           >
             [ PROCEED TO ADVISOR SELECTION ]
           </button>
+
+          <footer className="credits-footnote">
+            <a href="https://github.com/quehorrifico/federal-republic-of-america" target="_blank" rel="noopener noreferrer">
+              [ SOURCE CODE / REPOSITORY ]
+            </a>
+          </footer>
         </div>
       </div>
     );
@@ -980,6 +986,12 @@ export default function App() {
               </button>
             ))}
           </div>
+
+          <footer className="credits-footnote">
+            <a href="https://github.com/quehorrifico/federal-republic-of-america" target="_blank" rel="noopener noreferrer">
+              [ SOURCE CODE / REPOSITORY ]
+            </a>
+          </footer>
         </div>
       </div>
     );
@@ -1016,8 +1028,8 @@ export default function App() {
         <aside className="gov-sidebar">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px dashed var(--border-color)', marginBottom: '1rem', paddingBottom: '0.2rem' }}>
             <h2 style={{ border: 'none', margin: 0 }}>REGIONAL GOVERNORS (14)</h2>
-            <button 
-              className="settings-btn" 
+            <button
+              className="settings-btn"
               style={{ fontSize: '0.7rem' }}
               onClick={() => setGovSortMode(current => current === 'default' ? 'loyalty' : 'default')}
             >

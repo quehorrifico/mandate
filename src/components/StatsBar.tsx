@@ -27,7 +27,7 @@ function getMeterWidth(statKey: StatKey, value: number): number {
   return Math.max(0, Math.min(100, value));
 }
 
-function renderAsciiBar(percent: number, delta: number) {
+function renderAsciiBar(percent: number, delta: number, isDanger: boolean) {
   const TOTAL_BLOCKS = 10;
   const blocks = Math.max(0, Math.min(TOTAL_BLOCKS, Math.round(percent / 10)));
   const bar = '='.repeat(blocks) + '&nbsp;'.repeat(TOTAL_BLOCKS - blocks);
@@ -39,7 +39,8 @@ function renderAsciiBar(percent: number, delta: number) {
     deltaStr = ` <span style="color:var(--text-alert); display:inline-block; width:5ch; text-align:left">(${delta})</span>`;
   }
   
-  return `<span class="glow-green">[${bar}]</span>${deltaStr}`;
+  const barClass = isDanger ? 'metric-danger' : 'glow-green';
+  return `<span class="${barClass}">[${bar}]</span>${deltaStr}`;
 }
 
 export function StatsBar({ stats, previewStats }: StatsBarProps) {
@@ -50,12 +51,13 @@ export function StatsBar({ stats, previewStats }: StatsBarProps) {
         const displayValue = previewStats ? previewStats[key] : currentValue;
         const delta = displayValue - currentValue;
         const percent = getMeterWidth(key, displayValue);
+        const isDanger = percent <= 20;
 
         return (
-          <div className="metric-ascii" key={key} title={STAT_DISPLAY_LABELS[key]}>
+          <div className={`metric-ascii ${isDanger ? 'metric-danger' : ''}`} key={key} title={STAT_DISPLAY_LABELS[key]}>
             <span className="metric-ascii-label">{SHORT_STAT_NAMES[key]}</span>
             <span 
-              dangerouslySetInnerHTML={{ __html: renderAsciiBar(percent, delta) }} 
+              dangerouslySetInnerHTML={{ __html: renderAsciiBar(percent, delta, isDanger) }} 
             />
           </div>
         );
