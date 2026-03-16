@@ -129,6 +129,11 @@ export function selectPolicyCardFromDeck(params: {
     return null;
   }
 
+  /* 
+    FUTURE FEATURE: Sustainability Passive (Resilience Buffer)
+    If Sustainability is at 100, the probability of drawing 
+    'Crisis' cards should be halved.
+  */
   const selected = chooseWeightedCard(
     candidates,
     (entry) =>

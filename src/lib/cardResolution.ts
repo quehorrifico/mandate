@@ -12,6 +12,8 @@ import {
   type RegionLoyaltyByRegion,
   type Stats,
   normalizeHiddenStatKey,
+  type StatBuffers,
+  STAT_KEYS,
 } from '../types';
 import { applyHiddenStatEffects } from './hiddenStats';
 
@@ -140,15 +142,52 @@ export function getCardChoice(card: Card, direction: Direction): CardChoice {
   return direction === 'left' ? card.left : card.right;
 }
 
-export function applyChoiceToStats(stats: Stats, choice: CardChoice): Stats {
+export function applyChoiceToStats(
+  stats: Stats,
+  statBuffers: StatBuffers,
+  choice: CardChoice,
+): { stats: Stats; statBuffers: StatBuffers } {
   const effects = choice.effects ?? {};
   const treasuryDelta = choice.treasuryDelta ?? 0;
-  return {
-    authority: clampPercent(stats.authority + (effects.authority ?? 0)),
-    capital: clampCapital(stats.capital + (effects.capital ?? 0) + treasuryDelta),
-    sentiment: clampPercent(stats.sentiment + (effects.sentiment ?? 0)),
-    sustainability: clampPercent(stats.sustainability + (effects.sustainability ?? 0)),
-  };
+
+  const nextStats = { ...stats };
+  const nextBuffers = { ...statBuffers };
+
+  for (const key of STAT_KEYS) {
+    let delta = effects[key] ?? 0;
+    if (key === 'capital') {
+      delta += treasuryDelta;
+    }
+
+    if (delta > 0) {
+      // Fill stat first up to 100, excess to buffer
+      const spaceInStat = 100 - nextStats[key];
+      if (spaceInStat >= delta) {
+        nextStats[key] += delta;
+      } else {
+        nextStats[key] = 100;
+        nextBuffers[key] += delta - Math.max(0, spaceInStat);
+      }
+    } else if (delta < 0) {
+      // Drain buffer first, then stat
+      const absDelta = Math.abs(delta);
+      if (nextBuffers[key] >= absDelta) {
+        nextBuffers[key] -= absDelta;
+      } else {
+        const remainingDelta = absDelta - nextBuffers[key];
+        nextBuffers[key] = 0;
+        nextStats[key] -= remainingDelta;
+      }
+    }
+  }
+
+  // Final clamps for safety
+  nextStats.authority = clampPercent(nextStats.authority);
+  nextStats.capital = clampCapital(nextStats.capital);
+  nextStats.sentiment = clampPercent(nextStats.sentiment);
+  nextStats.sustainability = clampPercent(nextStats.sustainability);
+
+  return { stats: nextStats, statBuffers: nextBuffers };
 }
 
 export function applyChoiceToRegionSupport(
@@ -188,6 +227,7 @@ function getNumericChanges<T extends string>(
 
 export interface DecisionResolutionChanges {
   visibleStatChanges: Array<{ key: keyof Stats; before: number; after: number; delta: number }>;
+  bufferChanges: Array<{ key: keyof StatBuffers; before: number; after: number; delta: number }>;
   regionSupportChanges: Array<{ key: RegionKey; before: number; after: number; delta: number }>;
 }
 
@@ -195,7 +235,7 @@ export interface DecisionResolutionResult {
   ok: boolean;
   reason?: string;
   choice: CardChoice;
-  next: Pick<GameState, 'stats' | 'hiddenStats' | 'regionLoyalty'>;
+  next: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty'>;
   changes: DecisionResolutionChanges;
   events: {
     targetRegions: RegionKey[];
@@ -204,7 +244,7 @@ export interface DecisionResolutionResult {
 }
 
 export function resolveCardDecision(params: {
-  state: Pick<GameState, 'stats' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive' | 'pacifiedRegions'>;
+  state: Pick<GameState, 'stats' | 'statBuffers' | 'hiddenStats' | 'regionLoyalty' | 'malikRewriteActive' | 'pacifiedRegions'>;
   card: Card;
   direction: Direction;
 }): DecisionResolutionResult {
@@ -229,7 +269,7 @@ export function resolveCardDecision(params: {
     choice.regionalEffects = {};
   }
 
-  const nextStats = applyChoiceToStats(state.stats, choice);
+  const { stats: nextStats, statBuffers: nextBuffers } = applyChoiceToStats(state.stats, state.statBuffers, choice);
   const nextRegionLoyalty = applyChoiceToRegionSupport(state.regionLoyalty, choice);
   const nextHiddenStats = applyHiddenStatEffects(state.hiddenStats, choice.hiddenEffects);
 
@@ -238,11 +278,13 @@ export function resolveCardDecision(params: {
     choice,
     next: {
       stats: nextStats,
+      statBuffers: nextBuffers,
       hiddenStats: nextHiddenStats,
       regionLoyalty: nextRegionLoyalty,
     },
     changes: {
       visibleStatChanges: getNumericChanges(state.stats, nextStats),
+      bufferChanges: getNumericChanges(state.statBuffers, nextBuffers),
       regionSupportChanges: getNumericChanges(state.regionLoyalty, nextRegionLoyalty),
     },
     events: {

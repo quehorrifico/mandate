@@ -13,6 +13,7 @@ import {
   selectPolicyCardFromDeck,
 } from './lib/cardSelection';
 import {
+  applyChoiceToStats,
   logResolutionDebug,
   normalizeCard,
   resolveCardDecision,
@@ -37,6 +38,7 @@ import {
   type RegionLoyaltyByRegion,
   type StatKey,
   type Stats,
+  type StatBuffers,
 } from './types';
 
 const ALL_POLICY_CARDS = (cardsData as RawCard[])
@@ -60,6 +62,13 @@ const INITIAL_STATS: Stats = {
   capital: 80,
   sentiment: 80,
   sustainability: 30,
+};
+
+const INITIAL_STAT_BUFFERS: StatBuffers = {
+  authority: 0,
+  capital: 0,
+  sentiment: 0,
+  sustainability: 0,
 };
 
 const INITIAL_HIDDEN_STATS: HiddenStats = createInitialHiddenStats();
@@ -152,6 +161,7 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
   return {
     advisorId,
     stats: { ...INITIAL_STATS },
+    statBuffers: { ...INITIAL_STAT_BUFFERS },
     hiddenStats: { ...INITIAL_HIDDEN_STATS },
     regionLoyalty: createInitialRegionLoyalty(),
     turn: 0,
@@ -231,7 +241,7 @@ function buildOutcomeHint(resolution: DecisionResolutionResult, card: Card): str
   if (topStats.length > 0) {
     parts.push(
       topStats
-        .map((change) => `${getStatHintLabel(change.key)} ${formatSigned(change.delta)}`)
+        .map((change) => `${getStatHintLabel(change.key as StatKey)} ${formatSigned(change.delta)}`)
         .join(', '),
     );
   }
@@ -259,11 +269,18 @@ function getEndingSummary(params: {
   return `${ending.definition.title}\n\n${ending.modularLegacy}\n\n${tenure}`;
 }
 
-function getNoConfidenceResult(turn: number, regionLoyalty: RegionLoyaltyByRegion, threshold: number): ElectionResult {
+function getNoConfidenceResult(turn: number, regionLoyalty: RegionLoyaltyByRegion, threshold: number, isSentimentMaxed: boolean): ElectionResult {
   const forVotes: ElectionVote[] = [];
   const againstVotes: ElectionVote[] = [];
   for (const region of REGION_KEYS) {
-    const loyalty = regionLoyalty[region] ?? 0;
+    let loyalty = regionLoyalty[region] ?? 0;
+    
+    // Sentiment Passive: Mandate Buffer
+    // Static blanket +10 Loyalty boost when Sentiment is maxed
+    if (isSentimentMaxed) {
+      loyalty = Math.min(100, loyalty + 10);
+    }
+
     const mood = getGovernorMood(loyalty);
     const state = getRegionLoyaltyState(loyalty);
     if (state === 'neutral' || state === 'supportive' || state === 'loyalist') {
@@ -362,7 +379,7 @@ export default function App() {
   const needsAdvisorSelection = !selectedAdvisor && game.turn === 0 && !game.gameOver;
   const turnsUntilElection = useMemo(() => ELECTION_INTERVAL - (game.turn % ELECTION_INTERVAL), [game.turn]);
   const currentTerm = useMemo(() => getCurrentTerm(game.turn), [game.turn]);
-  const previewStats = useMemo(() => {
+  const previewState = useMemo(() => {
     if (!previewDirection || !currentCard || game.gameOver) {
       return undefined;
     }
@@ -370,6 +387,7 @@ export default function App() {
     const resolution = resolveCardDecision({
       state: {
         stats: game.stats,
+        statBuffers: game.statBuffers,
         hiddenStats: game.hiddenStats,
         regionLoyalty: game.regionLoyalty,
         malikRewriteActive: game.malikRewriteActive,
@@ -380,17 +398,16 @@ export default function App() {
     });
 
     const nextStats = { ...resolution.next.stats };
+    const nextBuffers = { ...resolution.next.statBuffers };
 
     if (game.martialLawActive) {
-      // Ignore card effects for these 3 metrics, use current game stats minus protocol drain
       nextStats.authority = 100;
       nextStats.capital = Math.max(0, game.stats.capital - 10);
       nextStats.sentiment = Math.max(0, game.stats.sentiment - 10);
-      // nextStats.sustainability is already set from resolution.next.stats and remains subject to card choice
     }
 
-    return nextStats;
-  }, [currentCard, game.gameOver, game.stats, game.hiddenStats, game.regionLoyalty, game.malikRewriteActive, game.martialLawActive, previewDirection]);
+    return { stats: nextStats, buffers: nextBuffers };
+  }, [currentCard, game.gameOver, game.stats, game.statBuffers, game.hiddenStats, game.regionLoyalty, game.malikRewriteActive, game.martialLawActive, previewDirection]);
 
   const dismissElectionModal = useCallback(() => {
     setElectionModal(null);
@@ -613,6 +630,7 @@ export default function App() {
       const resolution = resolveCardDecision({
         state: {
           stats: game.stats,
+          statBuffers: game.statBuffers,
           hiddenStats: game.hiddenStats,
           regionLoyalty: game.regionLoyalty,
           malikRewriteActive: game.malikRewriteActive,
@@ -711,7 +729,7 @@ export default function App() {
       let electionHeadline: string | null = null;
       if (nextTurn % ELECTION_INTERVAL === 0 && nextTurn < FULL_TERM_TURNS) {
         const threshold = selectedAdvisor?.id === 'data_broker' ? 9 : ELECTION_MAJORITY;
-        const noConfidence = getNoConfidenceResult(nextTurn, nextRegionLoyalty, threshold);
+        const noConfidence = getNoConfidenceResult(nextTurn, nextRegionLoyalty, threshold, nextStats.sentiment === 100);
         setElectionModal(noConfidence);
         if (!noConfidence.passed) {
           const endingSummary = getEndingSummary({
@@ -802,25 +820,34 @@ export default function App() {
 
       const headline = [electionHeadline, outcomeHint].filter((part) => Boolean(part)).join(' ');
 
+      const { stats: finalStats, statBuffers: finalBuffers, hiddenStats: finalHidden, regionLoyalty: finalLoyalty } = resolution.next;
+      nextStats = { ...finalStats };
+      const nextBuffers = { ...finalBuffers };
+
+      // Capital Passive: +10 to other 3 core metrics every 5 turns if Capital is 100
+      if (nextStats.capital === 100 && nextTurn % 5 === 0) {
+        // We use the same applyChoiceToStats logic to ensure overflow goes to buffers
+        const passiveEffects = { authority: 10, sentiment: 10, sustainability: 10 };
+        const passiveResult = applyChoiceToStats(nextStats, nextBuffers, { effects: passiveEffects } as any);
+        nextStats = passiveResult.stats;
+        // The result of applyChoiceToStats also updates nextBuffers via reference or return? 
+        // Wait, applyChoiceToStats returns { stats, statBuffers }. 
+        // My previous code ignored the buffer update. I should fix that.
+        Object.assign(nextBuffers, passiveResult.statBuffers);
+      }
+
       setGame({
-        advisorId: game.advisorId,
+        ...game,
         stats: nextStats,
-        hiddenStats: nextHiddenStats,
-        regionLoyalty: nextRegionLoyalty,
+        statBuffers: nextBuffers,
+        hiddenStats: finalHidden,
+        regionLoyalty: finalLoyalty,
         turn: nextTurn,
         deck: nextSelection.deck,
         currentCardId: nextSelection.cardId,
         headline: headline || null,
-        endingSummary: null,
-        gameOver: false,
-        gameOverReason: null,
         malikCooldown: nextMalikCooldown,
-        malikRewriteActive: false, // reset on next card
-        krossLastUsedElectionTerm: game.krossLastUsedElectionTerm,
-        santanaLastUsedElectionTerm: game.santanaLastUsedElectionTerm,
-        santanaLastUsedTurn: game.santanaLastUsedTurn,
-        martialLawActive: game.martialLawActive,
-        pacifiedRegions: game.pacifiedRegions,
+        malikRewriteActive: false,
       });
 
       setPreviewDirection(null);
@@ -1016,7 +1043,12 @@ export default function App() {
     <div className="app-shell">
       <main className="game-layout">
         <header className="top-strip">
-          <StatsBar stats={game.stats} previewStats={previewStats} />
+          <StatsBar 
+            stats={game.stats} 
+            statBuffers={game.statBuffers} 
+            previewStats={previewState?.stats} 
+            previewStatBuffers={previewState?.buffers} 
+          />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-end', fontSize: '0.8rem' }}>
             <button 
               className="settings-btn advisor-top-btn" 
@@ -1044,21 +1076,28 @@ export default function App() {
           </div>
           <ul className="gov-list">
             {sortedRegions.map((region) => {
-              const governor = GOVERNORS[region];
-              const loyalty = game.regionLoyalty[region] ?? 0;
-              const isPacified = game.pacifiedRegions.includes(region);
-              const state = isPacified ? 'pacified' : getRegionLoyaltyState(loyalty);
-              let statusClass = 'gov-status-neutral';
-              if (isPacified) statusClass = 'gov-status-pacified';
-              else if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
-              if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
+                const governor = GOVERNORS[region];
+                let loyalty = game.regionLoyalty[region] ?? 0;
+                
+                // Sentiment Passive: Mandate Buffer
+                // Static blanket +10 Loyalty boost when Sentiment is maxed
+                if (game.stats.sentiment === 100) {
+                  loyalty = Math.min(100, loyalty + 10);
+                }
 
-              return (
-                <li key={region} className="gov-item">
-                  <span>{governor.futureRegionName.toUpperCase()}</span>
-                  <span className={statusClass}>[{state.toUpperCase()}]</span>
-                </li>
-              );
+                const isPacified = game.pacifiedRegions.includes(region);
+                const state = isPacified ? 'pacified' : getRegionLoyaltyState(loyalty);
+                let statusClass = 'gov-status-neutral';
+                if (isPacified) statusClass = 'gov-status-pacified';
+                else if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
+                if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
+
+                return (
+                  <li key={region} className="gov-item">
+                    <span>{governor.futureRegionName.toUpperCase()}</span>
+                    <span className={statusClass}>[{state.toUpperCase()}]</span>
+                  </li>
+                );
             })}
           </ul>
         </aside>
@@ -1092,7 +1131,51 @@ export default function App() {
             isCardRegion={Boolean(currentCard?.governor)}
             onAction={onAdvisorAction}
           />
+
+          {/* 
+            FUTURE FEATURE: Authority Passive (Executive Buffer)
+            If Authority is 100 and a Coalition Card is presented, 
+            display 'BYPASS COALITION' button here. 
+            This button would cost Authority Buffer instead of relying on corruption.
+          */}
         </section>
+
+        <aside className="status-sidebar">
+          <div style={{ borderBottom: '1px dashed var(--border-color)', marginBottom: '1rem', paddingBottom: '0.2rem' }}>
+            <h2 style={{ border: 'none', margin: 0 }}>ACTIVE STATUSES</h2>
+          </div>
+          <ul className="status-list">
+            {game.stats.capital === 100 && (
+              <li className="status-item">
+                <span className="status-name">Sovereign Wealth Buffer</span>
+                <span className="status-desc">Massive financial shock absorber. Grants +10 to other core metrics every 5 turns.</span>
+              </li>
+            )}
+            {game.stats.sentiment === 100 && (
+              <li className="status-item">
+                <span className="status-name">Voter Mandate</span>
+                <span className="status-desc">Extreme public support. All governors receive a +10 loyalty bonus.</span>
+              </li>
+            )}
+            {game.stats.authority === 100 && (
+              <li className="status-item">
+                <span className="status-name">Executive Buffer</span>
+                <span className="status-desc">Executive Override active. Permits bypassing coalition blocks (Future Protocol).</span>
+              </li>
+            )}
+            {game.stats.sustainability === 100 && (
+              <li className="status-item">
+                <span className="status-name">Resilience Buffer</span>
+                <span className="status-desc">Ecological stability. Reduces likelihood of drawing crisis cards (Future Protocol).</span>
+              </li>
+            )}
+            {Object.values(game.stats).every(v => v < 100) && (
+              <li style={{ fontSize: '0.8rem', opacity: 0.5, fontStyle: 'italic', textAlign: 'center', marginTop: '2rem' }}>
+                NO SYSTEM PASSIVES ACTIVE
+              </li>
+            )}
+          </ul>
+        </aside>
 
         {settingsOpen ? (
           <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Game settings">
