@@ -96,6 +96,7 @@ export const CARD_TYPES = [
 export type CardType = (typeof CARD_TYPES)[number];
 
 export type Stats = Record<StatKey, number>;
+export type StatBuffers = Record<StatKey, number>;
 export type Effects = Partial<Record<StatKey, number>>;
 export type RegionalEffects = Partial<Record<RegionKey, number>>;
 export type HiddenStats = Record<HiddenStatKey, number>;
@@ -283,6 +284,7 @@ export type GameOverReason =
 export interface GameState {
   advisorId: AdvisorId | null;
   stats: Stats;
+  statBuffers: StatBuffers;
   hiddenStats: HiddenStats;
   regionLoyalty: RegionLoyaltyByRegion;
   turn: number;

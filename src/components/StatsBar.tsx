@@ -4,11 +4,14 @@ import {
   type ActiveStatKey,
   type StatKey,
   type Stats,
+  type StatBuffers,
 } from '../types';
 
 interface StatsBarProps {
   stats: Stats;
+  statBuffers: StatBuffers;
   previewStats?: Stats;
+  previewStatBuffers?: StatBuffers;
 }
 
 const STAT_ORDER: ActiveStatKey[] = [...ACTIVE_STAT_KEYS];
@@ -27,37 +30,54 @@ function getMeterWidth(statKey: StatKey, value: number): number {
   return Math.max(0, Math.min(100, value));
 }
 
-function renderAsciiBar(percent: number, delta: number, isDanger: boolean) {
+function renderAsciiBar(percent: number, delta: number, isDanger: boolean, buffer: number) {
   const TOTAL_BLOCKS = 10;
   const blocks = Math.max(0, Math.min(TOTAL_BLOCKS, Math.round(percent / 10)));
   const bar = '='.repeat(blocks) + '&nbsp;'.repeat(TOTAL_BLOCKS - blocks);
   
-  let deltaStr = `<span style="display:inline-block; width:5ch; text-align:left"></span>`;
+  let deltaClass = '';
+  let deltaText = '';
   if (delta > 0) {
-    deltaStr = ` <span class="glow-green" style="display:inline-block; width:5ch; text-align:left">(+${delta})</span>`;
+    deltaClass = buffer > 0 ? 'glow-blue' : 'glow-green';
+    deltaText = `(+${delta})`;
   } else if (delta < 0) {
-    deltaStr = ` <span style="color:var(--text-alert); display:inline-block; width:5ch; text-align:left">(${delta})</span>`;
+    deltaClass = 'glow-red';
+    deltaText = `(${delta})`;
   }
   
-  const barClass = isDanger ? 'metric-danger' : 'glow-green';
-  return `<span class="${barClass}">[${bar}]</span>${deltaStr}`;
+  const deltaSpan = `<span class="${deltaClass}" style="display:inline-block; width:6ch; text-align:left; margin-left:1ch">${deltaText}</span>`;
+  
+  let barClass = isDanger ? 'metric-danger' : 'glow-green';
+  if (buffer > 0) {
+    barClass = 'metric-buffer';
+  }
+  return `<span class="${barClass}">[${bar}]</span>${deltaSpan}`;
 }
 
-export function StatsBar({ stats, previewStats }: StatsBarProps) {
+export function StatsBar({ stats, statBuffers, previewStats, previewStatBuffers }: StatsBarProps) {
   return (
     <div className="metrics-container" aria-label="National status">
       {STAT_ORDER.map((key) => {
         const currentValue = stats[key];
+        const currentBuffer = statBuffers[key];
+        
         const displayValue = previewStats ? previewStats[key] : currentValue;
-        const delta = displayValue - currentValue;
+        const displayBuffer = previewStatBuffers ? previewStatBuffers[key] : currentBuffer;
+        
+        const delta = (displayValue + displayBuffer) - (currentValue + currentBuffer);
         const percent = getMeterWidth(key, displayValue);
         const isDanger = percent <= 20;
 
+        let barClass = isDanger ? 'metric-danger' : 'glow-green';
+        if (displayBuffer > 0) {
+          barClass = 'metric-buffer';
+        }
+
         return (
-          <div className={`metric-ascii ${isDanger ? 'metric-danger' : ''}`} key={key} title={STAT_DISPLAY_LABELS[key]}>
+          <div className={`metric-ascii ${barClass}`} key={key} title={STAT_DISPLAY_LABELS[key]}>
             <span className="metric-ascii-label">{SHORT_STAT_NAMES[key]}</span>
             <span 
-              dangerouslySetInnerHTML={{ __html: renderAsciiBar(percent, delta, isDanger) }} 
+              dangerouslySetInnerHTML={{ __html: renderAsciiBar(percent, delta, isDanger, displayBuffer) }} 
             />
           </div>
         );

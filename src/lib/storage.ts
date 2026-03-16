@@ -9,6 +9,7 @@ import {
   type HiddenStats,
   type RegionLoyaltyByRegion,
   type Stats,
+  type StatBuffers,
 } from '../types';
 import { HIDDEN_STAT_DEFAULT, clampHiddenStat, createInitialHiddenStats } from './hiddenStats';
 
@@ -47,6 +48,22 @@ function parseStats(raw: unknown): Stats | null {
       return null;
     }
     parsed[key] = key === 'capital' ? clampCapital(value) : clamp(value);
+  }
+  return parsed;
+}
+
+function parseStatBuffers(raw: unknown): StatBuffers | null {
+  if (!isRecord(raw)) {
+    return null;
+  }
+
+  const parsed = {} as StatBuffers;
+  for (const key of STAT_KEYS) {
+    const value = raw[key];
+    if (typeof value !== 'number') {
+      return null;
+    }
+    parsed[key] = Math.max(0, value); // Buffers are never negative
   }
   return parsed;
 }
@@ -124,6 +141,7 @@ export function loadGameState(): GameState | null {
     }
 
     const stats = parseStats(parsed.stats);
+    const statBuffers = parseStatBuffers(parsed.statBuffers);
     const hiddenStats = parseHiddenStats(parsed.hiddenStats);
     const regionLoyalty = parseRegionLoyalty(parsed.regionLoyalty);
     const deck = parseStringArray(parsed.deck);
@@ -141,6 +159,7 @@ export function loadGameState(): GameState | null {
 
     if (
       !stats ||
+      !statBuffers ||
       !regionLoyalty ||
       !deck ||
       (parsed.hiddenStats !== undefined && parsed.hiddenStats !== null && !hiddenStats) ||
@@ -158,6 +177,7 @@ export function loadGameState(): GameState | null {
     return {
       advisorId: typeof advisorId === 'string' && isAdvisorId(advisorId) ? (advisorId as AdvisorId) : null,
       stats,
+      statBuffers,
       hiddenStats: hiddenStats ?? createInitialHiddenStats(),
       regionLoyalty,
       turn: Math.max(0, Math.floor(turn)),
