@@ -256,7 +256,7 @@ function getEndingSummary(params: {
   const { reason, stats, hiddenStats, turn } = params;
   const ending = resolveEnding({ stats, hiddenStats });
   const tenure = reason === 'completed' ? 'Mandate complete.' : `Mandate ended on card ${turn}.`;
-  return `${ending.definition.title}: ${ending.definition.summary} ${tenure}`;
+  return `${ending.definition.title}\n\n${ending.modularLegacy}\n\n${tenure}`;
 }
 
 function getNoConfidenceResult(turn: number, regionLoyalty: RegionLoyaltyByRegion, threshold: number): ElectionResult {
