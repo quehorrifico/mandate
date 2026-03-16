@@ -1,0 +1,168 @@
+
+import {
+  type AdvisorSelectionBias,
+  type Card,
+  type CardType,
+  POLICY_PILLAR_KEYS,
+  type PolicyPillarKey,
+} from '../types';
+import { HIDDEN_STAT_TO_PILLAR } from './hiddenStats';
+
+export const CARD_TYPES = [
+  'governor_request',
+  'federal_initiative',
+  'fallout',
+  'cross',
+  'maintenance',
+  'synth',
+] as const;
+
+function isCardType(value: string): value is CardType {
+  return (CARD_TYPES as readonly string[]).includes(value as CardType);
+}
+
+export function inferCardType(card: Card): CardType {
+  if (card.type && isCardType(card.type)) {
+    return card.type;
+  }
+
+  const id = typeof card.id === 'string' ? card.id : '';
+  if (id.startsWith('maint-')) {
+    return 'maintenance';
+  }
+  if (id.startsWith('cross-')) {
+    return 'cross';
+  }
+  if (id.startsWith('synth-')) {
+    return 'synth';
+  }
+  if (id.startsWith('fed-')) {
+    return 'federal_initiative';
+  }
+  return 'governor_request';
+}
+
+function getPillarForTag(tag: string): PolicyPillarKey | null {
+  if ((POLICY_PILLAR_KEYS as readonly string[]).includes(tag as PolicyPillarKey)) {
+    return tag as PolicyPillarKey;
+  }
+  return (HIDDEN_STAT_TO_PILLAR as Record<string, PolicyPillarKey>)[tag] ?? null;
+}
+
+export function scoreCardWeight(params: {
+  card: Card;
+  advisorBias: AdvisorSelectionBias | undefined;
+}): number {
+  const { card, advisorBias } = params;
+
+  let weight = 1;
+  const multipliers = advisorBias?.pillarMultipliers ?? {};
+  const cardTags = card.pillarTags ?? [];
+  const seenPillars = new Set<PolicyPillarKey>();
+
+  for (const tag of cardTags) {
+    const pillar = getPillarForTag(tag);
+    if (!pillar || seenPillars.has(pillar)) {
+      continue;
+    }
+    seenPillars.add(pillar);
+
+    const multiplier = multipliers[pillar];
+    // Advisors only add positive bias; they never reduce draw odds.
+    if (typeof multiplier === 'number' && Number.isFinite(multiplier) && multiplier > 1) {
+      weight *= multiplier;
+    }
+  }
+
+  return Math.max(0.001, weight);
+}
+
+export function chooseWeightedCard<T>(
+  items: T[],
+  getWeight: (item: T) => number,
+  rng: () => number = Math.random,
+): T | null {
+  if (!items.length) {
+    return null;
+  }
+
+  let totalWeight = 0;
+  const weighted = items.map((item) => {
+    const weight = Math.max(0, getWeight(item));
+    totalWeight += weight;
+    return { item, weight };
+  });
+
+  if (totalWeight <= 0) {
+    return items[0];
+  }
+
+  let threshold = rng() * totalWeight;
+  for (const entry of weighted) {
+    threshold -= entry.weight;
+    if (threshold <= 0) {
+      return entry.item;
+    }
+  }
+
+  return weighted[weighted.length - 1].item;
+}
+
+export function selectPolicyCardFromDeck(params: {
+  deck: string[];
+  advisorBias: AdvisorSelectionBias | undefined;
+  cardsById: Map<string, Card>;
+  rng?: () => number;
+}): { cardId: string; chosenType: CardType } | null {
+  const { deck, advisorBias, cardsById, rng = Math.random } = params;
+
+  const candidates: Array<{ cardId: string; card: Card; cardType: CardType }> = [];
+  for (const cardId of deck) {
+    const card = cardsById.get(cardId);
+    if (!card) {
+      continue;
+    }
+    candidates.push({ cardId, card, cardType: inferCardType(card) });
+  }
+
+  if (candidates.length === 0) {
+    return null;
+  }
+
+  const selected = chooseWeightedCard(
+    candidates,
+    (entry) =>
+      scoreCardWeight({
+        card: entry.card,
+        advisorBias,
+      }),
+    rng,
+  );
+
+  if (!selected) {
+    return null;
+  }
+
+  return {
+    cardId: selected.cardId,
+    chosenType: selected.cardType,
+  };
+}
+
+export function applyDeckSelection(deck: string[], selectedCardId: string): string[] {
+  if (!selectedCardId) {
+    return [...deck];
+  }
+  return deck.filter((cardId) => cardId !== selectedCardId);
+}
+
+export function createSeededRng(seed: number): () => number {
+  let state = Math.floor(seed) || 1;
+  return () => {
+    state ^= state << 13;
+    state ^= state >>> 17;
+    state ^= state << 5;
+    const positive = Math.abs(state);
+    return (positive % 1_000_000) / 1_000_000;
+  };
+}

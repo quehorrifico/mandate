@@ -11,7 +11,7 @@ import {
   createSeededRng,
   inferCardType,
   selectPolicyCardFromDeck,
-} from './lib/cardSelection.js';
+} from './lib/cardSelection';
 import {
   logResolutionDebug,
   normalizeCard,

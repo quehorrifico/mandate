@@ -82,7 +82,7 @@ export type RegionKey = (typeof REGION_KEYS)[number];
 export type PolicyPillarKey = (typeof POLICY_PILLAR_KEYS)[number];
 export type GovernorProPillars = readonly [PolicyPillarKey, PolicyPillarKey];
 export type HiddenStatKey = (typeof HIDDEN_STAT_KEYS)[number];
-export type CardTagKey = HiddenStatKey | PolicyPillarKey;
+export type CardTagKey = PolicyPillarKey;
 export type AdvisorId = (typeof ADVISOR_IDS)[number];
 
 export const CARD_TYPES = [
@@ -235,8 +235,8 @@ export function normalizeHiddenStatKey(input: string): HiddenStatKey | null {
   return (HIDDEN_STAT_KEYS as readonly string[]).includes(input) ? (input as HiddenStatKey) : null;
 }
 
-export function normalizeCardTagKey(input: string): CardTagKey | null {
-  return normalizeHiddenStatKey(input) ?? normalizePolicyPillarKey(input);
+export function normalizeCardTagKey(input: string): PolicyPillarKey | null {
+  return normalizePolicyPillarKey(input);
 }
 
 export interface CardChoice {

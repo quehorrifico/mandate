@@ -11,7 +11,9 @@ import {
   type RegionKey,
   type RegionLoyaltyByRegion,
   type Stats,
+  normalizeHiddenStatKey,
 } from '../types';
+import { applyHiddenStatEffects } from './hiddenStats';
 
 function clampPercent(value: number): number {
   return Math.max(0, Math.min(100, value));
@@ -61,12 +63,33 @@ function normalizeRegionalEffectsRecord(raw: unknown): NonNullable<CardChoice['r
   return normalized;
 }
 
+function normalizeHiddenEffectsRecord(raw: unknown): NonNullable<CardChoice['hiddenEffects']> {
+  if (!raw || typeof raw !== 'object') {
+    return {};
+  }
+
+  const normalized: NonNullable<CardChoice['hiddenEffects']> = {};
+  for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
+    if (typeof value !== 'number') {
+      continue;
+    }
+    const mappedKey = normalizeHiddenStatKey(key);
+    if (!mappedKey) {
+      continue;
+    }
+    normalized[mappedKey] = (normalized[mappedKey] ?? 0) + value;
+  }
+
+  return normalized;
+}
+
 function normalizeCardChoice(choice: CardChoice): CardChoice {
   return {
     ...choice,
     effects: normalizeEffectsRecord(choice.effects),
     treasuryDelta: typeof choice.treasuryDelta === 'number' ? choice.treasuryDelta : undefined,
     regionalEffects: normalizeRegionalEffectsRecord(choice.regionalEffects),
+    hiddenEffects: normalizeHiddenEffectsRecord(choice.hiddenEffects),
   };
 }
 
@@ -208,13 +231,14 @@ export function resolveCardDecision(params: {
 
   const nextStats = applyChoiceToStats(state.stats, choice);
   const nextRegionLoyalty = applyChoiceToRegionSupport(state.regionLoyalty, choice);
+  const nextHiddenStats = applyHiddenStatEffects(state.hiddenStats, choice.hiddenEffects);
 
   return {
     ok: true,
     choice,
     next: {
       stats: nextStats,
-      hiddenStats: state.hiddenStats,
+      hiddenStats: nextHiddenStats,
       regionLoyalty: nextRegionLoyalty,
     },
     changes: {
