@@ -30,7 +30,7 @@ function getMeterWidth(statKey: StatKey, value: number): number {
   return Math.max(0, Math.min(100, value));
 }
 
-function renderAsciiBar(percent: number, delta: number, isDanger: boolean, buffer: number) {
+function renderAsciiBar(percent: number, delta: number, isDanger: boolean, isMaxed: boolean) {
   const TOTAL_BLOCKS = 10;
   const blocks = Math.max(0, Math.min(TOTAL_BLOCKS, Math.round(percent / 10)));
   const bar = '='.repeat(blocks) + '&nbsp;'.repeat(TOTAL_BLOCKS - blocks);
@@ -38,7 +38,7 @@ function renderAsciiBar(percent: number, delta: number, isDanger: boolean, buffe
   let deltaClass = '';
   let deltaText = '';
   if (delta > 0) {
-    deltaClass = buffer > 0 ? 'glow-blue' : 'glow-green';
+    deltaClass = 'glow-green';
     deltaText = `(+${delta})`;
   } else if (delta < 0) {
     deltaClass = 'glow-red';
@@ -47,8 +47,8 @@ function renderAsciiBar(percent: number, delta: number, isDanger: boolean, buffe
   
   const deltaSpan = `<span class="${deltaClass}" style="display:inline-block; width:6ch; text-align:left; margin-left:1ch">${deltaText}</span>`;
   
-  let barClass = isDanger ? 'metric-danger' : 'glow-green';
-  if (buffer > 0) {
+  let barClass = isDanger ? 'metric-danger' : 'glow-amber';
+  if (isMaxed) {
     barClass = 'metric-buffer';
   }
   return `<span class="${barClass}">[${bar}]</span>${deltaSpan}`;
@@ -66,10 +66,11 @@ export function StatsBar({ stats, statBuffers, previewStats, previewStatBuffers 
         
         const delta = (displayValue + displayBuffer) - (currentValue + currentBuffer);
         const percent = getMeterWidth(key, displayValue);
-        const isDanger = percent <= 20;
+        const isDanger = percent <= 30;
+        const isMaxed = displayValue === 100 || displayBuffer > 0;
 
-        let barClass = isDanger ? 'metric-danger' : 'glow-green';
-        if (displayBuffer > 0) {
+        let barClass = isDanger ? 'metric-danger' : 'glow-amber';
+        if (isMaxed) {
           barClass = 'metric-buffer';
         }
 
@@ -77,7 +78,7 @@ export function StatsBar({ stats, statBuffers, previewStats, previewStatBuffers 
           <div className={`metric-ascii ${barClass}`} key={key} title={STAT_DISPLAY_LABELS[key]}>
             <span className="metric-ascii-label">{SHORT_STAT_NAMES[key]}</span>
             <span 
-              dangerouslySetInnerHTML={{ __html: renderAsciiBar(percent, delta, isDanger, displayBuffer) }} 
+              dangerouslySetInnerHTML={{ __html: renderAsciiBar(percent, delta, isDanger, isMaxed) }} 
             />
           </div>
         );

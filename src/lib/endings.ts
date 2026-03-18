@@ -171,9 +171,7 @@ function generateModularLegacy(hiddenStats: HiddenStats): string {
   const p2 = LEGACY_PARAGRAPHS[sorted[1]];
   const p3 = LEGACY_PARAGRAPHS[sorted[2]];
 
-  const first = p1.charAt(0).toUpperCase() + p1.slice(1);
-
-  return `${first} Meanwhile, ${p2} Ultimately, ${p3}`;
+  return `${p1} ${p2} ${p3}`;
 }
 
 function calculateLegacyTitle(hiddenStats: HiddenStats): string {

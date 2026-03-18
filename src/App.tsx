@@ -274,7 +274,7 @@ function getNoConfidenceResult(turn: number, regionLoyalty: RegionLoyaltyByRegio
   const againstVotes: ElectionVote[] = [];
   for (const region of REGION_KEYS) {
     let loyalty = regionLoyalty[region] ?? 0;
-    
+
     // Sentiment Passive: Mandate Buffer
     // Static blanket +10 Loyalty boost when Sentiment is maxed
     if (isSentimentMaxed) {
@@ -929,12 +929,12 @@ export default function App() {
           <h1 className="intro-title glow-amber">CHANCELLOR'S<br />BRIEFING ROOM</h1>
 
           <div className="intro-section">
-            <p className="intro-section-header glow-green">&gt; SITUATION REPORT</p>
+            <p className="intro-section-header glow-amber">&gt; SITUATION REPORT</p>
             <p className="intro-body">You are the newly appointed Chancellor of the Federal Republic. Fourteen regional governors are watching. The nation's stability rests on four critical systems: <strong>Authority</strong>, <strong>Capital</strong>, <strong>Sentiment</strong>, and <strong>Sustainability</strong>. Let any of them collapse to zero — and so does your administration.</p>
           </div>
 
           <div className="intro-section">
-            <p className="intro-section-header glow-green">&gt; THE FOUR PILLARS</p>
+            <p className="intro-section-header glow-amber">&gt; THE FOUR PILLARS</p>
             <p className="intro-body"><strong>Authority</strong> — The state's grip on its institutions. Erodes when the government is defied, destabilized, or overruled.</p>
             <p className="intro-body"><strong>Capital</strong> — Federal treasury reserves. Funds operations, buyouts, and crisis response. Runs dry faster than you'd expect. Only metric which can have a deficit.</p>
             <p className="intro-body"><strong>Sentiment</strong> — Public approval of the administration. Shaped by how proposals land with the population. Low sentiment makes governors restless.</p>
@@ -942,25 +942,25 @@ export default function App() {
           </div>
 
           <div className="intro-section">
-            <p className="intro-section-header glow-green">&gt; REGIONAL COMMAND</p>
+            <p className="intro-section-header glow-amber">&gt; REGIONAL COMMAND</p>
             <p className="intro-body">Each of the 14 governors operates independently. Their loyalty to the administration shifts based on the decisions you make. A <span className="glow-green">loyalist</span> or neutral governor votes for you in elections. An <span className="gov-status-revolt">angry or revolting</span> governor votes against you.</p>
             <p className="intro-body">Some proposals target a specific governor's region directly. Choose carefully — what placates one region may inflame another.</p>
           </div>
 
           <div className="intro-section">
-            <p className="intro-section-header glow-green">&gt; THREAT ASSESSMENT</p>
+            <p className="intro-section-header glow-amber">&gt; THREAT ASSESSMENT</p>
             <p className="intro-body">Every 25 turns, governors hold a <strong>Vote of No Confidence</strong>. Survive it or the administration falls. Regional governors each have a loyalty rating. Let too many revolt and elections become impossible to win. Your administration lasts <strong>3 turns</strong>. Complete 3 full terms to win.</p>
           </div>
 
           <div className="intro-section">
-            <p className="intro-section-header glow-green">&gt; OPERATIONAL MECHANICS</p>
+            <p className="intro-section-header glow-amber">&gt; OPERATIONAL MECHANICS</p>
             <p className="intro-body">[DRAG RIGHT] — Approve the proposal. Endorse it.</p>
             <p className="intro-body">[DRAG LEFT] — Reject the proposal. Deny it.</p>
             <p className="intro-body">[ARROW KEYS] — Keyboard override available.</p>
           </div>
 
           <div className="intro-section">
-            <p className="intro-section-header glow-green">&gt; ADVISOR SYSTEM</p>
+            <p className="intro-section-header glow-amber">&gt; ADVISOR SYSTEM</p>
             <p className="intro-body">You will be assigned an advisor before play begins. Each advisor has a <strong>passive protocol</strong> that shapes the types of proposals you receive. Some carry an <strong>active protocol</strong> that grants emergency executive capabilities, with postive and negative game-changing effects.</p>
             <p className="intro-body">Choose wisely. Your advisor is not a neutral party. They have an agenda, and it will shape the Federal Republic's future as much as your own decisions do.</p>
           </div>
@@ -1002,14 +1002,14 @@ export default function App() {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', marginBottom: '0.2rem' }}>
                   <span style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{advisor.name.replace(/\s*\([^)]+\)/g, '').toUpperCase()}</span>
-                  <span className="glow-green" style={{ fontSize: '0.8rem' }}>[{advisor.id.toUpperCase()}]</span>
+                  <span className="glow-amber" style={{ fontSize: '0.8rem' }}>[{advisor.id.toUpperCase()}]</span>
                 </div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-main)', fontStyle: 'italic', marginBottom: '0.5rem' }}>
                   "{advisor.pitch}"
                 </div>
                 <div style={{ fontSize: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', borderLeft: '2px solid var(--border-color)', paddingLeft: '0.5rem' }}>
                   <span className="glow-green" style={{ whiteSpace: 'pre-line' }}>{advisor.benefit}</span>
-                  <span className="glow-amber" style={{ whiteSpace: 'pre-line' }}>{advisor.drawback}</span>
+                  <span className="glow-red" style={{ whiteSpace: 'pre-line' }}>{advisor.drawback}</span>
                 </div>
               </button>
             ))}
@@ -1043,29 +1043,29 @@ export default function App() {
     <div className="app-shell">
       <main className="game-layout">
         <header className="top-strip">
-          <StatsBar 
-            stats={game.stats} 
-            statBuffers={game.statBuffers} 
-            previewStats={previewState?.stats} 
-            previewStatBuffers={previewState?.buffers} 
+          <StatsBar
+            stats={game.stats}
+            statBuffers={game.statBuffers}
+            previewStats={previewState?.stats}
+            previewStatBuffers={previewState?.buffers}
           />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-end', fontSize: '0.8rem' }}>
-            <button 
-              className="settings-btn advisor-top-btn" 
+            <button className="settings-btn" type="button" onClick={() => setSettingsOpen(true)} style={{ whiteSpace: 'nowrap' }}>
+              [ SYSTEM.SETTINGS ]
+            </button>
+            <div className="glow-amber">TERM {currentTerm}/3 | NEXT ELECTION IN {turnsUntilElection}</div>
+            <button
+              className="settings-btn advisor-top-btn"
               onClick={() => setAdvisorInfoOpen(true)}
             >
               ADVISOR: {selectedAdvisor ? selectedAdvisor.name.toUpperCase() : 'UNASSIGNED'}
-            </button>
-            <div className="glow-green">TERM {currentTerm}/3 | NEXT ELECTION IN {turnsUntilElection}</div>
-            <button className="settings-btn" type="button" onClick={() => setSettingsOpen(true)} style={{ whiteSpace: 'nowrap' }}>
-              [ SYSTEM.SETTINGS ]
             </button>
           </div>
         </header>
 
         <aside className="gov-sidebar">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px dashed var(--border-color)', marginBottom: '1rem', paddingBottom: '0.2rem' }}>
-            <h2 style={{ border: 'none', margin: 0 }}>REGIONAL GOVERNORS (14)</h2>
+            <h2 style={{ border: 'none', margin: 0 }}>REGIONAL GOVERNORS</h2>
             <button
               className="settings-btn"
               style={{ fontSize: '0.7rem' }}
@@ -1076,28 +1076,28 @@ export default function App() {
           </div>
           <ul className="gov-list">
             {sortedRegions.map((region) => {
-                const governor = GOVERNORS[region];
-                let loyalty = game.regionLoyalty[region] ?? 0;
-                
-                // Sentiment Passive: Mandate Buffer
-                // Static blanket +10 Loyalty boost when Sentiment is maxed
-                if (game.stats.sentiment === 100) {
-                  loyalty = Math.min(100, loyalty + 10);
-                }
+              const governor = GOVERNORS[region];
+              let loyalty = game.regionLoyalty[region] ?? 0;
 
-                const isPacified = game.pacifiedRegions.includes(region);
-                const state = isPacified ? 'pacified' : getRegionLoyaltyState(loyalty);
-                let statusClass = 'gov-status-neutral';
-                if (isPacified) statusClass = 'gov-status-pacified';
-                else if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
-                if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
+              // Sentiment Passive: Mandate Buffer
+              // Static blanket +10 Loyalty boost when Sentiment is maxed
+              if (game.stats.sentiment === 100) {
+                loyalty = Math.min(100, loyalty + 10);
+              }
 
-                return (
-                  <li key={region} className="gov-item">
-                    <span>{governor.futureRegionName.toUpperCase()}</span>
-                    <span className={statusClass}>[{state.toUpperCase()}]</span>
-                  </li>
-                );
+              const isPacified = game.pacifiedRegions.includes(region);
+              const state = isPacified ? 'pacified' : getRegionLoyaltyState(loyalty);
+              let statusClass = 'gov-status-neutral';
+              if (isPacified) statusClass = 'gov-status-pacified';
+              else if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
+              if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
+
+              return (
+                <li key={region} className="gov-item">
+                  <span>{governor.futureRegionName.toUpperCase()}</span>
+                  <span className={statusClass}>[{state.toUpperCase()}]</span>
+                </li>
+              );
             })}
           </ul>
         </aside>
@@ -1147,25 +1147,25 @@ export default function App() {
           <ul className="status-list">
             {game.stats.capital === 100 && (
               <li className="status-item">
-                <span className="status-name">Sovereign Wealth Buffer</span>
+                <span className="status-name">Capital Overflow</span>
                 <span className="status-desc">Massive financial shock absorber. Grants +10 to other core metrics every 5 turns.</span>
               </li>
             )}
             {game.stats.sentiment === 100 && (
               <li className="status-item">
-                <span className="status-name">Voter Mandate</span>
+                <span className="status-name">Sentiment Overflow</span>
                 <span className="status-desc">Extreme public support. All governors receive a +10 loyalty bonus.</span>
               </li>
             )}
             {game.stats.authority === 100 && (
               <li className="status-item">
-                <span className="status-name">Executive Buffer</span>
+                <span className="status-name">Authority Overflow</span>
                 <span className="status-desc">Executive Override active. Permits bypassing coalition blocks (Future Protocol).</span>
               </li>
             )}
             {game.stats.sustainability === 100 && (
               <li className="status-item">
-                <span className="status-name">Resilience Buffer</span>
+                <span className="status-name">Sustainability Overflow</span>
                 <span className="status-desc">Ecological stability. Reduces likelihood of drawing crisis cards (Future Protocol).</span>
               </li>
             )}
@@ -1181,7 +1181,7 @@ export default function App() {
           <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Game settings">
             <div className="settings-modal-panel">
               <h2 className="glow-amber" style={{ borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem', marginTop: 0 }}>[ SYSTEM.SETTINGS ]</h2>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-alert)' }}>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-main)' }}>
                 Initiate a new administration. Warning: all current progress will be cleared and control will return to advisor selection.
               </p>
               <div className="settings-actions" style={{ gap: '1rem' }}>
@@ -1205,7 +1205,7 @@ export default function App() {
               <h1 className="intro-title glow-amber" style={{ fontSize: '1.5rem', marginTop: '1rem' }}>
                 {selectedAdvisor.name.toUpperCase()}
               </h1>
-              
+
               <div className="intro-section" style={{ marginTop: '1rem' }}>
                 <p className="intro-section-header glow-green">&gt; PROFILE PREVIEW</p>
                 <p className="intro-body" style={{ fontStyle: 'italic' }}>"{selectedAdvisor.pitch}"</p>

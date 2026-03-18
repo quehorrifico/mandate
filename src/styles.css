@@ -1,18 +1,18 @@
 :root {
   --bg-dark: #0a0a0a;
   --bg-panel: #111111;
-  --text-main: #00ff41;
+  --text-main: #ffb000;
   /* Terminal green */
-  --text-alert: #ffb000;
+  --text-alert: #ff003c;
   /* Amber */
   --text-muted: #2d6b38;
-  --border-color: #00ff41;
-  --border-alert: #ffb000;
+  --border-color: #ffb000;
+  --border-alert: #ff003c;
 
-  --authority-color: #00ff41;
-  --capital-color: #00ff41;
-  --sentiment-color: #00ff41;
-  --sustainability-color: #00ff41;
+  --authority-color: #ffb000;
+  --capital-color: #ffb000;
+  --sentiment-color: #ffb000;
+  --sustainability-color: #ffb000;
 }
 
 *,
@@ -39,7 +39,7 @@ body {
   background-image: linear-gradient(transparent 50%,
       rgba(0, 0, 0, 0.25) 50%);
   background-size: 100% 4px;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  text-shadow: 0 0 5px rgba(255, 176, 0, 0.5);
 }
 
 .app-shell {
@@ -92,7 +92,7 @@ body {
   border: 1px solid var(--border-color);
   background: var(--bg-panel);
   padding: 0.75rem 1rem;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 10px rgba(255, 176, 0, 0.1);
   position: relative;
   z-index: 50;
 }
@@ -132,7 +132,7 @@ body {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 10px rgba(255, 176, 0, 0.1);
   overflow-y: auto;
   position: relative;
   z-index: 40;
@@ -152,7 +152,7 @@ body {
   border-bottom: 1px dashed var(--border-color);
   padding-bottom: 0.5rem;
   text-transform: uppercase;
-  color: var(--text-alert);
+  color: var(--text-main);
   text-shadow: 0 0 5px rgba(255, 176, 0, 0.5);
 }
 
@@ -184,8 +184,8 @@ body {
 }
 
 .gov-status-pacified {
-  color: #00a2ff;
-  text-shadow: 0 0 5px rgba(0, 162, 255, 0.5);
+  color: #00ff41;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
 .gov-status-neutral {
@@ -221,7 +221,7 @@ body {
 /* THE DECISION CARD */
 .decision-terminal {
   width: min(80%, 700px);
-  border: 1px solid var(--border-alert);
+  border: 1px solid var(--border-color);
   background: var(--bg-panel);
   box-shadow: 0 0 15px rgba(255, 176, 0, 0.15);
   display: flex;
@@ -246,7 +246,7 @@ body {
 }
 
 .decision-terminal-header {
-  background: var(--text-alert);
+  background: var(--text-main);
   color: #000;
   padding: 0.5rem 1rem;
   font-weight: bold;
@@ -260,7 +260,7 @@ body {
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.5;
-  color: var(--text-alert);
+  color: var(--text-main);
   text-shadow: 0 0 5px rgba(255, 176, 0, 0.5);
 }
 
@@ -268,19 +268,19 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-  border-top: 1px dashed var(--border-alert);
+  border-top: 1px dashed var(--border-color);
   font-size: 0.8rem;
 }
 
 .swipe-hint-left {
-  color: var(--text-alert);
+  color: var(--text-main);
   text-align: left;
 }
 
 .swipe-hint-right {
   color: var(--text-main);
   text-align: right;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  text-shadow: 0 0 5px rgba(255, 176, 0, 0.5);
 }
 
 /* ADVISOR ACTION BUTTON */
@@ -293,13 +293,13 @@ body {
   padding: 0.75rem 2rem;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.2), 0 0 10px rgba(0, 255, 65, 0.2);
+  box-shadow: inset 0 0 10px rgba(255, 176, 0, 0.2), 0 0 10px rgba(255, 176, 0, 0.2);
   transition: all 0.2s ease;
 }
 
 .advisor-action-btn:hover:not(:disabled) {
-  background: rgba(0, 255, 65, 0.1);
-  box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.4), 0 0 20px rgba(0, 255, 65, 0.4);
+  background: rgba(255, 176, 0, 0.1);
+  box-shadow: inset 0 0 20px rgba(255, 176, 0, 0.4), 0 0 20px rgba(255, 176, 0, 0.4);
 }
 
 .advisor-action-btn:disabled {
@@ -329,18 +329,18 @@ body {
 
 /* UTILS */
 .glow-amber {
-  color: var(--text-alert);
+  color: var(--text-main);
   text-shadow: 0 0 5px rgba(255, 176, 0, 0.5);
 }
 
 .glow-green {
-  color: var(--text-main);
+  color: #00ff41;
   text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
 .glow-blue {
-  color: #00a2ff;
-  text-shadow: 0 0 5px rgba(0, 162, 255, 0.5);
+  color: #00ff41;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
 .glow-red {
@@ -388,21 +388,21 @@ body {
 /* OVERRIDE SETTINGS BTN */
 .settings-btn {
   background: transparent;
-  border: 1px solid var(--border-alert);
-  color: var(--text-alert);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
   padding: 0.5rem 1rem;
   font-family: inherit;
   cursor: pointer;
 }
 
 .settings-btn:hover {
-  background: var(--text-alert);
-  color: #000 !important;
+  background: var(--text-main);
+  color: var(--bg-dark) !important;
 }
 
 .advisor-top-btn {
-  color: var(--text-alert);
-  border-color: var(--border-alert);
+  color: var(--text-main);
+  border-color: var(--border-color);
 }
 
 .settings-modal {
@@ -422,7 +422,7 @@ body {
   background: var(--bg-panel);
   border: 1px solid var(--border-color);
   padding: 2rem;
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+  box-shadow: 0 0 20px rgba(255, 176, 0, 0.2);
   max-width: 500px;
   width: 100%;
   max-height: 90vh;
@@ -451,7 +451,7 @@ body {
 }
 
 .intro-panel {
-  border: 1px solid var(--border-alert);
+  border: 1px solid var(--border-color);
   background: var(--bg-panel);
   box-shadow: 0 0 40px rgba(255, 176, 0, 0.15), 0 0 80px rgba(0, 0, 0, 0.8);
   padding: 2.5rem;
@@ -504,7 +504,7 @@ body {
 
 .intro-body {
   font-size: 0.9rem;
-  color: var(--text-alert);
+  color: var(--text-main);
   line-height: 1.6;
   margin: 0;
   text-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
@@ -518,7 +518,7 @@ body {
   flex-direction: column;
   gap: 0.4rem;
   font-size: 0.9rem;
-  color: var(--text-alert);
+  color: var(--text-main);
   text-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
 }
 
@@ -562,8 +562,8 @@ body {
 }
 
 .metric-buffer {
-  color: #00a2ff !important;
-  text-shadow: 0 0 10px rgba(0, 162, 255, 0.8) !important;
+  color: #00ff41 !important;
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.8) !important;
 }
 
 @keyframes danger-pulse {
@@ -601,14 +601,14 @@ body {
 }
 
 .status-item {
-  color: #00a2ff;
-  border-left: 2px solid #00a2ff;
+  color: #00ff41;
+  border-left: 2px solid #00ff41;
   padding-left: 0.75rem;
   font-size: 0.85rem;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  text-shadow: 0 0 5px rgba(0, 162, 255, 0.3);
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
 }
 
 .status-name {

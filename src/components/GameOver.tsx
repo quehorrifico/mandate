@@ -44,7 +44,7 @@ export function GameOver({ reason, turns, endingSummary, onRestart }: GameOverPr
         </h1>
 
         <div className="intro-section">
-          <p className="intro-section-header glow-green">&gt; STATUS REPORT</p>
+          <p className="intro-section-header glow-amber">&gt; STATUS REPORT</p>
           <p className="intro-body">{getReasonText(reason)}</p>
           <p className="intro-body" style={{ marginTop: '0.5rem' }}>
             <strong>Total Cards Resolved:</strong> {turns}
@@ -53,8 +53,8 @@ export function GameOver({ reason, turns, endingSummary, onRestart }: GameOverPr
 
         {endingSummary && (
           <div className="intro-section">
-            <p className="intro-section-header glow-green">&gt; HISTORICAL RECORD</p>
-            <p className="intro-body" style={{ fontStyle: 'italic', lineHeight: '1.6' }}>{endingSummary}</p>
+            <p className="intro-section-header glow-amber">&gt; HISTORICAL RECORD</p>
+            <p className="intro-body" style={{ fontStyle: 'italic', lineHeight: '1.6', whiteSpace: 'pre-line' }}>{endingSummary}</p>
           </div>
         )}
 

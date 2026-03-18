@@ -364,7 +364,7 @@ export function DecisionCard({
 
   const activeBodyRender = (
     malikRewriteActive ? (
-      <p className="glow-green" style={{ whiteSpace: 'pre-line' }}>{displayPrompt}</p>
+      <p className="glow-amber" style={{ whiteSpace: 'pre-line' }}>{displayPrompt}</p>
     ) : (
       displayPrompt
     )
@@ -390,7 +390,7 @@ export function DecisionCard({
           {requestGovernor
             ? `GOVERNOR PROMPT | ${requestGovernor.futureRegionName.toUpperCase()}`
             : 'FEDERAL POLICY COUNCIL'}
-          {malikRewriteActive && <span className="glow-green" style={{ float: 'right' }}>[ REWRITTEN ]</span>}
+          {malikRewriteActive && <span className="glow-amber" style={{ float: 'right' }}>[ REWRITTEN ]</span>}
         </div>
         <div className="decision-terminal-body">
           {activeBodyRender}
@@ -398,8 +398,8 @@ export function DecisionCard({
         <div className="decision-terminal-footer">
           {(!isDataBroker || isPacified) ? (
             <>
-              <span className={isPacified ? 'glow-green' : ''} style={isPacified ? {} : { color: '#ff003c', textShadow: '0 0 5px rgba(255, 0, 60, 0.5)' }}>&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
-              <span className="glow-green">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
+              <span className="glow-amber">&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
+              <span className="glow-amber">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
             </>
           ) : (
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', fontSize: '0.75rem', fontFamily: 'monospace' }}>
