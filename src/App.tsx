@@ -26,6 +26,7 @@ import {
   REGION_KEYS,
   getRegionLoyaltyState,
   isAdvisorId,
+  HIDDEN_STAT_KEYS,
   type AdvisorId,
   type AdvisorSelectionBias,
   type Card,
@@ -35,6 +36,7 @@ import {
   type HiddenStats,
   type HiddenStatKey,
   type RawCard,
+  type RegionKey,
   type RegionLoyaltyByRegion,
   type StatKey,
   type Stats,
@@ -163,6 +165,7 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     stats: { ...INITIAL_STATS },
     statBuffers: { ...INITIAL_STAT_BUFFERS },
     hiddenStats: { ...INITIAL_HIDDEN_STATS },
+    corruption: 0,
     regionLoyalty: createInitialRegionLoyalty(),
     turn: 0,
     deck: firstSelection.deck,
@@ -178,6 +181,8 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
     santanaLastUsedElectionTerm: null,
     santanaLastUsedTurn: null,
     martialLawActive: false,
+    unlockedDirection: null,
+    activeUnlock: null,
   };
 }
 
@@ -316,6 +321,7 @@ export default function App() {
   const [showIntro, setShowIntro] = useState<boolean>(() => {
     try { return !window.sessionStorage.getItem('fra-intro-seen'); } catch { return true; }
   });
+
   const drawRng = useMemo(() => {
     if (typeof window === 'undefined') {
       return Math.random;
@@ -407,7 +413,95 @@ export default function App() {
     }
 
     return { stats: nextStats, buffers: nextBuffers };
+    return { stats: nextStats, buffers: nextBuffers };
   }, [currentCard, game.gameOver, game.stats, game.statBuffers, game.hiddenStats, game.regionLoyalty, game.malikRewriteActive, game.martialLawActive, previewDirection]);
+
+  const activeCoalitions = useMemo(() => {
+    const lowStats = HIDDEN_STAT_KEYS.filter((s) => game.hiddenStats[s] < 10);
+    if (lowStats.length === 0) return [];
+
+    // Filter for stats that are actually shared by 2 or more governors
+    const statsWithBlocs = lowStats.filter((s) => {
+      const governorCount = REGION_KEYS.filter((r) => GOVERNORS[r].proHiddenStats.includes(s)).length;
+      return governorCount >= 2;
+    });
+
+    if (statsWithBlocs.length === 0) return [];
+
+    // Pick the SINGLE WORST stat among those that have a multi-governor bloc
+    const sorted = statsWithBlocs.sort((a, b) => (game.hiddenStats[a] as number) - (game.hiddenStats[b] as number));
+    return [sorted[0]];
+  }, [game.hiddenStats]);
+
+  const coalitionGovernors = useMemo(() => {
+    return REGION_KEYS.filter((r) =>
+      GOVERNORS[r].proHiddenStats.some((s) => activeCoalitions.includes(s))
+    );
+  }, [activeCoalitions]);
+
+  const isBlocked = useCallback(
+    (choice: import('./types').CardChoice | undefined) => {
+      if (!choice || !choice.hiddenEffects) return false;
+      return Object.entries(choice.hiddenEffects).some(
+        ([stat, delta]) =>
+          (delta as number) < 0 && activeCoalitions.includes(stat as HiddenStatKey)
+      );
+    },
+    [activeCoalitions]
+  );
+
+  const leftBlocked = currentCard ? isBlocked(currentCard.left) : false;
+  const rightBlocked = currentCard ? isBlocked(currentCard.right) : false;
+
+
+
+  const canBribe = game.stats.capital >= 20 && game.corruption < 100;
+  const canForce = (game.statBuffers.authority ?? 0) >= 10 && game.stats.authority === 100;
+
+  const handleBribe = useCallback((direction: Direction) => {
+    if (!canBribe || game.unlockedDirection === direction) return;
+    setGame(prev => {
+      const nextCorruption = (prev.corruption ?? 0) + 15;
+      if (nextCorruption >= 100) {
+        return {
+          ...prev,
+          corruption: nextCorruption,
+          gameOver: true,
+          gameOverReason: 'impeachment',
+          headline: 'Administration collapsed due to exposed corruption.',
+          endingSummary: getEndingSummary({
+            reason: 'impeachment',
+            stats: prev.stats,
+            hiddenStats: prev.hiddenStats,
+            turn: prev.turn,
+          })
+        };
+      }
+      return {
+        ...prev,
+        stats: {
+          ...prev.stats,
+          capital: Math.max(0, prev.stats.capital - 20)
+        },
+        corruption: nextCorruption,
+        unlockedDirection: direction,
+        activeUnlock: 'bribe'
+      };
+    });
+  }, [canBribe, game.unlockedDirection]);
+
+  const handleForce = useCallback((direction: Direction) => {
+    if (!canForce || game.unlockedDirection === direction) return;
+    setGame(prev => ({
+      ...prev,
+      statBuffers: {
+        ...prev.statBuffers,
+        authority: Math.max(0, (prev.statBuffers.authority ?? 0) - 10)
+      },
+      unlockedDirection: direction,
+      activeUnlock: 'force'
+    }));
+  }, [canForce, game.unlockedDirection]);
 
   const dismissElectionModal = useCallback(() => {
     setElectionModal(null);
@@ -627,6 +721,9 @@ export default function App() {
         return;
       }
 
+      if (direction === 'left' && leftBlocked && game.unlockedDirection !== 'left') return;
+      if (direction === 'right' && rightBlocked && game.unlockedDirection !== 'right') return;
+
       const resolution = resolveCardDecision({
         state: {
           stats: game.stats,
@@ -657,7 +754,8 @@ export default function App() {
         return;
       }
 
-      let nextStats = resolution.next.stats;
+      let nextStats = { ...resolution.next.stats };
+      const nextBuffers = { ...resolution.next.statBuffers };
       const nextHiddenStats = { ...resolution.next.hiddenStats };
       const nextRegionLoyalty = { ...resolution.next.regionLoyalty };
 
@@ -693,6 +791,48 @@ export default function App() {
         });
       }
 
+      // --- COALITION SYNC LOGIC ---
+      const activeLowStats = HIDDEN_STAT_KEYS.filter((s) => nextHiddenStats[s] < 10);
+      const statsWithBlocs = activeLowStats.filter((s) => {
+        const governorCount = REGION_KEYS.filter((r) => GOVERNORS[r].proHiddenStats.includes(s)).length;
+        return governorCount >= 2;
+      });
+
+      let syncGovernors: RegionKey[] = [];
+      if (statsWithBlocs.length > 0) {
+        // Pick the primary active grievance for synchronizing loyalty
+        const worstStat = statsWithBlocs.sort((a, b) => (nextHiddenStats[a] as number) - (nextHiddenStats[b] as number))[0];
+        syncGovernors = REGION_KEYS.filter((r) => GOVERNORS[r].proHiddenStats.includes(worstStat));
+      }
+
+      if (syncGovernors.length > 0) {
+        let collectiveDelta = 0;
+        if (resolution.changes.regionSupportChanges) {
+          for (const change of resolution.changes.regionSupportChanges) {
+            if (syncGovernors.includes(change.key)) {
+              collectiveDelta += change.delta;
+            }
+          }
+        }
+
+        let baseLoyalty = 100;
+        for (const g of syncGovernors) {
+          baseLoyalty = Math.min(baseLoyalty, game.regionLoyalty[g] ?? 50);
+        }
+
+        // If the coalition is newly formed or includes new members not in revolt, 
+        // collapse their collective loyalty to the 'revolt' threshold (15).
+        if (baseLoyalty > 20) {
+          baseLoyalty = 15;
+        }
+
+        const newSyncedLoyalty = Math.max(0, Math.min(100, baseLoyalty + collectiveDelta));
+        for (const g of syncGovernors) {
+          nextRegionLoyalty[g] = newSyncedLoyalty;
+        }
+      }
+      // ----------------------------
+
       const nextTurn = game.turn + 1;
       const outcomeHint = buildOutcomeHint(resolution, currentCard);
 
@@ -725,6 +865,9 @@ export default function App() {
         setPreviewDirection(null);
         return;
       }
+
+      // Reset unlock state on card swipe - now handled inside setGame
+
 
       let electionHeadline: string | null = null;
       if (nextTurn % ELECTION_INTERVAL === 0 && nextTurn < FULL_TERM_TURNS) {
@@ -820,9 +963,6 @@ export default function App() {
 
       const headline = [electionHeadline, outcomeHint].filter((part) => Boolean(part)).join(' ');
 
-      const { stats: finalStats, statBuffers: finalBuffers, hiddenStats: finalHidden, regionLoyalty: finalLoyalty } = resolution.next;
-      nextStats = { ...finalStats };
-      const nextBuffers = { ...finalBuffers };
 
       // Capital Passive: +10 to other 3 core metrics every 5 turns if Capital is 100
       if (nextStats.capital === 100 && nextTurn % 5 === 0) {
@@ -830,8 +970,8 @@ export default function App() {
         const passiveEffects = { authority: 10, sentiment: 10, sustainability: 10 };
         const passiveResult = applyChoiceToStats(nextStats, nextBuffers, { effects: passiveEffects } as any);
         nextStats = passiveResult.stats;
-        // The result of applyChoiceToStats also updates nextBuffers via reference or return? 
-        // Wait, applyChoiceToStats returns { stats, statBuffers }. 
+        // The result of applyChoiceToStats also updates nextBuffers via reference or return?
+        // Wait, applyChoiceToStats returns { stats, statBuffers }.
         // My previous code ignored the buffer update. I should fix that.
         Object.assign(nextBuffers, passiveResult.statBuffers);
       }
@@ -840,14 +980,16 @@ export default function App() {
         ...game,
         stats: nextStats,
         statBuffers: nextBuffers,
-        hiddenStats: finalHidden,
-        regionLoyalty: finalLoyalty,
+        hiddenStats: nextHiddenStats,
+        regionLoyalty: nextRegionLoyalty,
         turn: nextTurn,
         deck: nextSelection.deck,
         currentCardId: nextSelection.cardId,
         headline: headline || null,
         malikCooldown: nextMalikCooldown,
         malikRewriteActive: false,
+        unlockedDirection: null, // Clear unlock state on card swipe
+        activeUnlock: null, // Clear active unlock state on card swipe
       });
 
       setPreviewDirection(null);
@@ -1075,30 +1217,51 @@ export default function App() {
             </button>
           </div>
           <ul className="gov-list">
-            {sortedRegions.map((region) => {
-              const governor = GOVERNORS[region];
-              let loyalty = game.regionLoyalty[region] ?? 0;
+            {(() => {
+              const renderGovernorItem = (region: RegionKey) => {
+                const governor = GOVERNORS[region];
+                let loyalty = game.regionLoyalty[region] ?? 0;
 
-              // Sentiment Passive: Mandate Buffer
-              // Static blanket +10 Loyalty boost when Sentiment is maxed
-              if (game.stats.sentiment === 100) {
-                loyalty = Math.min(100, loyalty + 10);
+                if (game.stats.sentiment === 100) {
+                  loyalty = Math.min(100, loyalty + 10);
+                }
+
+                const isPacified = game.pacifiedRegions.includes(region);
+                const state = isPacified ? 'pacified' : getRegionLoyaltyState(loyalty);
+                let statusClass = 'gov-status-neutral';
+                if (isPacified) statusClass = 'gov-status-pacified';
+                else if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
+                if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
+
+                return (
+                  <li key={region} className="gov-item">
+                    <span>{governor.futureRegionName.toUpperCase()}</span>
+                    <span className={statusClass}>[{state.toUpperCase()}]</span>
+                  </li>
+                );
+              };
+
+              if (coalitionGovernors.length > 0) {
+                const coalition = sortedRegions.filter(r => coalitionGovernors.includes(r));
+                const others = sortedRegions.filter(r => !coalitionGovernors.includes(r));
+
+                return (
+                  <>
+                    <li className="coalition-box">
+                      <div className="gov-status-revolt" style={{ fontSize: '0.7rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+                        [ COALITION BLOC: {activeCoalitions.map(s => s.replace(/_/g, ' ')).join(', ').toUpperCase()} ]
+                      </div>
+                      <ul className="gov-list">
+                        {coalition.map(renderGovernorItem)}
+                      </ul>
+                    </li>
+                    {others.map(renderGovernorItem)}
+                  </>
+                );
               }
 
-              const isPacified = game.pacifiedRegions.includes(region);
-              const state = isPacified ? 'pacified' : getRegionLoyaltyState(loyalty);
-              let statusClass = 'gov-status-neutral';
-              if (isPacified) statusClass = 'gov-status-pacified';
-              else if (state === 'loyalist' || state === 'supportive') statusClass = 'gov-status-loyal';
-              if (state === 'revolt' || state === 'angry') statusClass = 'gov-status-revolt';
-
-              return (
-                <li key={region} className="gov-item">
-                  <span>{governor.futureRegionName.toUpperCase()}</span>
-                  <span className={statusClass}>[{state.toUpperCase()}]</span>
-                </li>
-              );
-            })}
+              return sortedRegions.map(renderGovernorItem);
+            })()}
           </ul>
         </aside>
 
@@ -1111,6 +1274,14 @@ export default function App() {
               malikRewriteActive={game.malikRewriteActive}
               isPacified={Boolean(currentCard.governor && game.pacifiedRegions.includes(currentCard.governor))}
               isDataBroker={selectedAdvisor?.id === 'data_broker'}
+              leftBlocked={leftBlocked}
+              rightBlocked={rightBlocked}
+              unlockedDirection={game.unlockedDirection}
+              activeUnlock={game.activeUnlock}
+              onBribe={handleBribe}
+              onForce={handleForce}
+              canBribe={canBribe}
+              canForce={canForce}
               onChoose={onChoose}
               onPreviewDirection={setPreviewDirection}
             />
@@ -1160,13 +1331,25 @@ export default function App() {
             {game.stats.authority === 100 && (
               <li className="status-item">
                 <span className="status-name">Authority Overflow</span>
-                <span className="status-desc">Executive Override active. Permits bypassing coalition blocks (Future Protocol).</span>
+                <span className="status-desc">Executive Override active. Permits bypassing coalition blocks by consuming Authority Buffer.</span>
               </li>
             )}
             {game.stats.sustainability === 100 && (
               <li className="status-item">
                 <span className="status-name">Sustainability Overflow</span>
-                <span className="status-desc">Ecological stability. Reduces likelihood of drawing crisis cards (Future Protocol).</span>
+                <span className="status-desc">Ecological harmony. Passively repairs random negative metrics each cycle.</span>
+              </li>
+            )}
+            {game.corruption > 0 && (
+              <li className="status-item" style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--border-color)', paddingTop: '1rem' }}>
+                <span className="status-name gov-status-revolt" style={{ fontSize: '1.1rem' }}>CORRUPTION LEVEL</span>
+                <span className="status-desc glow-amber">Bribes to bypass coalition blocks erode public trust. Impeachment at 100%.</span>
+                <div style={{ width: '100%', height: '18px', backgroundColor: 'var(--bg-main)', border: '1px solid var(--border-color)', position: 'relative', marginTop: '0.5rem' }}>
+                  <div style={{ width: `${game.corruption}%`, height: '100%', backgroundColor: 'var(--text-alert)' }}></div>
+                  <span style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontWeight: 'bold', fontSize: '0.75rem', mixBlendMode: 'difference', color: '#fff' }}>
+                    {game.corruption}%
+                  </span>
+                </div>
               </li>
             )}
             {Object.values(game.stats).every(v => v < 100) && (
@@ -1174,6 +1357,24 @@ export default function App() {
                 NO SYSTEM PASSIVES ACTIVE
               </li>
             )}
+
+            {/* DEBUG OVERLAY */}
+            <li className="status-item" style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--border-color)', paddingTop: '1rem' }}>
+              <span className="status-name glow-amber" style={{ fontSize: '0.9rem', color: '#00ffff' }}>DEBUG: LOWEST HIDDEN STATS</span>
+              <div style={{ fontSize: '0.75rem', fontFamily: 'monospace', color: '#00ffff', display: 'flex', flexDirection: 'column', marginTop: '0.5rem', opacity: 0.8 }}>
+                {Object.entries(game.hiddenStats)
+                  .sort((a, b) => (a[1] as number) - (b[1] as number))
+                  .slice(0, 5)
+                  .map(([stat, val]) => (
+                    <div key={stat} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
+                      <span style={{ textTransform: 'uppercase' }}>{stat}:</span>
+                      <span>{val as number}</span>
+                    </div>
+                  ))
+                }
+              </div>
+            </li>
+
           </ul>
         </aside>
 

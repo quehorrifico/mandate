@@ -179,6 +179,7 @@ export function loadGameState(): GameState | null {
       stats,
       statBuffers,
       hiddenStats: hiddenStats ?? createInitialHiddenStats(),
+      corruption: typeof parsed.corruption === 'number' ? parsed.corruption : 0,
       regionLoyalty,
       turn: Math.max(0, Math.floor(turn)),
       deck,
@@ -194,6 +195,8 @@ export function loadGameState(): GameState | null {
       santanaLastUsedElectionTerm: typeof parsed.santanaLastUsedElectionTerm === 'number' ? parsed.santanaLastUsedElectionTerm : null,
       santanaLastUsedTurn: typeof parsed.santanaLastUsedTurn === 'number' ? parsed.santanaLastUsedTurn : null,
       martialLawActive: typeof parsed.martialLawActive === 'boolean' ? parsed.martialLawActive : false,
+      unlockedDirection: (parsed.unlockedDirection === 'left' || parsed.unlockedDirection === 'right') ? parsed.unlockedDirection : null,
+      activeUnlock: (parsed.activeUnlock === 'bribe' || parsed.activeUnlock === 'force') ? parsed.activeUnlock : null,
     };
   } catch {
     return null;

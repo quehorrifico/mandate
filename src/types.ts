@@ -82,6 +82,7 @@ export type RegionKey = (typeof REGION_KEYS)[number];
 export type PolicyPillarKey = (typeof POLICY_PILLAR_KEYS)[number];
 export type GovernorProPillars = readonly [PolicyPillarKey, PolicyPillarKey];
 export type HiddenStatKey = (typeof HIDDEN_STAT_KEYS)[number];
+export type GovernorProHiddenStats = readonly [HiddenStatKey, HiddenStatKey, HiddenStatKey];
 export type CardTagKey = PolicyPillarKey;
 export type AdvisorId = (typeof ADVISOR_IDS)[number];
 
@@ -278,6 +279,7 @@ export type GameOverReason =
   | 'sentiment'
   | 'sustainability'
   | 'no_confidence'
+  | 'impeachment'
   | 'completed'
   | null;
 
@@ -286,6 +288,7 @@ export interface GameState {
   stats: Stats;
   statBuffers: StatBuffers;
   hiddenStats: HiddenStats;
+  corruption: number;
   regionLoyalty: RegionLoyaltyByRegion;
   turn: number;
   deck: string[];
@@ -301,4 +304,6 @@ export interface GameState {
   santanaLastUsedElectionTerm: number | null;
   santanaLastUsedTurn: number | null;
   martialLawActive: boolean;
+  unlockedDirection: Direction | null;
+  activeUnlock: 'bribe' | 'force' | null;
 }
