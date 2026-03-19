@@ -29,6 +29,14 @@ interface DecisionCardProps {
   malikRewriteActive?: boolean;
   isPacified?: boolean;
   isDataBroker?: boolean;
+  leftBlocked?: boolean;
+  rightBlocked?: boolean;
+  unlockedDirection?: Direction | null;
+  activeUnlock?: 'bribe' | 'force' | null;
+  canBribe?: boolean;
+  canForce?: boolean;
+  onBribe?(direction: Direction): void;
+  onForce?(direction: Direction): void;
   onChoose(direction: Direction): void;
   onPreviewDirection(direction: Direction | null): void;
 }
@@ -54,8 +62,16 @@ export function DecisionCard({
   malikRewriteActive,
   isPacified,
   isDataBroker,
+  leftBlocked,
+  rightBlocked,
+  unlockedDirection,
+  canBribe,
+  canForce,
+  onBribe,
+  onForce,
   onChoose,
   onPreviewDirection,
+  activeUnlock,
 }: DecisionCardProps) {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -103,6 +119,9 @@ export function DecisionCard({
       if (isAnimatingRef.current) {
         return;
       }
+      if (direction === 'left' && leftBlocked && unlockedDirection !== 'left') return;
+      if (direction === 'right' && rightBlocked && unlockedDirection !== 'right') return;
+
       isAnimatingRef.current = true;
       outgoingDirectionRef.current = direction;
       updatePreviewDirection(direction);
@@ -116,7 +135,7 @@ export function DecisionCard({
         setCardPos(direction === 'left' ? -flyOutDistance : flyOutDistance, flyY);
       });
     },
-    [setCardPos, swipeThreshold, updatePreviewDirection],
+    [setCardPos, swipeThreshold, updatePreviewDirection, leftBlocked, rightBlocked, unlockedDirection],
   );
 
   useLayoutEffect(() => {
@@ -186,6 +205,8 @@ export function DecisionCard({
     setCardPos(0, 0);
   }, [card.id, setCardPos, updatePreviewDirection]);
 
+
+
   useEffect(() => {
     if (!showHint) {
       return;
@@ -203,6 +224,7 @@ export function DecisionCard({
       }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
+        if (leftBlocked && unlockedDirection !== 'left') return;
         if (keyboardPreview === 'left') {
           setKeyboardPreview(null);
           triggerSwipe('left');
@@ -215,6 +237,7 @@ export function DecisionCard({
       }
       if (event.key === 'ArrowRight') {
         event.preventDefault();
+        if (rightBlocked && unlockedDirection !== 'right') return;
         if (keyboardPreview === 'right') {
           setKeyboardPreview(null);
           triggerSwipe('right');
@@ -230,7 +253,7 @@ export function DecisionCard({
         setShowHint(true);
         return;
       }
-      
+
       // Any other key resets keyboard preview
       if (keyboardPreview) {
         setKeyboardPreview(null);
@@ -241,7 +264,7 @@ export function DecisionCard({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [triggerSwipe, disabled, keyboardPreview, updatePreviewDirection, setCardPos]);
+  }, [triggerSwipe, disabled, keyboardPreview, updatePreviewDirection, setCardPos, leftBlocked, rightBlocked, unlockedDirection]);
 
   // Reset keyboard preview if mouse/pointer interaction starts
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -293,6 +316,13 @@ export function DecisionCard({
       const pull = (1 - minDist / GRAVITY_RADIUS) * GRAVITY_STRENGTH;
       finalX = rawX + (closestPt.px - rawX) * pull;
       finalY = rawY + (closestPt.py - rawY) * pull;
+    }
+
+    if (finalX < 0 && leftBlocked && unlockedDirection !== 'left') {
+      finalX = Math.max(finalX, -20);
+    }
+    if (finalX > 0 && rightBlocked && unlockedDirection !== 'right') {
+      finalX = Math.min(finalX, 20);
     }
 
     setCardPos(finalX, finalY);
@@ -358,7 +388,7 @@ export function DecisionCard({
   const displayRightLabel = isPacified ? '' : (malikRewriteActive ? '[ FULL ENDORSEMENT ]' : card.right.label);
   const displayPrompt = isPacified
     ? '> HEIL CHANCELLOR.'
-    : (malikRewriteActive 
+    : (malikRewriteActive
       ? `> ORIGINAL TEXT REDACTED\n> NEW PROPOSAL: INCREASE FEDERAL FUNDING TO ${requestGovernor?.futureRegionName.toUpperCase() ?? 'REGION'} IMMEDIATELY.`
       : card.prompt);
 
@@ -372,7 +402,7 @@ export function DecisionCard({
 
   return (
     <div className="decision-card-shell" ref={shellRef} style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
-      
+
       {/* Left and Right hints removed from the sides as per user request, but their containers must remain for layout gap */}
       <div className="swipe-hint-left" style={{ flex: 1 }}></div>
 
@@ -395,38 +425,174 @@ export function DecisionCard({
         <div className="decision-terminal-body">
           {activeBodyRender}
         </div>
-        <div className="decision-terminal-footer">
+        <div className="decision-terminal-footer" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%', pointerEvents: 'auto' }}>
           {(!isDataBroker || isPacified) ? (
-            <>
-              <span className="glow-amber">&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
-              <span className="glow-amber">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
-            </>
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
+              <div style={{ textAlign: 'left', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                {leftBlocked && unlockedDirection !== 'left' ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', alignItems: 'flex-start' }}>
+                    <div className="gov-status-revolt" style={{ fontSize: '1.0rem', marginBottom: '0.2rem', fontWeight: 'bold' }}>
+                      BLOCKED BY COALITION
+                    </div>
+                    {onForce && canForce && (
+                      <button 
+                        className="bribe-btn override-btn" 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onForce('left')}
+                        style={{ color: 'var(--text-main)', borderColor: 'var(--text-main)' }}
+                      >
+                        [ AUTHORITY OVERRIDE ]
+                      </button>
+                    )}
+                    {onBribe && (
+                      <button 
+                        className="bribe-btn" 
+                        disabled={!canBribe} 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onBribe('left')}
+                      >
+                        [ BRIBE OFFICIAL ]
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-start' }}>
+                    {unlockedDirection === 'left' && activeUnlock && (
+                      <span className={activeUnlock === 'bribe' ? "glow-red" : "glow-amber"} style={{ fontSize: '0.7rem', fontWeight: 'bold' }}>
+                        [ {activeUnlock === 'bribe' ? 'BRIBE ACCEPTED' : 'AUTHORITY OVERRULED'} ]
+                      </span>
+                    )}
+                    <span className="glow-amber">&lt;&lt; [{displayLeftLabel.toUpperCase()}]</span>
+                  </div>
+                )}
+              </div>
+              <div style={{ textAlign: 'right', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                {rightBlocked && unlockedDirection !== 'right' ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', alignItems: 'flex-end' }}>
+                    <div className="gov-status-revolt" style={{ fontSize: '1.0rem', marginBottom: '0.2rem', fontWeight: 'bold' }}>
+                      BLOCKED BY COALITION
+                    </div>
+                    {onForce && canForce && (
+                      <button 
+                        className="bribe-btn override-btn" 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onForce('right')}
+                        style={{ color: 'var(--text-main)', borderColor: 'var(--text-main)' }}
+                      >
+                        [ AUTHORITY OVERRIDE ]
+                      </button>
+                    )}
+                    {onBribe && (
+                      <button 
+                        className="bribe-btn" 
+                        disabled={!canBribe} 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onBribe('right')}
+                      >
+                        [ BRIBE OFFICIAL ]
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-end' }}>
+                    {unlockedDirection === 'right' && activeUnlock && (
+                      <span className={activeUnlock === 'bribe' ? "glow-red" : "glow-amber"} style={{ fontSize: '0.7rem', fontWeight: 'bold' }}>
+                        [ {activeUnlock === 'bribe' ? 'BRIBE ACCEPTED' : 'AUTHORITY OVERRULED'} ]
+                      </span>
+                    )}
+                    <span className="glow-amber">[{displayRightLabel.toUpperCase()}] &gt;&gt;</span>
+                  </div>
+                )}
+              </div>
+            </div>
           ) : (
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', fontSize: '0.75rem', fontFamily: 'monospace' }}>
               <div className="glow-amber" style={{ textAlign: 'left', flex: 1 }}>
-                <p style={{ textDecoration: 'underline', marginBottom: '0.5rem' }}>[ L: {displayLeftLabel.toUpperCase()} ]</p>
-                {Object.keys(card.left.regionalEffects || {}).length === 0 ? (
-                  <p>&gt; NO DATA.</p>
-                ) : (
+                {leftBlocked && unlockedDirection !== 'left' ? (
                   <>
-                    {Object.entries(card.left.regionalEffects || {}).map(([stat, val]) => {
-                      const regionLabel = GOVERNORS[stat as keyof typeof GOVERNORS]?.futureRegionName ?? stat;
-                      return <p key={`l-r-${stat}`}>&gt; R: {regionLabel.toUpperCase()}: {val > 0 ? `+${val}` : val}</p>;
-                    })}
+                    <p className="gov-status-revolt" style={{ fontSize: '1.0rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>BLOCKED BY COALITION</p>
+                    {onForce && canForce && (
+                      <button 
+                        className="bribe-btn override-btn" 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onForce('left')}
+                        style={{ marginBottom: '0.4rem', color: 'var(--text-main)', borderColor: 'var(--text-main)' }}
+                      >
+                        [ AUTHORITY OVERRIDE ]
+                      </button>
+                    )}
+                    {onBribe && (
+                      <button 
+                        className="bribe-btn" 
+                        disabled={!canBribe} 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onBribe('left')}
+                      >[ BRIBE OFFICIAL ]</button>
+                    )}
                   </>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-start' }}>
+                    {unlockedDirection === 'left' && activeUnlock && (
+                      <span className={activeUnlock === 'bribe' ? "glow-red" : "glow-amber"} style={{ fontSize: '0.7rem', fontWeight: 'bold' }}>
+                        [ {activeUnlock === 'bribe' ? 'BRIBE ACCEPTED' : 'AUTHORITY OVERRULED'} ]
+                      </span>
+                    )}
+                    <p style={{ textDecoration: 'underline', marginBottom: '0.5rem' }}>[ L: {displayLeftLabel.toUpperCase()} ]</p>
+                    {Object.keys(card.left.regionalEffects || {}).length === 0 ? (
+                      <p>&gt; NO DATA.</p>
+                    ) : (
+                      <>
+                        {Object.entries(card.left.regionalEffects || {}).map(([stat, val]) => {
+                          const regionLabel = GOVERNORS[stat as keyof typeof GOVERNORS]?.futureRegionName ?? stat;
+                          return <p key={`l-r-${stat}`}>&gt; R: {regionLabel.toUpperCase()}: {val > 0 ? `+${val}` : val}</p>;
+                        })}
+                      </>
+                    )}
+                  </div>
                 )}
               </div>
-              <div className="glow-amber" style={{ textAlign: 'right', flex: 1 }}>
-                <p style={{ textDecoration: 'underline', marginBottom: '0.5rem' }}>[ R: {displayRightLabel.toUpperCase()} ]</p>
-                {Object.keys(card.right.regionalEffects || {}).length === 0 ? (
-                  <p>&gt; NO DATA.</p>
-                ) : (
+              <div className="glow-amber" style={{ textAlign: 'right', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                {rightBlocked && unlockedDirection !== 'right' ? (
                   <>
-                    {Object.entries(card.right.regionalEffects || {}).map(([stat, val]) => {
-                      const regionLabel = GOVERNORS[stat as keyof typeof GOVERNORS]?.futureRegionName ?? stat;
-                      return <p key={`r-r-${stat}`}>&gt; R: {regionLabel.toUpperCase()}: {val > 0 ? `+${val}` : val}</p>;
-                    })}
+                    <p className="gov-status-revolt" style={{ fontSize: '1.0rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>BLOCKED BY COALITION</p>
+                    {onForce && canForce && (
+                      <button 
+                        className="bribe-btn override-btn" 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onForce('right')}
+                        style={{ marginBottom: '0.4rem', color: 'var(--text-main)', borderColor: 'var(--text-main)' }}
+                      >
+                        [ AUTHORITY OVERRIDE ]
+                      </button>
+                    )}
+                    {onBribe && (
+                      <button 
+                        className="bribe-btn" 
+                        disabled={!canBribe} 
+                        onPointerDown={(e) => e.stopPropagation()}
+                        onClick={() => onBribe('right')}
+                      >[ BRIBE OFFICIAL ]</button>
+                    )}
                   </>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-end' }}>
+                    {unlockedDirection === 'right' && activeUnlock && (
+                      <span className={activeUnlock === 'bribe' ? "glow-red" : "glow-amber"} style={{ fontSize: '0.7rem', fontWeight: 'bold' }}>
+                        [ {activeUnlock === 'bribe' ? 'BRIBE ACCEPTED' : 'AUTHORITY OVERRULED'} ]
+                      </span>
+                    )}
+                    <p style={{ textDecoration: 'underline', marginBottom: '0.5rem' }}>[ R: {displayRightLabel.toUpperCase()} ]</p>
+                    {Object.keys(card.right.regionalEffects || {}).length === 0 ? (
+                      <p>&gt; NO DATA.</p>
+                    ) : (
+                      <>
+                        {Object.entries(card.right.regionalEffects || {}).map(([stat, val]) => {
+                          const regionLabel = GOVERNORS[stat as keyof typeof GOVERNORS]?.futureRegionName ?? stat;
+                          return <p key={`r-r-${stat}`}>&gt; R: {regionLabel.toUpperCase()}: {val > 0 ? `+${val}` : val}</p>;
+                        })}
+                      </>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
