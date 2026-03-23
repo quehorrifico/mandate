@@ -1,12 +1,14 @@
-
 import {
   type AdvisorSelectionBias,
   type Card,
   type CardType,
   POLICY_PILLAR_KEYS,
   type PolicyPillarKey,
+  type HiddenStats,
+  type VulnerabilityBucketKey,
 } from '../types';
 import { HIDDEN_STAT_TO_PILLAR } from './hiddenStats';
+import { isBucketVulnerable } from './vulnerabilities';
 
 export const CARD_TYPES = [
   'governor_request',
@@ -52,8 +54,9 @@ function getPillarForTag(tag: string): PolicyPillarKey | null {
 export function scoreCardWeight(params: {
   card: Card;
   advisorBias: AdvisorSelectionBias | undefined;
+  hiddenStats?: HiddenStats;
 }): number {
-  const { card, advisorBias } = params;
+  const { card, advisorBias, hiddenStats } = params;
 
   let weight = 1;
   const multipliers = advisorBias?.pillarMultipliers ?? {};
@@ -71,6 +74,15 @@ export function scoreCardWeight(params: {
     // Advisors only add positive bias; they never reduce draw odds.
     if (typeof multiplier === 'number' && Number.isFinite(multiplier) && multiplier > 1) {
       weight *= multiplier;
+    }
+  }
+
+  // Handle thematic consequence cards
+  if (hiddenStats && typeof card.id === 'string' && card.id.startsWith('crisis-')) {
+    const bucketStr = card.id.replace('crisis-', '');
+    // Assume the bucket format exactly matches the ID suffix (e.g. crisis-public_health_emergency)
+    if (isBucketVulnerable(hiddenStats, bucketStr as VulnerabilityBucketKey)) {
+      weight *= 10;
     }
   }
 
@@ -112,9 +124,10 @@ export function selectPolicyCardFromDeck(params: {
   deck: string[];
   advisorBias: AdvisorSelectionBias | undefined;
   cardsById: Map<string, Card>;
+  hiddenStats: HiddenStats;
   rng?: () => number;
 }): { cardId: string; chosenType: CardType } | null {
-  const { deck, advisorBias, cardsById, rng = Math.random } = params;
+  const { deck, advisorBias, cardsById, hiddenStats, rng = Math.random } = params;
 
   const candidates: Array<{ cardId: string; card: Card; cardType: CardType }> = [];
   for (const cardId of deck) {
@@ -140,6 +153,7 @@ export function selectPolicyCardFromDeck(params: {
       scoreCardWeight({
         card: entry.card,
         advisorBias,
+        hiddenStats,
       }),
     rng,
   );

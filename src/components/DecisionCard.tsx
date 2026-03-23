@@ -224,6 +224,12 @@ export function DecisionCard({
       }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
+        if (keyboardPreview === 'right') {
+          setKeyboardPreview(null);
+          updatePreviewDirection(null);
+          setCardPos(0, 0);
+          return;
+        }
         if (leftBlocked && unlockedDirection !== 'left') return;
         if (keyboardPreview === 'left') {
           setKeyboardPreview(null);
@@ -237,6 +243,12 @@ export function DecisionCard({
       }
       if (event.key === 'ArrowRight') {
         event.preventDefault();
+        if (keyboardPreview === 'left') {
+          setKeyboardPreview(null);
+          updatePreviewDirection(null);
+          setCardPos(0, 0);
+          return;
+        }
         if (rightBlocked && unlockedDirection !== 'right') return;
         if (keyboardPreview === 'right') {
           setKeyboardPreview(null);
@@ -384,13 +396,37 @@ export function DecisionCard({
 
   const requestGovernor = card.governor ? GOVERNORS[card.governor] : null;
 
+  const isCrisis = typeof card.id === 'string' && card.id.startsWith('crisis-');
+
+  let headerTitle = requestGovernor
+    ? `GOVERNOR PROMPT | ${requestGovernor.futureRegionName.toUpperCase()}`
+    : 'FEDERAL POLICY COUNCIL';
+
+  let displayPrompt = isPacified
+    ? '> HEIL CHANCELLOR.'
+    : card.prompt;
+
+  if (isCrisis) {
+    const splitIndex = card.prompt.indexOf(': ');
+    if (splitIndex !== -1) {
+      const crisisName = card.prompt.substring(0, splitIndex).trim();
+      headerTitle = `CRISIS: ${crisisName.toUpperCase()}`;
+      if (!isPacified) {
+        displayPrompt = card.prompt.substring(splitIndex + 2).trim();
+      }
+    } else {
+      const fallbackName = card.id.replace('crisis-', '').replace(/_/g, ' ');
+      headerTitle = `CRISIS: ${fallbackName.toUpperCase()}`;
+    }
+  }
+
   const displayLeftLabel = isPacified ? '' : (malikRewriteActive ? '[ REDACTED ]' : card.left.label);
   const displayRightLabel = isPacified ? '' : (malikRewriteActive ? '[ FULL ENDORSEMENT ]' : card.right.label);
-  const displayPrompt = isPacified
-    ? '> HEIL CHANCELLOR.'
-    : (malikRewriteActive
-      ? `> ORIGINAL TEXT REDACTED\n> NEW PROPOSAL: INCREASE FEDERAL FUNDING TO ${requestGovernor?.futureRegionName.toUpperCase() ?? 'REGION'} IMMEDIATELY.`
-      : card.prompt);
+
+  if (!isPacified && malikRewriteActive) {
+    displayPrompt = `> ORIGINAL TEXT REDACTED\n> NEW PROPOSAL: INCREASE FEDERAL FUNDING TO ${requestGovernor?.futureRegionName.toUpperCase() ?? 'REGION'} IMMEDIATELY.`;
+  }
+
 
   const activeBodyRender = (
     malikRewriteActive ? (
@@ -408,7 +444,7 @@ export function DecisionCard({
 
       <article
         ref={cardRef}
-        className="decision-terminal"
+        className={`decision-terminal ${isCrisis ? 'crisis-card' : ''}`}
         style={cardStyle}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
@@ -417,9 +453,7 @@ export function DecisionCard({
         onTransitionEnd={onTransitionEnd}
       >
         <div className="decision-terminal-header">
-          {requestGovernor
-            ? `GOVERNOR PROMPT | ${requestGovernor.futureRegionName.toUpperCase()}`
-            : 'FEDERAL POLICY COUNCIL'}
+          {headerTitle}
           {malikRewriteActive && <span className="glow-amber" style={{ float: 'right' }}>[ REWRITTEN ]</span>}
         </div>
         <div className="decision-terminal-body">

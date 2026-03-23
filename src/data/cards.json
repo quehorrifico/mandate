@@ -8077,5 +8077,354 @@
         "unionization": 20
       }
     }
+  },
+  {
+    "id": "crisis-public_health_emergency",
+    "type": "fallout",
+    "pillarTags": [
+      "social_safety_net"
+    ],
+    "prompt": "REGIONAL PANDEMIC: A novel pathogen overwhelms the tri-state area. Neighboring governors panic and illegally close their borders, trapping millions without care or supplies.",
+    "left": {
+      "label": "Federalize the Response",
+      "effects": {
+        "authority": -60,
+        "sentiment": 50,
+        "capital": -40
+      },
+      "hiddenEffects": {
+        "universal_healthcare": 50,
+        "public_services": 40
+      }
+    },
+    "right": {
+      "label": "Let States Triage",
+      "effects": {
+        "sentiment": -70,
+        "capital": -35,
+        "authority": 50
+      },
+      "hiddenEffects": {
+        "austerity": 40
+      }
+    }
+  },
+  {
+    "id": "crisis-ecological_collapse",
+    "type": "fallout",
+    "pillarTags": [
+      "green_stewardship"
+    ],
+    "prompt": "DUST BOWL: Decades of drought culminate in a massive agricultural collapse. Millions of climate refugees flee the interior, overwhelming coastal cities.",
+    "left": {
+      "label": "Fund Mass Relocation",
+      "effects": {
+        "capital": -65,
+        "sustainability": -50,
+        "sentiment": 40
+      },
+      "hiddenEffects": {
+        "poverty_relief": 35
+      }
+    },
+    "right": {
+      "label": "Quarantine the Dead Zones",
+      "effects": {
+        "authority": 60,
+        "sentiment": -75,
+        "capital": 20
+      },
+      "hiddenEffects": {
+        "environmentalism": 50,
+        "sustainability": 30
+      }
+    }
+  },
+  {
+    "id": "crisis-global_conflict",
+    "type": "fallout",
+    "pillarTags": [
+      "global_diplomacy",
+      "national_security"
+    ],
+    "prompt": "COASTAL BLOCKADE: A foreign superpower uses our internal chaos to blockade key coastal shipping lanes. Our overseas allies demand we launch a unified military counter-attack.",
+    "left": {
+      "label": "Rally the Fleets",
+      "effects": {
+        "capital": -70,
+        "authority": 50,
+        "sentiment": 20
+      },
+      "hiddenEffects": {
+        "military_strength": 60,
+        "world_peace": -50
+      }
+    },
+    "right": {
+      "label": "Abandon the Coasts",
+      "effects": {
+        "authority": -65,
+        "sentiment": -40,
+        "capital": 60
+      },
+      "hiddenEffects": {
+        "internationalism": -60,
+        "world_peace": 40
+      }
+    }
+  },
+  {
+    "id": "crisis-border_escalation",
+    "type": "fallout",
+    "pillarTags": [
+      "hardline_nationalism"
+    ],
+    "prompt": "STATE GUARD MUTINY: Southern border states invoke emergency powers, deploying state militias to violently clash with federal agents over refugee entry points.",
+    "left": {
+      "label": "Back the Militias",
+      "effects": {
+        "authority": 60,
+        "sentiment": -55,
+        "capital": -30
+      },
+      "hiddenEffects": {
+        "containing_immigration": 60,
+        "nationalism": 45
+      }
+    },
+    "right": {
+      "label": "Federalize the Guard",
+      "effects": {
+        "authority": -70,
+        "sentiment": 40,
+        "sustainability": 25
+      },
+      "hiddenEffects": {
+        "white_supremacy": -50,
+        "global_justice": 45
+      }
+    }
+  },
+  {
+    "id": "crisis-market_crash",
+    "type": "fallout",
+    "pillarTags": [
+      "market_growth"
+    ],
+    "prompt": "MARKET CRASH: A major regional banking failure cascades. Interstate commerce freezes, wiping out savings and shuttering regional economies overnight.",
+    "left": {
+      "label": "Federal Bailouts",
+      "effects": {
+        "capital": -75,
+        "sentiment": 35,
+        "authority": 20
+      },
+      "hiddenEffects": {
+        "economic_growth": 45,
+        "free_market": -40
+      }
+    },
+    "right": {
+      "label": "Let it Fail",
+      "effects": {
+        "sentiment": -80,
+        "authority": -50,
+        "capital": 70
+      },
+      "hiddenEffects": {
+        "free_market": 60
+      }
+    }
+  },
+  {
+    "id": "crisis-general_labor_strike",
+    "type": "fallout",
+    "pillarTags": [
+      "labor_power"
+    ],
+    "prompt": "INTERSTATE TRANSIT STRIKE: Supply chains are paralyzed as transport and rail unions across the nation initiate a coordinated, total walkout.",
+    "left": {
+      "label": "Concede to Unions",
+      "effects": {
+        "capital": -60,
+        "authority": -50,
+        "sentiment": 70
+      },
+      "hiddenEffects": {
+        "workers_rights": 60,
+        "unionization": 60
+      }
+    },
+    "right": {
+      "label": "Deploy the National Guard",
+      "effects": {
+        "authority": 65,
+        "sentiment": -80,
+        "capital": 40
+      },
+      "hiddenEffects": {
+        "unionization": -60,
+        "free_market": 45
+      }
+    }
+  },
+  {
+    "id": "crisis-civil_rights_uprising",
+    "type": "fallout",
+    "pillarTags": [
+      "identity_equity"
+    ],
+    "prompt": "METROPOLITAN UPRISING: Systemic abuses by state police trigger multi-state riots. Urban capitals are paralyzed as federal and state authorities clash over jurisdiction.",
+    "left": {
+      "label": "Override State Police",
+      "effects": {
+        "authority": -60,
+        "sentiment": 60,
+        "capital": -30
+      },
+      "hiddenEffects": {
+        "civil_rights": 60,
+        "social_justice": 50
+      }
+    },
+    "right": {
+      "label": "Endorse the Crackdown",
+      "effects": {
+        "authority": 70,
+        "sentiment": -85,
+        "capital": 30
+      },
+      "hiddenEffects": {
+        "anti_racism": -60,
+        "security": 50
+      }
+    }
+  },
+  {
+    "id": "crisis-culture_war_paralysis",
+    "type": "fallout",
+    "pillarTags": [
+      "identity_equity",
+      "traditional_values"
+    ],
+    "prompt": "CONSTITUTIONAL CRISIS: Several states pass laws directly nullifying federal civil rights protections. Armed standoffs occur at state lines as governors defy Washington.",
+    "left": {
+      "label": "Enforce Federal Supremacy",
+      "effects": {
+        "authority": 60,
+        "capital": -50,
+        "sentiment": -30
+      },
+      "hiddenEffects": {
+        "lgbt_rights": 50,
+        "tradition": -50
+      }
+    },
+    "right": {
+      "label": "Allow State Nullification",
+      "effects": {
+        "authority": -85,
+        "sentiment": -40,
+        "capital": 50
+      },
+      "hiddenEffects": {
+        "tradition": 50,
+        "lgbt_rights": -50
+      }
+    }
+  },
+  {
+    "id": "crisis-sovereign_debt_default",
+    "type": "fallout",
+    "pillarTags": [
+      "fiscal_restraint"
+    ],
+    "prompt": "FEDERAL DEFAULT: Subsidized interior states face immediate liquidation of services, while wealthy coastal donor states threaten to withhold their taxes.",
+    "left": {
+      "label": "Squeeze the Coasts",
+      "effects": {
+        "sentiment": -80,
+        "capital": 80,
+        "sustainability": 20
+      },
+      "hiddenEffects": {
+        "austerity": 60,
+        "small_government": 50
+      }
+    },
+    "right": {
+      "label": "Print Trillions",
+      "effects": {
+        "sentiment": 60,
+        "authority": -40,
+        "sustainability": -90
+      },
+      "hiddenEffects": {
+        "welfare_state": 70,
+        "economic_growth": -60
+      }
+    }
+  },
+  {
+    "id": "crisis-domestic_terror_wave",
+    "type": "fallout",
+    "pillarTags": [
+      "national_security"
+    ],
+    "prompt": "GRID SABOTAGE: Coordinated extremist cells detonate critical interstate power grids and data centers. Entire regions are plunged into dark, freezing chaos.",
+    "left": {
+      "label": "Declare Martial Law",
+      "effects": {
+        "authority": 80,
+        "sentiment": -70,
+        "sustainability": 25
+      },
+      "hiddenEffects": {
+        "security": 60,
+        "fighting_crime_terrorism": 60
+      }
+    },
+    "right": {
+      "label": "Fund Grid Rebuilding",
+      "effects": {
+        "capital": -60,
+        "authority": -60,
+        "sentiment": 50
+      },
+      "hiddenEffects": {
+        "civil_rights": 40
+      }
+    }
+  },
+  {
+    "id": "crisis-rural_separatist_movement",
+    "type": "fallout",
+    "pillarTags": [
+      "traditional_values"
+    ],
+    "prompt": "REGIONAL SECESSION: Ignored agricultural belts formally declare independence, setting up highway checkpoints and severing the food supply to metropolitan centers.",
+    "left": {
+      "label": "Starve Out the Rebels",
+      "effects": {
+        "authority": 65,
+        "sustainability": -70,
+        "sentiment": -40
+      },
+      "hiddenEffects": {
+        "rural_life": -60
+      }
+    },
+    "right": {
+      "label": "Capitulate to Demands",
+      "effects": {
+        "authority": -75,
+        "sentiment": 40,
+        "capital": -40
+      },
+      "hiddenEffects": {
+        "rural_life": 60,
+        "small_government": 40
+      }
+    }
   }
 ]
