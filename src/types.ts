@@ -67,6 +67,23 @@ export const HIDDEN_STAT_KEYS = [
   'rural_life',
 ] as const;
 
+export const VULNERABILITY_BUCKET_KEYS = [
+  'public_health_emergency',
+  'ecological_collapse',
+  'global_conflict',
+  'border_escalation',
+  'market_crash',
+  'general_labor_strike',
+  'civil_rights_uprising',
+  'culture_war_paralysis',
+  'sovereign_debt_default',
+  'domestic_terror_wave',
+  'rural_separatist_movement',
+] as const;
+
+export type VulnerabilityBucketKey = typeof VULNERABILITY_BUCKET_KEYS[number];
+
+
 export const ADVISOR_IDS = [
   'realpolitiker',
   'revolutionary',

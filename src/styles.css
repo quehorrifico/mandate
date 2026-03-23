@@ -254,6 +254,42 @@ body {
   }
 }
 
+.crisis-card {
+  border-color: #ff003c !important;
+  animation: crisis-pulse 2s infinite ease-in-out !important;
+}
+
+.crisis-card .decision-terminal-header {
+  background: #ff003c;
+  color: #000;
+}
+
+.crisis-card .decision-terminal-body {
+  color: #ff003c;
+  text-shadow: 0 0 5px rgba(255, 0, 60, 0.5);
+}
+
+.crisis-card .decision-terminal-footer {
+  border-top: 1px dashed #ff003c;
+}
+
+.crisis-card .glow-amber {
+  color: #ff003c !important;
+  text-shadow: 0 0 5px rgba(255, 0, 60, 0.5) !important;
+}
+
+@keyframes crisis-pulse {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 0, 60, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.15);
+  }
+}
+
 .decision-terminal-header {
   background: var(--text-main);
   color: #000;

@@ -26,6 +26,7 @@ import {
   REGION_KEYS,
   getRegionLoyaltyState,
   isAdvisorId,
+  STAT_KEYS,
   HIDDEN_STAT_KEYS,
   type AdvisorId,
   type AdvisorSelectionBias,
@@ -132,6 +133,7 @@ function createPolicyDeck(): string[] {
 function selectNextCard(
   deck: string[],
   advisorBias: AdvisorSelectionBias | undefined,
+  hiddenStats: HiddenStats,
   rng: () => number,
 ): { deck: string[]; cardId: string | null } {
   if (deck.length === 0) {
@@ -142,6 +144,7 @@ function selectNextCard(
     deck,
     advisorBias,
     cardsById: POLICY_CARD_BY_ID,
+    hiddenStats,
     rng,
   });
 
@@ -158,7 +161,7 @@ function selectNextCard(
 function createNewGameState(advisorId: AdvisorId | null = null): GameState {
   const deck = createPolicyDeck();
   const advisor = getAdvisorById(advisorId);
-  const firstSelection = selectNextCard(deck, advisor?.bias, Math.random);
+  const firstSelection = selectNextCard(deck, advisor?.bias, INITIAL_HIDDEN_STATS, Math.random);
 
   return {
     advisorId,
@@ -407,6 +410,22 @@ export default function App() {
     const nextBuffers = { ...resolution.next.statBuffers };
 
     if (game.martialLawActive) {
+      const isCrisis = typeof currentCard.id === 'string' && currentCard.id.startsWith('crisis-');
+      
+      if (isCrisis) {
+        // Iron Vance nullifies negative stat drops from crisis cards
+        STAT_KEYS.forEach((k) => {
+          if (nextStats[k] < game.stats[k]) {
+            nextStats[k] = game.stats[k];
+          }
+        });
+        /* 
+         Note: We do not preview hiddenStats or regionLoyalty visually, 
+         so we only need to restore core stats (authority, capital, sentiment, sustainability) 
+         for the UI metric preview.
+        */
+      }
+
       nextStats.authority = 100;
       nextStats.capital = Math.max(0, game.stats.capital - 10);
       nextStats.sentiment = Math.max(0, game.stats.sentiment - 10);
@@ -760,6 +779,27 @@ export default function App() {
       const nextRegionLoyalty = { ...resolution.next.regionLoyalty };
 
       if (game.martialLawActive) {
+        const isCrisis = typeof currentCard.id === 'string' && currentCard.id.startsWith('crisis-');
+        
+        if (isCrisis) {
+          // Iron Vance nullifies negative stat drops from crisis cards
+          STAT_KEYS.forEach((k) => {
+            if (nextStats[k] < game.stats[k]) {
+              nextStats[k] = game.stats[k];
+            }
+          });
+          HIDDEN_STAT_KEYS.forEach((k) => {
+            if (nextHiddenStats[k] < game.hiddenStats[k]) {
+              nextHiddenStats[k] = game.hiddenStats[k];
+            }
+          });
+          REGION_KEYS.forEach((k) => {
+            if (nextRegionLoyalty[k] < game.regionLoyalty[k]) {
+              nextRegionLoyalty[k] = game.regionLoyalty[k];
+            }
+          });
+        }
+
         // High per-turn resource drain, ignoring card effects for these specifically
         nextStats.capital = Math.max(0, game.stats.capital - 10);
         nextStats.sentiment = Math.max(0, game.stats.sentiment - 10);
@@ -925,7 +965,7 @@ export default function App() {
         return;
       }
 
-      const nextSelection = selectNextCard(game.deck, advisorBias, drawRng);
+      const nextSelection = selectNextCard(game.deck, advisorBias, nextHiddenStats, drawRng);
 
       if (drawDebugEnabled) {
         // eslint-disable-next-line no-console
@@ -1013,7 +1053,7 @@ export default function App() {
 
       const currentAdvisor =
         current.advisorId && isAdvisorId(current.advisorId) ? getAdvisorById(current.advisorId) : null;
-      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, drawRng);
+      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, current.hiddenStats, drawRng);
 
       if (!nextSelection.cardId) {
         const endingSummary = getEndingSummary({
