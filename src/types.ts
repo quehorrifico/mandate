@@ -352,4 +352,6 @@ export interface GameState {
   flags: string[];
   activeMandate: PolicyPillarKey | null;
   pillarTallies: Record<PolicyPillarKey, number>;
+  endlessMode?: boolean;
+  showFinaleChoice?: boolean;
 }
