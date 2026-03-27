@@ -56,8 +56,9 @@ export function scoreCardWeight(params: {
   advisorBias: AdvisorSelectionBias | undefined;
   hiddenStats?: HiddenStats;
   isSustainabilityMaxed?: boolean;
+  endlessTurnOffset?: number;
 }): number {
-  const { card, advisorBias, hiddenStats, isSustainabilityMaxed } = params;
+  const { card, advisorBias, hiddenStats, isSustainabilityMaxed, endlessTurnOffset = 0 } = params;
 
   let weight = 1;
   const multipliers = advisorBias?.pillarMultipliers ?? {};
@@ -89,6 +90,11 @@ export function scoreCardWeight(params: {
     // Sustainability passive cuts crisis card base weight
     if (isSustainabilityMaxed) {
       weight *= 0.5;
+    }
+
+    // In endless mode, the weight of crisis cards creeps up based on turns past 75
+    if (endlessTurnOffset > 0) {
+      weight *= 1 + endlessTurnOffset * 0.1; // +10% per turn passed
     }
   }
 
@@ -133,8 +139,9 @@ export function selectPolicyCardFromDeck(params: {
   hiddenStats: HiddenStats;
   rng?: () => number;
   isSustainabilityMaxed?: boolean;
+  endlessTurnOffset?: number;
 }): { cardId: string; chosenType: CardType } | null {
-  const { deck, advisorBias, cardsById, hiddenStats, rng = Math.random, isSustainabilityMaxed } = params;
+  const { deck, advisorBias, cardsById, hiddenStats, rng = Math.random, isSustainabilityMaxed, endlessTurnOffset = 0 } = params;
 
   const candidates: Array<{ cardId: string; card: Card; cardType: CardType }> = [];
   for (const cardId of deck) {
@@ -162,6 +169,7 @@ export function selectPolicyCardFromDeck(params: {
         advisorBias,
         hiddenStats,
         isSustainabilityMaxed,
+        endlessTurnOffset,
       }),
     rng,
   );

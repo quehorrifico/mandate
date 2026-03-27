@@ -158,6 +158,7 @@ function selectNextCard(
   flags: string[],
   advisorId: AdvisorId | null,
   isSustainabilityMaxed: boolean = false,
+  endlessTurnOffset: number = 0,
 ): { deck: string[]; cardId: string | null } {
   const validReactionCards = ALL_REACTION_CARDS.filter((rc) => {
     if (flags.includes(`seen_${rc.id}`)) return false;
@@ -182,6 +183,7 @@ function selectNextCard(
     hiddenStats,
     rng,
     isSustainabilityMaxed,
+    endlessTurnOffset,
   });
 
   if (!selected?.cardId) {
@@ -197,7 +199,7 @@ function selectNextCard(
 function createNewGameState(advisorId: AdvisorId | null = null): GameState {
   const deck = createPolicyDeck();
   const advisor = getAdvisorById(advisorId);
-  const firstSelection = selectNextCard(deck, advisor?.bias, INITIAL_HIDDEN_STATS, Math.random, [], advisorId, false);
+  const firstSelection = selectNextCard(deck, advisor?.bias, INITIAL_HIDDEN_STATS, Math.random, [], advisorId, false, 0);
 
   return {
     advisorId,
@@ -236,6 +238,8 @@ function createNewGameState(advisorId: AdvisorId | null = null): GameState {
       national_security: 0,
       traditional_values: 0,
     },
+    endlessMode: false,
+    showFinaleChoice: false,
   };
 }
 
@@ -489,6 +493,8 @@ export default function App() {
   }, [currentCard, game.gameOver, game.stats, game.statBuffers, game.hiddenStats, game.regionLoyalty, game.malikRewriteActive, game.martialLawActive, previewDirection]);
 
   const activeCoalitions = useMemo(() => {
+    if (currentTerm < 2) return [];
+
     const lowStats = HIDDEN_STAT_KEYS.filter((s) => game.hiddenStats[s] < 10);
     if (lowStats.length === 0) return [];
 
@@ -527,7 +533,7 @@ export default function App() {
 
 
 
-  const canBribe = game.stats.capital >= 20 && game.corruption < 100;
+  const canBribe = currentTerm >= 3 && game.stats.capital >= 20 && game.corruption < 100;
   const canForce = (game.statBuffers.authority ?? 0) >= 10 && game.stats.authority === 100;
 
   const handleBribe = useCallback((direction: Direction) => {
@@ -690,7 +696,7 @@ export default function App() {
     }
 
     if (selectedAdvisor.id === 'vulture') {
-      if (game.stats.capital > 10) return;
+      if (game.stats.capital > 30) return;
 
       setGame((current) => {
         const nextStats = { ...current.stats };
@@ -997,8 +1003,8 @@ export default function App() {
           return;
         }
 
-        let nextPillarTallies = { ...resolution.next.pillarTallies };
-        let nextActiveMandate = game.activeMandate;
+        nextPillarTallies = { ...resolution.next.pillarTallies };
+        nextActiveMandate = game.activeMandate;
 
         // MANDATE CALCULATION (10 or more loyal regions)
         if (noConfidence.votesAgainst >= 10) {
@@ -1033,31 +1039,25 @@ export default function App() {
         };
       }
 
-      if (nextTurn >= FULL_TERM_TURNS) {
-        const endingSummary = getEndingSummary({
-          reason: 'completed',
-          stats: nextStats,
-          hiddenStats: nextHiddenStats,
-          turn: nextTurn,
-        });
-
-        setGame({
-          ...game,
+      if (nextTurn >= FULL_TERM_TURNS && !game.endlessMode) {
+        setGame(prev => ({
+          ...prev,
           stats: nextStats,
           hiddenStats: nextHiddenStats,
           regionLoyalty: nextRegionLoyalty,
+          activeMandate: nextActiveMandate ?? game.activeMandate,
+          pillarTallies: nextPillarTallies ?? resolution.next.pillarTallies,
           turn: nextTurn,
-          currentCardId: null,
-          headline: 'Full term completed.',
-          endingSummary,
-          gameOver: true,
-          gameOverReason: 'completed',
-        });
+          deck: prev.deck, // Don't advance card yet, wait for finale choice
+          currentCardId: prev.currentCardId,
+          showFinaleChoice: true,
+          headline: 'Full term completed. A choice awaits.',
+        }));
         setPreviewDirection(null);
         return;
       }
 
-      const nextSelection = selectNextCard(game.deck, advisorBias, nextHiddenStats, drawRng, resolution.next.flags, selectedAdvisor?.id ?? null, nextStats.sustainability === 100);
+      const nextSelection = selectNextCard(game.deck, advisorBias, nextHiddenStats, drawRng, resolution.next.flags, selectedAdvisor?.id ?? null, nextStats.sustainability === 100, game.endlessMode ? Math.max(0, nextTurn - FULL_TERM_TURNS) : 0);
 
       if (drawDebugEnabled) {
         // eslint-disable-next-line no-console
@@ -1155,7 +1155,7 @@ export default function App() {
 
       setPreviewDirection(null);
     },
-    [advisorBias, currentCard, drawDebugEnabled, drawRng, game, resolutionDebugEnabled],
+    [advisorBias, currentCard, drawDebugEnabled, drawRng, game, resolutionDebugEnabled, leftBlocked, rightBlocked],
   );
 
   useEffect(() => {
@@ -1163,18 +1163,18 @@ export default function App() {
   }, [game]);
 
   useEffect(() => {
-    if (game.gameOver || currentCard) {
+    if (game.gameOver || currentCard || game.showFinaleChoice) {
       return;
     }
 
     setGame((current) => {
-      if (current.gameOver || current.currentCardId) {
+      if (current.gameOver || current.currentCardId || current.showFinaleChoice) {
         return current;
       }
 
       const currentAdvisor =
         current.advisorId && isAdvisorId(current.advisorId) ? getAdvisorById(current.advisorId) : null;
-      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, current.hiddenStats, drawRng, current.flags, current.advisorId, current.stats.sustainability === 100);
+      const nextSelection = selectNextCard(current.deck, currentAdvisor?.bias, current.hiddenStats, drawRng, current.flags, current.advisorId, current.stats.sustainability === 100, current.endlessMode ? Math.max(0, current.turn - FULL_TERM_TURNS) : 0);
 
       if (!nextSelection.cardId) {
         const endingSummary = getEndingSummary({
@@ -1200,7 +1200,7 @@ export default function App() {
         headline: current.headline ?? 'Recovered decision flow from an outdated save.',
       };
     });
-  }, [currentCard, drawRng, game.gameOver]);
+  }, [currentCard, drawRng, game.gameOver, game.showFinaleChoice]);
 
   useEffect(() => {
     if (!game.headline || game.gameOver) {
@@ -1299,6 +1299,103 @@ export default function App() {
       </div>
     );
   }
+
+  if (showIntro) {
+    return (
+      <main className="main-layout" role="main">
+        <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Welcome">
+          <div className="settings-modal-panel game-over-panel" style={{ maxWidth: '600px', cursor: 'grab' }}>
+            <h2 className="glow-amber" style={{ fontSize: '1.5rem', marginBottom: '1rem', borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem' }}>[ INITIALIZING: PROJECT FRA ]</h2>
+            <p style={{ marginBottom: '1rem', lineHeight: '1.4' }}>
+              Welcome to the <span className="glow-amber">Federal Republic of America</span> administration terminal.
+            </p>
+            <p style={{ marginBottom: '1rem', lineHeight: '1.4' }}>
+              You are the Chief Executive. Your mandate is to maintain the delicate balance of the Federal Government by managing four core metrics: <b>Authority</b>, <b>Capital</b>, <b>Sentiment</b>, and <b>Sustainability</b>. Keep them from reaching absolute zero, or the Republic will collapse.
+            </p>
+            <div style={{ padding: '0.75rem', border: '1px solid var(--border-color)', marginBottom: '1rem', fontSize: '0.85rem' }}>
+              <ul style={{ margin: 0, paddingLeft: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <li><b>Term 1 (Idealism):</b> Balance regional needs. Establish an Advisor.</li>
+                <li><b>Term 2 (Gridlock):</b> Coalitions form when multiple governors grow hostile under neglected hidden metrics. They will bloc-vote to pad lock your choices.</li>
+                <li><b>Term 3 (Pragmatism):</b> Desperation unlocks the ability to use Federal Capital as a Bribe to force through blocked policies. Beware of letting your Corruption reach 100.</li>
+              </ul>
+            </div>
+            <p style={{ marginBottom: '1.5rem', lineHeight: '1.4' }}>
+              Survive 75 turns (3 full legislative terms) to secure your legacy. Will you step down gracefully? Or suspend the elections and rule indefinitely as the crises mount?
+            </p>
+
+            <button
+              className="advisor-action-btn"
+              type="button"
+              onClick={() => {
+                setShowIntro(false);
+                try { window.sessionStorage.setItem('fra-intro-seen', '1'); } catch { /* ignore */ }
+              }}
+              style={{ padding: '0.75rem' }}
+            >
+              [ ACKNOWLEDGE & COMMENCE ]
+            </button>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  const finaleUi = game.showFinaleChoice ? (
+    <section className="settings-modal" role="dialog" aria-modal="true" aria-label="End of Term">
+      <div className="settings-modal-panel game-over-panel" style={{ maxWidth: '600px' }}>
+        <h2 className="glow-green" style={{ borderBottom: '1px dashed var(--border-color)', paddingBottom: '0.5rem', marginTop: 0 }}>[ TERM COMPLETION ]</h2>
+        <p style={{ marginBottom: '1rem', fontSize: '1.1rem' }}>
+          You have reached the end of your 3-Term mandate (Turn 75). Order is restored, for now.
+        </p>
+        <div style={{ border: '1px solid var(--border-color)', padding: '1rem', marginBottom: '1.5rem', fontSize: '0.9rem', lineHeight: '1.5' }}>
+          {getEndingSummary({
+            reason: 'completed',
+            stats: game.stats,
+            hiddenStats: game.hiddenStats,
+            turn: game.turn,
+          }).split('\n').map((line, i) => <p key={i} style={{ marginBottom: line.trim() ? '0.5rem' : '0' }}>{line}</p>)}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '2rem' }}>
+          <button
+            className="advisor-action-btn"
+            type="button"
+            onClick={() => {
+              setGame(prev => ({
+                ...prev,
+                showFinaleChoice: false,
+                gameOver: true,
+                gameOverReason: 'completed',
+                headline: 'Mandate complete. The regional governors stand down.',
+                endingSummary: getEndingSummary({
+                  reason: 'completed',
+                  stats: prev.stats,
+                  hiddenStats: prev.hiddenStats,
+                  turn: prev.turn,
+                }),
+              }));
+            }}
+          >
+            [ STEP DOWN / SOLIDIFY LEGACY ]
+          </button>
+          <button
+            className="advisor-action-btn gov-status-revolt"
+            style={{ borderColor: 'var(--red)', color: 'var(--red)' }}
+            type="button"
+            onClick={() => {
+              setGame(prev => ({
+                ...prev,
+                showFinaleChoice: false,
+                endlessMode: true,
+                headline: '[ ELECTIONS SUSPENDED. EXECUTIVE CONTROL INDEFINITE. ]',
+              }));
+            }}
+          >
+            [ SUSPEND ELECTIONS / ENDLESS ]
+          </button>
+        </div>
+      </div>
+    </section>
+  ) : null;
 
   if (game.gameOver) {
     return (
@@ -1607,6 +1704,7 @@ export default function App() {
           </section>
         )}
 
+        {finaleUi}
         {electionModalUi}
       </main>
     </div>
