@@ -78,7 +78,7 @@ body {
 @media (max-width: 850px) {
   .game-layout {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     overflow-y: visible;
   }
 }
@@ -223,7 +223,7 @@ body {
 @media (max-width: 850px) {
   .action-stage {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 4;
   }
 }
 
@@ -462,6 +462,7 @@ body {
   padding: 0.5rem 1rem;
   font-family: inherit;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .settings-btn:hover {
@@ -660,6 +661,16 @@ body {
   flex-direction: column;
 }
 
+@media (max-width: 850px) {
+  .status-sidebar {
+    display: flex !important;
+    grid-column: 1;
+    grid-row: 3;
+    border-left: none;
+    border-top: 1px dashed var(--border-color);
+  }
+}
+
 .status-list {
   list-style: none;
   padding: 0;
@@ -786,4 +797,58 @@ body {
 .status-item .tooltip-container {
   width: 100%;
   flex-direction: column;
+}
+
+/* ============================================
+   RESPONSIVE UTILS
+   ============================================ */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.decision-card-shell {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 850px) {
+  .app-shell {
+    padding: 0.5rem;
+  }
+  
+  .decision-card-shell {
+    gap: 0.5rem;
+  }
+  
+  .swipe-hint-left, .swipe-hint-right {
+    display: none !important;
+  }
+  
+  .tooltip-box {
+    display: none !important;
+  }
+}
+
+.tooltip-box-mobile.glow-amber {
+  border-color: var(--text-main);
+  box-shadow: 0 0 20px rgba(255, 176, 0, 0.2);
+}
+.tooltip-box-mobile.glow-green {
+  border-color: #00ff41;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+.tooltip-box-mobile.gov-status-revolt {
+  border-color: #ff003c;
+  box-shadow: 0 0 20px rgba(255, 0, 60, 0.2);
 }

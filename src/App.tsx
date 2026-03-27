@@ -374,6 +374,13 @@ export default function App() {
   const [previewDirection, setPreviewDirection] = useState<Direction | null>(null);
   const [advisorInfoOpen, setAdvisorInfoOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [activeMobileTooltip, setActiveMobileTooltip] = useState<{ title: string, body: string, cssClass: string } | null>(null);
+
+  const handleMobileTooltipClick = (title: string, body: string, cssClass: string) => {
+    if (typeof window !== 'undefined' && window.innerWidth <= 850) {
+      setActiveMobileTooltip({ title, body, cssClass });
+    }
+  };
   const [electionModal, setElectionModal] = useState<ElectionResult | null>(null);
   const [showIntro, setShowIntro] = useState<boolean>(() => {
     try { return !window.sessionStorage.getItem('fra-intro-seen'); } catch { return true; }
@@ -598,7 +605,7 @@ export default function App() {
           <span className={electionModal.passed ? 'glow-green' : 'gov-status-revolt'}>{electionModal.passed ? 'VOTE SURVIVED' : 'VOTE FAILED'}</span> (
           {electionModal.votesFor}-{electionModal.votesAgainst})
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1rem', marginBottom: '2rem' }}>
+        <div className="responsive-grid" style={{ gap: '2rem', marginTop: '1rem', marginBottom: '2rem' }}>
           <div>
             <p className="glow-green" style={{ textDecoration: 'underline', marginBottom: '0.5rem', fontSize: '0.8rem' }}>VOTES FOR</p>
             <ul className="gov-list">
@@ -1254,7 +1261,7 @@ export default function App() {
 
           <footer className="credits-footnote">
             <a href="https://github.com/quehorrifico/federal-republic-of-america" target="_blank" rel="noopener noreferrer">
-              [ SOURCE CODE / REPOSITORY ]
+              [ SOURCE CODE / REPOSITORY | v2.0.1 ]
             </a>
           </footer>
         </div>
@@ -1272,7 +1279,7 @@ export default function App() {
           <p className="intro-body" style={{ textAlign: 'center', marginBottom: '2rem', fontStyle: 'italic', opacity: 0.8 }}>
             Select an advisor to guide your administration. Their unique passive biases and active protocols will shape your legacy.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', width: '100%' }}>
+          <div className="responsive-grid" style={{ gap: '1.5rem' }}>
             {ADVISOR_LIST.map((advisor) => (
               <button
                 key={advisor.id}
@@ -1355,7 +1362,7 @@ export default function App() {
             turn: game.turn,
           }).split('\n').map((line, i) => <p key={i} style={{ marginBottom: line.trim() ? '0.5rem' : '0' }}>{line}</p>)}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '2rem' }}>
+        <div className="responsive-grid" style={{ gap: '1rem', marginTop: '2rem' }}>
           <button
             className="advisor-action-btn"
             type="button"
@@ -1422,7 +1429,7 @@ export default function App() {
             previewStatBuffers={previewState?.buffers}
           />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', alignItems: 'flex-end', fontSize: '0.8rem' }}>
-            <button className="settings-btn" type="button" onClick={() => setSettingsOpen(true)} style={{ whiteSpace: 'nowrap' }}>
+            <button className="settings-btn" type="button" onClick={() => setSettingsOpen(true)}>
               [ SYSTEM.SETTINGS ]
             </button>
             <div className="glow-amber">TERM {currentTerm}/3 | NEXT ELECTION IN {turnsUntilElection}</div>
@@ -1544,7 +1551,7 @@ export default function App() {
             {/* MANDATE TOOLTIP */}
             {game.activeMandate && (
               <li className="status-item" style={{ borderColor: 'var(--text-main)' }}>
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick(MANDATES[game.activeMandate!].name, MANDATES[game.activeMandate!].description, 'glow-amber')}>
                   <span className="status-name glow-amber">{MANDATES[game.activeMandate].name}</span>
                   <div className="tooltip-box glow-amber">
                     <div className="tooltip-title">{MANDATES[game.activeMandate].name}</div>
@@ -1557,7 +1564,7 @@ export default function App() {
             {/* ADVISOR TOOLTIP */}
             {selectedAdvisor && (
               <li className="status-item" style={{ borderColor: 'var(--text-main)' }}>
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick(selectedAdvisor.name, selectedAdvisor.benefit, 'glow-amber')}>
                   <span className="status-name glow-amber">Advisor: {selectedAdvisor.name}</span>
                   <div className="tooltip-box glow-amber">
                     <div className="tooltip-title">{selectedAdvisor.name}</div>
@@ -1570,7 +1577,7 @@ export default function App() {
             {/* COALITIONS TOOLTIP */}
             {activeCoalitions.length > 0 && (
               <li className="status-item" style={{ borderColor: '#ff003c' }}>
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick('Coalition Block', 'A synchronized voting bloc has formed among dissenting governors. They cannot be bribed individually—you must force or bribe the entire bloc simultaneously.', 'gov-status-revolt')}>
                   <span className="status-name gov-status-revolt">ACTIVE COALITION</span>
                   <div className="tooltip-box gov-status-revolt">
                     <div className="tooltip-title">Coalition Block</div>
@@ -1583,7 +1590,7 @@ export default function App() {
             {/* BUFFER TOOLTIPS */}
             {game.stats.capital === 100 && (
               <li className="status-item">
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick('Capital Overflow', 'Peak financial strength. Extra capital becomes buffer points. Every 5 turns, other core stats gain +10.', 'glow-green')}>
                   <span className="status-name">Capital Overflow</span>
                   <div className="tooltip-box glow-green">
                     <div className="tooltip-title">Capital Overflow</div>
@@ -1594,7 +1601,7 @@ export default function App() {
             )}
             {game.stats.sentiment === 100 && (
               <li className="status-item">
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick('Sentiment Overflow', 'Peak public support. Extra sentiment becomes buffer points. All governors gain +10 loyalty.', 'glow-green')}>
                   <span className="status-name">Sentiment Overflow</span>
                   <div className="tooltip-box glow-green">
                     <div className="tooltip-title">Sentiment Overflow</div>
@@ -1605,7 +1612,7 @@ export default function App() {
             )}
             {game.stats.authority === 100 && (
               <li className="status-item">
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick('Authority Overflow', 'Peak executive power. Extra authority becomes buffer points. Coalition blocks can be bypassed by spending Authority Buffer.', 'glow-green')}>
                   <span className="status-name">Authority Overflow</span>
                   <div className="tooltip-box glow-green">
                     <div className="tooltip-title">Authority Overflow</div>
@@ -1616,7 +1623,7 @@ export default function App() {
             )}
             {game.stats.sustainability === 100 && (
               <li className="status-item">
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick('Sustainability Overflow', 'Peak ecological balance. Extra sustainability becomes buffer points. The probability of drawing Crisis cards is halved.', 'glow-green')}>
                   <span className="status-name">Sustainability Overflow</span>
                   <div className="tooltip-box glow-green">
                     <div className="tooltip-title">Sustainability Overflow</div>
@@ -1629,7 +1636,7 @@ export default function App() {
             {/* CORRUPTION TOOLTIP */}
             {game.corruption > 0 && (
               <li className="status-item" style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--border-color)', paddingTop: '1rem', borderColor: '#ff003c' }}>
-                <div className="tooltip-container">
+                <div className="tooltip-container" onClick={() => handleMobileTooltipClick('Corruption Threat', 'Bribes to bypass coalition blocks erode public trust. Impeachment triggers inherently at 100%.', 'gov-status-revolt')}>
                   <span className="status-name gov-status-revolt" style={{ fontSize: '1.1rem' }}>CORRUPTION: {game.corruption}%</span>
                   <div className="tooltip-box gov-status-revolt">
                     <div className="tooltip-title">Corruption Threat</div>
@@ -1652,6 +1659,25 @@ export default function App() {
 
           </ul>
         </aside>
+
+        {activeMobileTooltip ? (
+          <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Tooltip Details" onClick={() => setActiveMobileTooltip(null)}>
+            <div className={`settings-modal-panel tooltip-box-mobile ${activeMobileTooltip.cssClass}`} style={{ textAlign: 'center', pointerEvents: 'auto' }} onClick={e => e.stopPropagation()}>
+              <h2 className={activeMobileTooltip.cssClass} style={{ borderBottom: '1px dashed currentColor', paddingBottom: '0.5rem', marginTop: 0 }}>{activeMobileTooltip.title.toUpperCase()}</h2>
+              <div style={{ fontSize: '1rem', marginBottom: '1.5rem', whiteSpace: 'pre-wrap', lineHeight: '1.5' }}>
+                {activeMobileTooltip.body}
+              </div>
+              <button
+                className={`advisor-action-btn ${activeMobileTooltip.cssClass}`}
+                style={{ width: '100%', borderColor: 'currentColor', boxShadow: 'none' }}
+                type="button"
+                onClick={() => setActiveMobileTooltip(null)}
+              >
+                [ DISMISS ]
+              </button>
+            </div>
+          </section>
+        ) : null}
 
         {settingsOpen ? (
           <section className="settings-modal" role="dialog" aria-modal="true" aria-label="Game settings">
